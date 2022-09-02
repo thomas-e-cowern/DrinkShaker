@@ -11,6 +11,7 @@
 		4D63650728C23FBC00C4FEA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63650628C23FBC00C4FEA1 /* ContentView.swift */; };
 		4D63650928C23FC900C4FEA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D63650828C23FC900C4FEA1 /* Assets.xcassets */; };
 		4D63650C28C23FC900C4FEA1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D63650B28C23FC900C4FEA1 /* Preview Assets.xcassets */; };
+		4D63651428C243C800C4FEA1 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D63651228C243C800C4FEA1 /* Main.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		4D63650628C23FBC00C4FEA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4D63650828C23FC900C4FEA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D63650B28C23FC900C4FEA1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4D63651328C243C800C4FEA1 /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				4D63650428C23FBC00C4FEA1 /* DrinkShakerApp.swift */,
 				4D63650628C23FBC00C4FEA1 /* ContentView.swift */,
+				4D63651228C243C800C4FEA1 /* Main.xcdatamodeld */,
 				4D63650828C23FC900C4FEA1 /* Assets.xcassets */,
 				4D63650A28C23FC900C4FEA1 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D63651428C243C800C4FEA1 /* Main.xcdatamodeld in Sources */,
 				4D63650728C23FBC00C4FEA1 /* ContentView.swift in Sources */,
 				4D63650528C23FBC00C4FEA1 /* DrinkShakerApp.swift in Sources */,
 			);
@@ -339,6 +343,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4D63651228C243C800C4FEA1 /* Main.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4D63651328C243C800C4FEA1 /* Main.xcdatamodel */,
+			);
+			currentVersion = 4D63651328C243C800C4FEA1 /* Main.xcdatamodel */;
+			path = Main.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4D6364F928C23FBC00C4FEA1 /* Project object */;
 }
