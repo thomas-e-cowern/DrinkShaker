@@ -30,12 +30,23 @@ class DataController: ObservableObject {
     func createSampleData() throws {
         let viewContext = container.viewContext
         
+        let sampleRecipes = ["Martini", "Rum and coke", "Manhattan", "Old Fashioned", "Bahama Mama"]
+        let sampleIndgredients = ["Vodka", "Cherries", "Tripe Sec", "Soda Water", "Ice"]
+        
         for i in 1...5 {
-            let recipe = Recipe()
-            recipe.title = "Sample Recipe \(i)"
+            let recipe = Recipe(context: viewContext)
+            recipe.title = sampleRecipes[i]
             recipe.glass = "Glass"
-            recipe.ingredients = ["Vodka", "Lemons", "Mint", "Ice"]
             recipe.instructions = "Place all ingreients in a shaker and shake well.  Serve in recommended glass with ice"
+            recipe.favorite = Bool.random()
+            
+            for _ in 1...10 {
+                let ingredients = Ingredient(context: viewContext)
+                ingredients.ingredient = sampleIndgredients.randomElement()
+                ingredients.recipe = recipe
+            }
         }
+        
+        try viewContext.save()
     }
 }
