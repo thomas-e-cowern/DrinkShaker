@@ -20,6 +20,22 @@ class DataController: ObservableObject {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
         
+        container.loadPersistentStores { storeDescription, error in
+            if let error = error {
+                fatalError("Fatal error loading store: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func createSampleData() throws {
+        let viewContext = container.viewContext
         
+        for i in 1...5 {
+            let recipe = Recipe()
+            recipe.title = "Sample Recipe \(i)"
+            recipe.glass = "Glass"
+            recipe.ingredients = ["Vodka", "Lemons", "Mint", "Ice"]
+            recipe.instructions = "Place all ingreients in a shaker and shake well.  Serve in recommended glass with ice"
+        }
     }
 }
