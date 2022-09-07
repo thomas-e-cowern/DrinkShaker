@@ -12,6 +12,7 @@
 		4D63650928C23FC900C4FEA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D63650828C23FC900C4FEA1 /* Assets.xcassets */; };
 		4D63650C28C23FC900C4FEA1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D63650B28C23FC900C4FEA1 /* Preview Assets.xcassets */; };
 		4D63651428C243C800C4FEA1 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D63651228C243C800C4FEA1 /* Main.xcdatamodeld */; };
+		4DE58F5728C8DCB600E0A02E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE58F5628C8DCB600E0A02E /* CloudKit.framework */; };
 		4DFF9A2A28C7DC89005FE792 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFF9A2928C7DC89005FE792 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,6 +23,9 @@
 		4D63650828C23FC900C4FEA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D63650B28C23FC900C4FEA1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4D63651328C243C800C4FEA1 /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
+		4DE58F5328C8DC8800E0A02E /* DrinkShaker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DrinkShaker.entitlements; sourceTree = "<group>"; };
+		4DE58F5428C8DC9300E0A02E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4DE58F5628C8DCB600E0A02E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		4DFF9A2928C7DC89005FE792 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -30,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DE58F5728C8DCB600E0A02E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +46,7 @@
 			children = (
 				4D63650328C23FBC00C4FEA1 /* DrinkShaker */,
 				4D63650228C23FBC00C4FEA1 /* Products */,
+				4DE58F5528C8DCB600E0A02E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +61,8 @@
 		4D63650328C23FBC00C4FEA1 /* DrinkShaker */ = {
 			isa = PBXGroup;
 			children = (
+				4DE58F5428C8DC9300E0A02E /* Info.plist */,
+				4DE58F5328C8DC8800E0A02E /* DrinkShaker.entitlements */,
 				4D63650428C23FBC00C4FEA1 /* DrinkShakerApp.swift */,
 				4D63650628C23FBC00C4FEA1 /* ContentView.swift */,
 				4D63651228C243C800C4FEA1 /* Main.xcdatamodeld */,
@@ -71,6 +79,14 @@
 				4D63650B28C23FC900C4FEA1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4DE58F5528C8DCB600E0A02E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DE58F5628C8DCB600E0A02E /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,12 +288,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DrinkShaker/DrinkShaker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DrinkShaker/Preview Content\"";
 				DEVELOPMENT_TEAM = 56F54J4H3N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DrinkShaker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -288,7 +306,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mobilesoftwareservices.DrinkShaker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobilesoftwareservices.DrinkShaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -301,12 +319,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DrinkShaker/DrinkShaker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DrinkShaker/Preview Content\"";
 				DEVELOPMENT_TEAM = 56F54J4H3N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DrinkShaker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -317,7 +337,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mobilesoftwareservices.DrinkShaker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mobilesoftwareservices.DrinkShaker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
