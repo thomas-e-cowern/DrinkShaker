@@ -11,14 +11,14 @@ struct FavoritesView: View {
     let recipes: FetchRequest<Recipe>
     
     init() {
-        recipes = FetchRequest<Recipe>(entity: Recipe.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Recipe.date, ascending: true)])
+        recipes = FetchRequest<Recipe>(entity: Recipe.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Recipe.dateAdded, ascending: true)])
     }
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(recipes.wrappedValue) { recipe in
-                    Section(header: Text(recipe.title ?? "")) {
+                    Section(header: Text(recipe.name ?? "")) {
                         ForEach(recipe.ingredient?.allObjects as? [Ingredient] ?? []) { ingredient in
                             Text(ingredient.ingredientName)
                         }
