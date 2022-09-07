@@ -27,6 +27,19 @@ class DataController: ObservableObject {
         }
     }
     
+    static var preview: DataController = {
+        let dataController = DataController(inMemory: true)
+        let viewContext = dataController.container.viewContext
+        
+        do {
+            try dataController.createSampleData()
+        } catch {
+            fatalError("Fatal error creating preview: \(error.localizedDescription)")
+        }
+        
+        return dataController
+    }()
+    
     // Sample data for development
     func createSampleData() throws {
         let viewContext = container.viewContext
