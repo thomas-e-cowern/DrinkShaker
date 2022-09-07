@@ -47,14 +47,14 @@ class DataController: ObservableObject {
         let sampleRecipes = ["Martini", "Rum and coke", "Manhattan", "Old Fashioned", "Bahama Mama"]
         let sampleIndgredients = ["Vodka", "Cherries", "Tripe Sec", "Soda Water", "Ice"]
         
-        for i in 1...5 {
+        for _ in 1...5 {
             let recipe = Recipe(context: viewContext)
-            recipe.title = sampleRecipes[i]
+            recipe.title = sampleRecipes.randomElement()
             recipe.glass = "Glass"
             recipe.instructions = "Place all ingreients in a shaker and shake well.  Serve in recommended glass with ice"
             recipe.favorite = Bool.random()
             
-            for _ in 1...10 {
+            for _ in 1...5 {
                 let ingredients = Ingredient(context: viewContext)
                 ingredients.ingredient = sampleIndgredients.randomElement()
                 ingredients.recipe = recipe

@@ -25,6 +25,8 @@ struct FavoritesView: View {
                     }
                 }
             }
+            .listStyle(InsetGroupedListStyle())
+            .navigationBarTitle("Favorites")
         }
     }
 }
