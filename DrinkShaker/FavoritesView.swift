@@ -15,12 +15,26 @@ struct FavoritesView: View {
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                ForEach(recipes.wrappedValue) { recipe in
+                    Section(header: Text(recipe.title ?? "")) {
+                        ForEach(recipe.ingredient?.allObjects as? [Ingredient] ?? []) { ingredient in
+                            Text(ingredient.ingredient ?? "")
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
 struct FavoritesView_Previews: PreviewProvider {
+    static var dataController = DataController.preview
+    
     static var previews: some View {
         FavoritesView()
+            .environment(\.managedObjectContext, dataController.container.viewContext)
+            .environmentObject(dataController)
     }
 }
