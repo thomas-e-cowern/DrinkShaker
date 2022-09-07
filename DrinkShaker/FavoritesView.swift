@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct FavoritesView: View {
+    let recipes: FetchRequest<Recipe>
     
+    init() {
+        recipes = FetchRequest<Recipe>(entity: Recipe.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Recipe.date, ascending: true)])
+    }
     
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
