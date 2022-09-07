@@ -16,6 +16,7 @@
 		4DE58F5928C8E4EB00E0A02E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE58F5828C8E4EB00E0A02E /* HomeView.swift */; };
 		4DE58F5B28C8E5F800E0A02E /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE58F5A28C8E5F800E0A02E /* FavoritesView.swift */; };
 		4DE58F5D28C9138400E0A02E /* Ingredient-CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE58F5C28C9138400E0A02E /* Ingredient-CoreDataHelper.swift */; };
+		4DE58F5F28C9186300E0A02E /* Recipe-CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE58F5E28C9186300E0A02E /* Recipe-CoreDataHelper.swift */; };
 		4DFF9A2A28C7DC89005FE792 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFF9A2928C7DC89005FE792 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		4DE58F5828C8E4EB00E0A02E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4DE58F5A28C8E5F800E0A02E /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		4DE58F5C28C9138400E0A02E /* Ingredient-CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient-CoreDataHelper.swift"; sourceTree = "<group>"; };
+		4DE58F5E28C9186300E0A02E /* Recipe-CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe-CoreDataHelper.swift"; sourceTree = "<group>"; };
 		4DFF9A2928C7DC89005FE792 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +74,7 @@
 				4D63650428C23FBC00C4FEA1 /* DrinkShakerApp.swift */,
 				4D63650628C23FBC00C4FEA1 /* ContentView.swift */,
 				4DE58F5C28C9138400E0A02E /* Ingredient-CoreDataHelper.swift */,
+				4DE58F5E28C9186300E0A02E /* Recipe-CoreDataHelper.swift */,
 				4DE58F5828C8E4EB00E0A02E /* HomeView.swift */,
 				4DE58F5A28C8E5F800E0A02E /* FavoritesView.swift */,
 				4D63651228C243C800C4FEA1 /* Main.xcdatamodeld */,
@@ -174,6 +177,7 @@
 				4D63650728C23FBC00C4FEA1 /* ContentView.swift in Sources */,
 				4DE58F5928C8E4EB00E0A02E /* HomeView.swift in Sources */,
 				4D63650528C23FBC00C4FEA1 /* DrinkShakerApp.swift in Sources */,
+				4DE58F5F28C9186300E0A02E /* Recipe-CoreDataHelper.swift in Sources */,
 				4DE58F5D28C9138400E0A02E /* Ingredient-CoreDataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
