@@ -56,7 +56,7 @@ class DataController: ObservableObject {
             
             for _ in 1...5 {
                 let ingredients = Ingredient(context: viewContext)
-                ingredients.ingredient = sampleIndgredients.randomElement()
+                ingredients.name = sampleIndgredients.randomElement()
                 ingredients.recipe = recipe
             }
         }

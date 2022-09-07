@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension Ingredient {
+    var ingredientName: String {
+    name ?? ""
+}
+}

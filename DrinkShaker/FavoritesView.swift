@@ -20,7 +20,7 @@ struct FavoritesView: View {
                 ForEach(recipes.wrappedValue) { recipe in
                     Section(header: Text(recipe.title ?? "")) {
                         ForEach(recipe.ingredient?.allObjects as? [Ingredient] ?? []) { ingredient in
-                            Text(ingredient.ingredient ?? "")
+                            Text(ingredient.ingredientName)
                         }
                     }
                 }
