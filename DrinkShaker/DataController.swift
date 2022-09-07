@@ -64,13 +64,26 @@ class DataController: ObservableObject {
         try viewContext.save()
     }
     
+    // Save only if there have been changes
     func save() {
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
         }
     }
     
+    // Delete method
     func delete(_ object: NSManagedObject) {
         container.viewContext.delete(object)
+    }
+    
+    // Delete all sample data after fetching
+    func deleteAll() {
+        let fetchRequestIngredients: NSFetchRequest<NSFetchRequestResult> = Ingredient.fetchRequest()
+        let batchDeleteRequestIngredients = NSBatchDeleteRequest(fetchRequest: fetchRequestIngredients)
+        _ = try? container.viewContext.execute(batchDeleteRequestIngredients)
+        
+        let fetchRequestRecipe: NSFetchRequest<NSFetchRequestResult> = Recipe.fetchRequest()
+        let batchDeleteRequestRecipe = NSBatchDeleteRequest(fetchRequest: fetchRequestRecipe)
+        _ = try? container.viewContext.execute(batchDeleteRequestRecipe)
     }
 }
