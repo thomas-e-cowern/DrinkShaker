@@ -27,6 +27,7 @@ class DataController: ObservableObject {
         }
     }
     
+    // Sample data for development
     func createSampleData() throws {
         let viewContext = container.viewContext
         
