@@ -18,8 +18,8 @@ struct FavoritesView: View {
         NavigationView {
             List {
                 ForEach(recipes.wrappedValue) { recipe in
-                    Section(header: Text(recipe.name ?? "")) {
-                        ForEach(recipe.ingredient?.allObjects as? [Ingredient] ?? []) { ingredient in
+                    Section(header: Text(recipe.recipeName)) {
+                        ForEach(recipe.recipeIngredients) { ingredient in
                             Text(ingredient.ingredientName)
                         }
                     }

@@ -34,4 +34,11 @@ extension Recipe {
         
         return recipe
     }
+    
+    var recipeIngredients: [Ingredient] {
+        let ingredientsArray = ingredient?.allObjects as? [Ingredient] ?? []
+        return ingredientsArray.sorted { first, second in
+            return first.ingredientName < second.ingredientName
+        }
+    }
 }
