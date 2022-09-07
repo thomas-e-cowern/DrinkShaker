@@ -63,4 +63,14 @@ class DataController: ObservableObject {
         
         try viewContext.save()
     }
+    
+    func save() {
+        if container.viewContext.hasChanges {
+            try? container.viewContext.save()
+        }
+    }
+    
+    func delete(_ object: NSManagedObject) {
+        container.viewContext.delete(object)
+    }
 }
