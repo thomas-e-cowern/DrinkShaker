@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D24AE4B28CA36BD00360595 /* NetworkingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D24AE4A28CA36BD00360595 /* NetworkingController.swift */; };
 		4D63650528C23FBC00C4FEA1 /* DrinkShakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63650428C23FBC00C4FEA1 /* DrinkShakerApp.swift */; };
 		4D63650728C23FBC00C4FEA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63650628C23FBC00C4FEA1 /* ContentView.swift */; };
 		4D63650928C23FC900C4FEA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D63650828C23FC900C4FEA1 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D24AE4A28CA36BD00360595 /* NetworkingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingController.swift; sourceTree = "<group>"; };
 		4D63650128C23FBC00C4FEA1 /* DrinkShaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinkShaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D63650428C23FBC00C4FEA1 /* DrinkShakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkShakerApp.swift; sourceTree = "<group>"; };
 		4D63650628C23FBC00C4FEA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 		4D6364F828C23FBC00C4FEA1 = {
 			isa = PBXGroup;
 			children = (
+				4D24AE4A28CA36BD00360595 /* NetworkingController.swift */,
 				4D63650328C23FBC00C4FEA1 /* DrinkShaker */,
 				4D63650228C23FBC00C4FEA1 /* Products */,
 				4DE58F5528C8DCB600E0A02E /* Frameworks */,
@@ -171,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D24AE4B28CA36BD00360595 /* NetworkingController.swift in Sources */,
 				4D63651428C243C800C4FEA1 /* Main.xcdatamodeld in Sources */,
 				4DFF9A2A28C7DC89005FE792 /* DataController.swift in Sources */,
 				4DE58F5B28C8E5F800E0A02E /* FavoritesView.swift in Sources */,
