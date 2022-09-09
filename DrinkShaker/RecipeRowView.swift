@@ -44,9 +44,11 @@ struct RecipeRowView: View {
             
             VStack(alignment: .leading) {
                 Text(recipe.strDrink)
-                    .font(.title)
+                    .font(.title2)
                     .padding(.bottom, 5)
                 Text(recipe.strCategory)
+                    .padding(.bottom, 2)
+                Text(recipe.strGlass)
             }
         }
     
@@ -56,6 +58,6 @@ struct RecipeRowView: View {
 
 struct RecipeRowView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeRowView(recipe: .init(idDrink: "Drink ID", strDrink: "Drink Name", strInstructions: "Drink Instructions", strDrinkThumb: "Drink Thmubnail", strCategory: "Drink Category"))
+        RecipeRowView(recipe: .init(idDrink: "Drink ID", strDrink: "Drink Name", strInstructions: "Drink Instructions", strDrinkThumb: "Drink Thmubnail", strCategory: "Drink Category", strGlass: "Drink Glass"))
     }
 }
