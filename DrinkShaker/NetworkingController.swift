@@ -33,7 +33,7 @@ class NetworkingController: ObservableObject {
                             print("Data: \(data)")
                             if let recipes = try? decoder.decode(Recipes.self, from: data) {
 //                                print("👉 👉 👉 Recipes: \(recipes)")
-                                for recipe in recipes.drinks {
+                               for recipe in recipes.drinks {
 //                                    print(recipe)
                                     self.drinkRecipes.append(recipe)
                                 }
@@ -46,5 +46,9 @@ class NetworkingController: ObservableObject {
                 }
             }.resume()
         }
+    }
+    
+    func fetchThumbnails(recipe: RecipeModel) {
+        print(" 🎃 🎃 🎃 🎃 🎃 Thumbnail url: \(recipe.strDrinkThumb)")
     }
 }
