@@ -54,7 +54,6 @@
 		4D6364F828C23FBC00C4FEA1 = {
 			isa = PBXGroup;
 			children = (
-				4D24AE4A28CA36BD00360595 /* NetworkingController.swift */,
 				4D63650328C23FBC00C4FEA1 /* DrinkShaker */,
 				4D63650228C23FBC00C4FEA1 /* Products */,
 				4DE58F5528C8DCB600E0A02E /* Frameworks */,
@@ -81,6 +80,7 @@
 				4DE58F5828C8E4EB00E0A02E /* HomeView.swift */,
 				4DE58F5A28C8E5F800E0A02E /* FavoritesView.swift */,
 				4D63651228C243C800C4FEA1 /* Main.xcdatamodeld */,
+				4D24AE4A28CA36BD00360595 /* NetworkingController.swift */,
 				4DFF9A2928C7DC89005FE792 /* DataController.swift */,
 				4D63650828C23FC900C4FEA1 /* Assets.xcassets */,
 				4D63650A28C23FC900C4FEA1 /* Preview Content */,
