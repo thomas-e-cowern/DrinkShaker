@@ -13,7 +13,7 @@ class NetworkingController: ObservableObject {
     
     @EnvironmentObject var dataController: DataController
     
-    @Published var drinkRecipes: [Recipe] = []
+    @Published var drinkRecipes: [RecipeModel] = []
     
     func fetchDrinkRecipes() {
         
@@ -28,15 +28,16 @@ class NetworkingController: ObservableObject {
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
                         
                         if let data = data {
-                            if let drinkRecipes = try? decoder.decode([Recipe].self, from: data) {
-                                self.$drinkRecipes = drinkRecipes
+                            if let drinkRecipes = try? decoder.decode([RecipeModel].self, from: data) {
+                                self.drinkRecipes = drinkRecipes
+                                print("👉 👉 👉 Recipes: \(self.drinkRecipes)")
                             } else {
                                 print("There was a problem decoding the data: \(error?.localizedDescription)")
                             }
                         }
                     }
                 }
-            }
+            }.resume()
         }
     }
 }
