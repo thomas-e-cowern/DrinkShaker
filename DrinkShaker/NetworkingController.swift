@@ -15,9 +15,11 @@ class NetworkingController: ObservableObject {
     
     @Published var drinkRecipes: [RecipeModel] = []
     
-    func fetchDrinkRecipes() {
+    func fetchDrinkRecipes(drinkName: String) {
         
-        let drinkUrlString = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
+        let drinkName = drinkName
+        
+        let drinkUrlString = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\(drinkName)"
         if let url = URL(string: drinkUrlString) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 DispatchQueue.main.async {

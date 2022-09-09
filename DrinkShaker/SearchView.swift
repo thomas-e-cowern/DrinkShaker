@@ -32,7 +32,7 @@ struct SearchView: View {
                             Button {
                                 print("Search string is \(text)")
         //                        search()
-                                nc.fetchDrinkRecipes()
+                                nc.fetchDrinkRecipes(drinkName: text)
                                 
                             } label: {
                                 Image(systemName: "magnifyingglass")

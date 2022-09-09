@@ -12,8 +12,10 @@ struct RecipeRowView: View {
     let recipe: RecipeModel
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text(recipe.strDrink)
+                .font(.title)
+                .padding(.bottom, 5)
             Text(recipe.strInstructions)
         }
     }
