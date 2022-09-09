@@ -11,6 +11,8 @@ import SwiftUI
 
 class NetworkingController: ObservableObject {
     
+    @EnvironmentObject var dataController: DataController
+    
     @Published var drinkRecipes: [Recipe] = []
     
     func fetchDrinkRecipes() {

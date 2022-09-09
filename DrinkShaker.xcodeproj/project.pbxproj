@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D093F0C28CB7E3A0022FBAD /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D093F0B28CB7E3A0022FBAD /* RecipeModel.swift */; };
 		4D24AE4B28CA36BD00360595 /* NetworkingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D24AE4A28CA36BD00360595 /* NetworkingController.swift */; };
 		4D63650528C23FBC00C4FEA1 /* DrinkShakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63650428C23FBC00C4FEA1 /* DrinkShakerApp.swift */; };
 		4D63650728C23FBC00C4FEA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D63650628C23FBC00C4FEA1 /* ContentView.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D093F0B28CB7E3A0022FBAD /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
 		4D24AE4A28CA36BD00360595 /* NetworkingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingController.swift; sourceTree = "<group>"; };
 		4D63650128C23FBC00C4FEA1 /* DrinkShaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinkShaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D63650428C23FBC00C4FEA1 /* DrinkShakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkShakerApp.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				4DE58F5A28C8E5F800E0A02E /* FavoritesView.swift */,
 				4D63651228C243C800C4FEA1 /* Main.xcdatamodeld */,
 				4D24AE4A28CA36BD00360595 /* NetworkingController.swift */,
+				4D093F0B28CB7E3A0022FBAD /* RecipeModel.swift */,
 				4DFF9A2928C7DC89005FE792 /* DataController.swift */,
 				4D63650828C23FC900C4FEA1 /* Assets.xcassets */,
 				4D63650A28C23FC900C4FEA1 /* Preview Content */,
@@ -181,6 +184,7 @@
 				4D63650728C23FBC00C4FEA1 /* ContentView.swift in Sources */,
 				4DE58F5928C8E4EB00E0A02E /* HomeView.swift in Sources */,
 				4D63650528C23FBC00C4FEA1 /* DrinkShakerApp.swift in Sources */,
+				4D093F0C28CB7E3A0022FBAD /* RecipeModel.swift in Sources */,
 				4DE58F5F28C9186300E0A02E /* Recipe-CoreDataHelper.swift in Sources */,
 				4DE58F5D28C9138400E0A02E /* Ingredient-CoreDataHelper.swift in Sources */,
 			);
