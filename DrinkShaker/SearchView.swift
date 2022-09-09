@@ -10,14 +10,13 @@ import SwiftUI
 struct SearchView: View {
     
     @StateObject private var nc = NetworkingController()
-    let recipe: Recipe
     @State var text: String = ""
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(nc.drinkRecipes, id: \.idDrink) { recipe in
-                    Text("recipe.strDrink")
+                    RecipeRowView(recipe: recipe)
                 }
             }
                 .navigationBarTitle("", displayMode: .inline)

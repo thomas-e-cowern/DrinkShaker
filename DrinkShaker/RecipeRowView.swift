@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct RecipeRowView: View {
+    
+    let recipe: RecipeModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(recipe.strDrink)
+            Text(recipe.strInstructions)
+        }
     }
 }
 
 struct RecipeRowView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeRowView()
+        RecipeRowView(recipe: .init(idDrink: "Drink ID", strDrink: "Drink Name", strInstructions: "Drink Instructions", strDrinkThumb: "Drink Thmubnail"))
     }
 }
