@@ -29,6 +29,7 @@ struct SearchView: View {
                             Button {
                                 print("Search string is \(text)")
         //                        search()
+                                networkingController.fetchDrinkRecipes()
                                 
                             } label: {
                                 Image(systemName: "magnifyingglass")

@@ -32,7 +32,7 @@ class NetworkingController: ObservableObject {
                                 self.drinkRecipes = drinkRecipes
                                 print("👉 👉 👉 Recipes: \(self.drinkRecipes)")
                             } else {
-                                print("There was a problem decoding the data: \(error?.localizedDescription)")
+                                print("There was a problem decoding the data: \(error?.localizedDescription ?? "Error in data")")
                             }
                         }
                     }
