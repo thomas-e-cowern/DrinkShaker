@@ -8,7 +8,11 @@
 import Foundation
 
 struct RecipeModel: Codable {
-    var strDrink: String
-    var strInstructions: String
-    var strDrinkThumb: String
+    let strDrink: String
+    let strInstructions: String
+    let strDrinkThumb: String
+}
+
+struct Recipes: Codable {
+    let recipes: [RecipeModel]
 }
