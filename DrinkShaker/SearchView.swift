@@ -9,13 +9,17 @@ import SwiftUI
 
 struct SearchView: View {
     
-    
-    @StateObject private var networkingController = NetworkingController()
+    @StateObject private var nc = NetworkingController()
+    let recipe: Recipe
     @State var text: String = ""
     
     var body: some View {
         NavigationView {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            List {
+                ForEach(nc.drinkRecipes, id: \.idDrink) { recipe in
+                    Text("recipe.strDrink")
+                }
+            }
                 .navigationBarTitle("", displayMode: .inline)
                 .toolbar {
                     ToolbarItemGroup (placement: .primaryAction) {
@@ -29,7 +33,7 @@ struct SearchView: View {
                             Button {
                                 print("Search string is \(text)")
         //                        search()
-                                networkingController.fetchDrinkRecipes()
+                                nc.fetchDrinkRecipes()
                                 
                             } label: {
                                 Image(systemName: "magnifyingglass")
@@ -45,6 +49,10 @@ struct SearchView: View {
 }
 
 struct SearchView_Previews: PreviewProvider {
+    
+
+    @EnvironmentObject var dataController: DataController
+    
     static var previews: some View {
         SearchView()
     }
