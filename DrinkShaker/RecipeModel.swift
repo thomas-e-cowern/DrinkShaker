@@ -12,6 +12,7 @@ struct RecipeModel: Codable {
     var strDrink: String
     var strInstructions: String
     var strDrinkThumb: String?
+    var strCategory: String
 }
 
 struct Recipes: Codable {

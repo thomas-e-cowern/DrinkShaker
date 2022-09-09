@@ -47,8 +47,4 @@ class NetworkingController: ObservableObject {
             }.resume()
         }
     }
-    
-    func fetchThumbnails(recipe: RecipeModel) {
-        print(" 🎃 🎃 🎃 🎃 🎃 Thumbnail url: \(recipe.strDrinkThumb)")
-    }
 }

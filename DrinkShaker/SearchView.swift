@@ -27,11 +27,10 @@ struct SearchView: View {
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .frame(minWidth: 300)
                                 .onSubmit {
-                                    // Will be search funtion
+                                    nc.fetchDrinkRecipes(drinkName: text)
                                 }
                             Button {
                                 print("Search string is \(text)")
-        //                        search()
                                 nc.fetchDrinkRecipes(drinkName: text)
                                 
                             } label: {

@@ -13,7 +13,7 @@ struct RecipeRowView: View {
     let recipe: RecipeModel
     
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             if recipe.strDrinkThumb != nil {
                             AsyncImage(url: URL(string: recipe.strDrinkThumb!)) { phase in
                                 switch phase {
@@ -23,19 +23,19 @@ struct RecipeRowView: View {
                                     image
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
-                                        .frame(maxWidth: .infinity, maxHeight: 150)
-                                        .padding(.leading, 40)
-                                        .padding(.trailing, 40)
-                                        .padding(.top, 40)
-                                        .padding(.bottom, 40)
+                                        .frame(maxWidth: 100, maxHeight: 100)
+                                        .padding(.leading, 5)
+                                        .padding(.trailing, 5)
+                                        .padding(.top, 10)
+                                        .padding(.bottom, 10)
                                         .background(Color.white)
-                                case .failure(let fail):
+                                case .failure(_):
 //                                    Text("Failure: \(fail.localizedDescription)")
                                     Image(systemName: "wind.snow")
                                         .resizable()
                                         .padding()
                                         .aspectRatio(contentMode: .fit)
-                                        .frame(maxWidth: 400, maxHeight: 200)
+                                        .frame(maxWidth: 100, maxHeight: 100)
                                 @unknown default:
                                     EmptyView()
                                 }
@@ -46,7 +46,7 @@ struct RecipeRowView: View {
                 Text(recipe.strDrink)
                     .font(.title)
                     .padding(.bottom, 5)
-                Text(recipe.strInstructions)
+                Text(recipe.strCategory)
             }
         }
     
@@ -56,6 +56,6 @@ struct RecipeRowView: View {
 
 struct RecipeRowView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeRowView(recipe: .init(idDrink: "Drink ID", strDrink: "Drink Name", strInstructions: "Drink Instructions", strDrinkThumb: "Drink Thmubnail"))
+        RecipeRowView(recipe: .init(idDrink: "Drink ID", strDrink: "Drink Name", strInstructions: "Drink Instructions", strDrinkThumb: "Drink Thmubnail", strCategory: "Drink Category"))
     }
 }
