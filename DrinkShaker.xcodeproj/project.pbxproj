@@ -17,6 +17,7 @@
 		4D63650C28C23FC900C4FEA1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D63650B28C23FC900C4FEA1 /* Preview Assets.xcassets */; };
 		4D63651428C243C800C4FEA1 /* Main.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D63651228C243C800C4FEA1 /* Main.xcdatamodeld */; };
 		4DCF405528D262330007C65E /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCF405428D262330007C65E /* UIDevice+Extension.swift */; };
+		4DCF405728D262CB0007C65E /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCF405628D262CB0007C65E /* UIWindow+Extension.swift */; };
 		4DE58F5728C8DCB600E0A02E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE58F5628C8DCB600E0A02E /* CloudKit.framework */; };
 		4DE58F5928C8E4EB00E0A02E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE58F5828C8E4EB00E0A02E /* HomeView.swift */; };
 		4DE58F5B28C8E5F800E0A02E /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE58F5A28C8E5F800E0A02E /* FavoritesView.swift */; };
@@ -37,6 +38,7 @@
 		4D63650B28C23FC900C4FEA1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4D63651328C243C800C4FEA1 /* Main.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Main.xcdatamodel; sourceTree = "<group>"; };
 		4DCF405428D262330007C65E /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		4DCF405628D262CB0007C65E /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
 		4DE58F5328C8DC8800E0A02E /* DrinkShaker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DrinkShaker.entitlements; sourceTree = "<group>"; };
 		4DE58F5428C8DC9300E0A02E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4DE58F5628C8DCB600E0A02E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				4DCF405428D262330007C65E /* UIDevice+Extension.swift */,
+				4DCF405628D262CB0007C65E /* UIWindow+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				4DE58F5928C8E4EB00E0A02E /* HomeView.swift in Sources */,
 				4D63650528C23FBC00C4FEA1 /* DrinkShakerApp.swift in Sources */,
 				4D093F0C28CB7E3A0022FBAD /* RecipeModel.swift in Sources */,
+				4DCF405728D262CB0007C65E /* UIWindow+Extension.swift in Sources */,
 				4DE58F5F28C9186300E0A02E /* Recipe-CoreDataHelper.swift in Sources */,
 				4D093F1028CBB8800022FBAD /* RecipeRowView.swift in Sources */,
 				4DE58F5D28C9138400E0A02E /* Ingredient-CoreDataHelper.swift in Sources */,
