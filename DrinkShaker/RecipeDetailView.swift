@@ -14,19 +14,44 @@ struct RecipeDetailView: View {
     var body: some View {
         VStack {
             HStack {
-                Image("martini")
-                    .resizable()
-                    .frame(width: 150, height: 150)
+                if drinkRecipe.strDrinkThumb != nil {
+                                AsyncImage(url: URL(string: drinkRecipe.strDrinkThumb!)) { phase in
+                                    switch phase {
+                                    case .empty:
+                                        ProgressView()
+                                    case .success(let image):
+                                        image
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(maxWidth: 100, maxHeight: 100)
+                                            .padding(.leading, 5)
+                                            .padding(.trailing, 5)
+                                            .padding(.top, 10)
+                                            .padding(.bottom, 10)
+                                            .background(Color.white)
+                                    case .failure(_):
+    //                                    Text("Failure: \(fail.localizedDescription)")
+                                        Image(systemName: "wind.snow")
+                                            .resizable()
+                                            .padding()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(maxWidth: 100, maxHeight: 100)
+                                    @unknown default:
+                                        EmptyView()
+                                    }
+                                }
+                }
+                
                 VStack {
-                    Text("Martini")
+                    Text(drinkRecipe.strDrink)
                         .font(.largeTitle)
-                    Text("Martini Glass")
+                    Text(drinkRecipe.strGlass)
                         .font(.headline)
                 }
             }
             Text("How to make it:")
                 .font(.largeTitle)
-            Text("Mix it all together and stir")
+            Text(drinkRecipe.strInstructions)
         }
         
         
