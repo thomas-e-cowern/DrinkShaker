@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipeDetailView: View {
     
     @State var drinkRecipe: RecipeModel
+    @State var ingredients: [String] = []
     
     var body: some View {
         VStack {
@@ -60,6 +61,6 @@ struct RecipeDetailView: View {
 
 struct RecipeDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeDetailView(drinkRecipe: RecipeModel(idDrink: "01", strDrink: "Martini", strInstructions: "Vodka, Vermout, Olives and stir", strCategory: "Cocktail", strGlass: "Martini glass"))
+        RecipeDetailView()
     }
 }
