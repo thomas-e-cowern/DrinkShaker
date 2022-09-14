@@ -9,7 +9,10 @@ import SwiftUI
 
 struct RandomDrinkView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Shake Your Phone for a random Drink!")
+            .onShake {
+                print("This is where we get a random recips")
+            }
     }
 }
 

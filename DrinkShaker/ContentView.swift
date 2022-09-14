@@ -25,6 +25,11 @@ struct ContentView: View {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
+            RandomDrinkView()
+                .tabItem {
+                    Image(systemName: "x.circle.fill")
+                    Text("Random")
+                }
             
         }
     }
