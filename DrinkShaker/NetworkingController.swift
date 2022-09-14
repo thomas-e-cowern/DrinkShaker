@@ -67,7 +67,7 @@ class NetworkingController: ObservableObject {
 //                                    print(recipe)
                                    self.drinkRecipes.append(recipe)
                                 }
-//                                print("👉 👉 👉 Recipes: \(self.drinkRecipes)")
+                                print("👉 👉 👉 Recipes: \(self.drinkRecipes)")
                             } else {
                                 print("There was a problem decoding random drink: \(error?.localizedDescription ?? "Error in data")")
                             }
