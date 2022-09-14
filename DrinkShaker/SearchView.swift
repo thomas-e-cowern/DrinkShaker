@@ -16,7 +16,9 @@ struct SearchView: View {
         NavigationView {
             List {
                 ForEach(nc.drinkRecipes, id: \.idDrink) { recipe in
-                    RecipeRowView(recipe: recipe)
+                    NavigationLink(destination: RecipeDetailView(drinkRecipe: recipe)) {
+                        RecipeRowView(recipe: recipe)
+                    }
                 }
             }
                 .navigationBarTitle("", displayMode: .inline)
