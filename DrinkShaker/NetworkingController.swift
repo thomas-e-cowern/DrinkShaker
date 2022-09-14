@@ -35,7 +35,7 @@ class NetworkingController: ObservableObject {
 //                                print("👉 👉 👉 Recipes: \(recipes)")
                                for recipe in recipes.drinks {
 //                                    print(recipe)
-                                    self.drinkRecipes.append(recipe)
+                                   self.drinkRecipes.append(recipe)
                                 }
 //                                print("👉 👉 👉 Recipes: \(self.drinkRecipes)")
                             } else {
