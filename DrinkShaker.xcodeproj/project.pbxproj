@@ -19,6 +19,7 @@
 		4DCF405528D262330007C65E /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCF405428D262330007C65E /* UIDevice+Extension.swift */; };
 		4DCF405728D262CB0007C65E /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCF405628D262CB0007C65E /* UIWindow+Extension.swift */; };
 		4DCF405928D263720007C65E /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCF405828D263720007C65E /* View+Extension.swift */; };
+		4DCF405B28D2640E0007C65E /* DeviceShakViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCF405A28D2640E0007C65E /* DeviceShakViewModifier.swift */; };
 		4DE58F5728C8DCB600E0A02E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE58F5628C8DCB600E0A02E /* CloudKit.framework */; };
 		4DE58F5928C8E4EB00E0A02E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE58F5828C8E4EB00E0A02E /* HomeView.swift */; };
 		4DE58F5B28C8E5F800E0A02E /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE58F5A28C8E5F800E0A02E /* FavoritesView.swift */; };
@@ -41,6 +42,7 @@
 		4DCF405428D262330007C65E /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		4DCF405628D262CB0007C65E /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
 		4DCF405828D263720007C65E /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		4DCF405A28D2640E0007C65E /* DeviceShakViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceShakViewModifier.swift; sourceTree = "<group>"; };
 		4DE58F5328C8DC8800E0A02E /* DrinkShaker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DrinkShaker.entitlements; sourceTree = "<group>"; };
 		4DE58F5428C8DC9300E0A02E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4DE58F5628C8DCB600E0A02E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				4DCF405328D262130007C65E /* Extensions */,
+				4DCF405A28D2640E0007C65E /* DeviceShakViewModifier.swift */,
 				4DE58F5428C8DC9300E0A02E /* Info.plist */,
 				4DE58F5328C8DC8800E0A02E /* DrinkShaker.entitlements */,
 				4D63650428C23FBC00C4FEA1 /* DrinkShakerApp.swift */,
@@ -208,6 +211,7 @@
 				4D63650728C23FBC00C4FEA1 /* ContentView.swift in Sources */,
 				4DE58F5928C8E4EB00E0A02E /* HomeView.swift in Sources */,
 				4DCF405928D263720007C65E /* View+Extension.swift in Sources */,
+				4DCF405B28D2640E0007C65E /* DeviceShakViewModifier.swift in Sources */,
 				4D63650528C23FBC00C4FEA1 /* DrinkShakerApp.swift in Sources */,
 				4D093F0C28CB7E3A0022FBAD /* RecipeModel.swift in Sources */,
 				4DCF405728D262CB0007C65E /* UIWindow+Extension.swift in Sources */,
