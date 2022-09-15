@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RecipeDetailView: View {
     
+    @StateObject private var nc = NetworkingController()
     @State var drinkRecipe: RecipeModel
     @State var ingredients: [String] = []
     
@@ -54,13 +55,11 @@ struct RecipeDetailView: View {
                 .font(.largeTitle)
             Text(drinkRecipe.strInstructions)
         }
-        
-        
     }
 }
 
-struct RecipeDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipeDetailView()
-    }
-}
+//struct RecipeDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RecipeDetailView(drinkRecipe: <#RecipeModel#>)
+//    }
+//}

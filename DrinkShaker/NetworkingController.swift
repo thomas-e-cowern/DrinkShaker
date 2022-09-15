@@ -34,10 +34,11 @@ class NetworkingController: ObservableObject {
                             if let recipes = try? decoder.decode(Recipes.self, from: data) {
 //                                print("👉 👉 👉 Recipes: \(recipes)")
                                for recipe in recipes.drinks {
-//                                    print(recipe)
+//                                    print("👉 👉 👉 \(recipe)")
                                    self.drinkRecipes.append(recipe)
                                 }
 //                                print("👉 👉 👉 Recipes: \(self.drinkRecipes)")
+                                
                             } else {
                                 print("There was a problem decoding the data: \(error?.localizedDescription ?? "Error in data")")
                             }
@@ -67,7 +68,7 @@ class NetworkingController: ObservableObject {
 //                                    print(recipe)
                                    self.drinkRecipes.append(recipe)
                                 }
-                                print("👉 👉 👉 Recipes: \(self.drinkRecipes)")
+//                                print("👉 👉 👉 Recipes: \(self.drinkRecipes)")
                             } else {
                                 print("There was a problem decoding random drink: \(error?.localizedDescription ?? "Error in data")")
                             }
@@ -76,6 +77,5 @@ class NetworkingController: ObservableObject {
                 }
             }.resume()
         }
-            
     }
 }
