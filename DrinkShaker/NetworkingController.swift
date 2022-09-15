@@ -49,7 +49,7 @@ class NetworkingController: ObservableObject {
         }
     }
     
-    func fetchRandomDrinkRecipe() -> RecipeModel {
+    func fetchRandomDrinkRecipe() {
         let randomDrinkUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
         if let url = URL(string: randomDrinkUrl) {
             URLSession.shared.dataTask(with: url) { data, response, error in
@@ -77,6 +77,5 @@ class NetworkingController: ObservableObject {
                 }
             }.resume()
         }
-        return drinkRecipes[0]
     }
 }
