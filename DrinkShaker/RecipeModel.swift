@@ -63,13 +63,7 @@ struct RecipeModel: Codable {
         let result13: String? = combineIngredientsAndMeasures(ingredient: strIngredient13, measure: strMeasure12)
         let result14: String? = combineIngredientsAndMeasures(ingredient: strIngredient14, measure: strMeasure14)
         let result15: String? = combineIngredientsAndMeasures(ingredient: strIngredient15, measure: strMeasure15)
-        print("Result 1: \(result1)")
-        print("Result 2: \(result2)")
-        print("Result 3: \(result3)")
-        print("Result 4: \(result4)")
-        print("Result 5: \(result5)")
-        print("Result 6: \(result6)")
-        print("Result 7: \(result7)")
+        
         if let result1 = result1 {
             ingredientsAndMeasures.append(result1)
         }
@@ -116,34 +110,11 @@ struct RecipeModel: Codable {
             ingredientsAndMeasures.append(result15)
         }
         
-        return ingredientsAndMeasures
+        return ingredientsAndMeasures.filter {
+            !$0.isEmpty
+        }
     }
-    
-    var measures: [String] {
-        var measures: [String] = []
-        
-        if let strMeasure1 = strMeasure1 {
-            measures.append(strMeasure1)
-        }
-        if let strMeasure2 = strMeasure2{
-            measures.append(strMeasure2)
-        }
-        if let strMeasure3 = strMeasure3 {
-            measures.append(strMeasure3)
-        }
-        if let strMeasure4 = strMeasure4 {
-            measures.append(strMeasure4)
-        }
-        if let strMeasure5 = strMeasure5 {
-            measures.append(strMeasure5)
-        }
-        if let strMeasure6 = strMeasure6 {
-            measures.append(strMeasure6)
-        }
-        
-        return measures
-    }
-    
+
     func combineIngredientsAndMeasures (ingredient: String?, measure: String?) -> String {
         
         var combinedString = ""
