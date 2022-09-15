@@ -11,9 +11,18 @@ struct RandomDrinkView: View {
     
     @StateObject private var nc = NetworkingController()
     @State var isHidden: Bool = true
+    @State var placeholderIsShowing = true
     
     var body: some View {
         NavigationView {
+            if placeholderIsShowing {
+                ZStack {
+                    Image(systemName: "wineglass")
+                        .foregroundColor(Color.red)
+                        .font(.largeTitle)
+                    Text("Shake for a random drink")
+                }
+            }
             VStack (alignment: .center) {
                 Text(nc.randomRecipe?.strDrink ?? "")
                     .font(.largeTitle)
@@ -21,14 +30,15 @@ struct RandomDrinkView: View {
                         ToolbarItem {
                             Button {
                                 isHidden = false
+                                placeholderIsShowing = false
                                 nc.fetchRandomDrinkRecipe()
                             } label: {
                                 Text("Random")
                             }
-
                         }
                         ToolbarItem(placement: .bottomBar) {
                             Text("Shake Your Phone for a random Drink!")
+                                .font(.title3)
                         }
                     }
                 HStack {
@@ -62,6 +72,7 @@ struct RandomDrinkView: View {
                 }
                 .onShake {
                     isHidden = false
+                    placeholderIsShowing = false
                     nc.fetchRandomDrinkRecipe()
                 }
                 Text("Served in: " + (nc.randomRecipe?.strGlass ?? ""))
