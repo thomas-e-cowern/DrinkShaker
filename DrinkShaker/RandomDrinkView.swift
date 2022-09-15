@@ -14,7 +14,9 @@ struct RandomDrinkView: View {
     @State var isHidden: Bool = false
     
     var body: some View {
-        VStack {
+        VStack (alignment: .center) {
+            Text(nc.randomRecipe?.strDrink ?? "")
+                .font(.largeTitle)
             HStack {
                 if nc.randomRecipe?.strDrinkThumb != nil {
                     AsyncImage(url: URL(string:
@@ -44,13 +46,9 @@ struct RandomDrinkView: View {
                         }
                     }
                 }
-                VStack {
-                    Text(nc.randomRecipe?.strDrink ?? "")
-                        .font(.largeTitle)
-                    Text(nc.randomRecipe?.strGlass ?? "")
-                        .font(.headline)
-                }
             }
+            Text("Served in: " + (nc.randomRecipe?.strGlass ?? ""))
+                .font(.headline)
             Button("Click for a random Drink") {
                 nc.fetchRandomDrinkRecipe()
             }
@@ -58,12 +56,12 @@ struct RandomDrinkView: View {
 
             Text("Shake Your Phone for a random Drink!")
                 .opacity(isHidden ? 0 : 1)
-            .onShake {
-                print("This is where we get a random recips")
+                .onShake {
+//                print("This is where we get a random recips")
                     nc.fetchRandomDrinkRecipe()
                     isHidden = true
     //                isShowingRecipeDetailView = true
-            }
+                }
         }
         
 
