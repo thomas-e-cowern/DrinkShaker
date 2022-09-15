@@ -35,7 +35,6 @@ struct RandomDrinkView: View {
                                 .padding(.bottom, 10)
                                 .background(Color.white)
                         case .failure(_):
-    //                                    Text("Failure: \(fail.localizedDescription)")
                             Image(systemName: "wind.snow")
                                 .resizable()
                                 .padding()
@@ -49,6 +48,15 @@ struct RandomDrinkView: View {
             }
             Text("Served in: " + (nc.randomRecipe?.strGlass ?? ""))
                 .font(.headline)
+            
+            HStack {
+                List {
+                    ForEach(nc.randomRecipe?.ingredientsAndMeasures ?? [""], id: \.self) { ingredient in
+                        Text(ingredient)
+                    }
+                }
+            }
+            
             Button("Click for a random Drink") {
                 nc.fetchRandomDrinkRecipe()
             }
@@ -57,9 +65,10 @@ struct RandomDrinkView: View {
             Text("Shake Your Phone for a random Drink!")
                 .opacity(isHidden ? 0 : 1)
                 .onShake {
+                    isHidden = true
 //                print("This is where we get a random recips")
                     nc.fetchRandomDrinkRecipe()
-                    isHidden = true
+                    
     //                isShowingRecipeDetailView = true
                 }
         }
