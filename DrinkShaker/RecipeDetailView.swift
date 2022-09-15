@@ -51,11 +51,19 @@ struct RecipeDetailView: View {
                         .font(.headline)
                 }
             }
-            List {
-                ForEach(drinkRecipe.ingredients, id: \.self) { ingredient in
-                    Text(ingredient)
+            HStack {
+                List {
+                    ForEach(drinkRecipe.ingredients, id: \.self) { ingredient in
+                        Text(ingredient)
+                    }
+                }
+                List {
+                    ForEach(drinkRecipe.measures, id: \.self) { measure in
+                        Text(measure)
+                    }
                 }
             }
+
             
             Text("How to make it:")
                 .font(.largeTitle)

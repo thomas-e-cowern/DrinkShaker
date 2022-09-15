@@ -29,6 +29,21 @@ struct RecipeModel: Codable {
     var strIngredient13: String?
     var strIngredient14: String?
     var strIngredient15: String?
+    var strMeasure1: String?
+    var strMeasure2: String?
+    var strMeasure3: String?
+    var strMeasure4: String?
+    var strMeasure5: String?
+    var strMeasure6: String?
+    var strMeasure7: String?
+    var strMeasure8: String?
+    var strMeasure9: String?
+    var strMeasure10: String?
+    var strMeasure11: String?
+    var strMeasure12: String?
+    var strMeasure13: String?
+    var strMeasure14: String?
+    var strMeasure15: String?
     
     var ingredients: [String] {
         var ingredients: [String] = []
@@ -79,8 +94,32 @@ struct RecipeModel: Codable {
             ingredients.append(strIngredient15)
         }
         
-        
         return ingredients
+    }
+    
+    var measures: [String] {
+        var measures: [String] = []
+        
+        if let strMeasure1 = strMeasure1 {
+            measures.append(strMeasure1)
+        }
+        if let strMeasure2 = strMeasure2{
+            measures.append(strMeasure2)
+        }
+        if let strMeasure3 = strMeasure3 {
+            measures.append(strMeasure3)
+        }
+        if let strMeasure4 = strMeasure4 {
+            measures.append(strMeasure4)
+        }
+        if let strMeasure5 = strMeasure5 {
+            measures.append(strMeasure5)
+        }
+        if let strMeasure6 = strMeasure6 {
+            measures.append(strMeasure6)
+        }
+        
+        return measures
     }
     
 }
