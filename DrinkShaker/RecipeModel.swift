@@ -119,13 +119,14 @@ struct RecipeModel: Codable {
         
         var combinedString = ""
         
-        if let ingredient = ingredient {
-            combinedString += ingredient
+        if let measure = measure {
+            combinedString += measure
         }
         
-        if let measure = measure {
-            combinedString += " \(measure)"
+        if let ingredient = ingredient {
+            combinedString += " \(ingredient)"
         }
+        
         print(combinedString)
         return combinedString
     }
