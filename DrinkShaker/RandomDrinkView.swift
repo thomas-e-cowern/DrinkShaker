@@ -17,7 +17,8 @@ struct RandomDrinkView: View {
         VStack {
             HStack {
                 if nc.randomRecipe?.strDrinkThumb != nil {
-                    AsyncImage(url: URL(string: nc.drinkRecipes[0].strDrinkThumb!)) { phase in
+                    AsyncImage(url: URL(string:
+                        (nc.randomRecipe?.strDrinkThumb!)!)) { phase in
                         switch phase {
                         case .empty:
                             ProgressView()
@@ -44,9 +45,9 @@ struct RandomDrinkView: View {
                     }
                 }
                 VStack {
-                    Text(nc.randomRecipe?.strDrink ?? "Default")
+                    Text(nc.randomRecipe?.strDrink ?? "")
                         .font(.largeTitle)
-                    Text(nc.randomRecipe?.strGlass ?? "Default")
+                    Text(nc.randomRecipe?.strGlass ?? "")
                         .font(.headline)
                 }
             }
@@ -59,7 +60,7 @@ struct RandomDrinkView: View {
                 .opacity(isHidden ? 0 : 1)
             .onShake {
                 print("This is where we get a random recips")
-    //                nc.fetchRandomDrinkRecipe()
+                    nc.fetchRandomDrinkRecipe()
                     isHidden = true
     //                isShowingRecipeDetailView = true
             }
