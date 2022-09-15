@@ -49,7 +49,7 @@ class NetworkingController: ObservableObject {
         }
     }
     
-    func fetchRandomDrinkRecipe() {
+    func fetchRandomDrinkRecipe() -> RecipeModel {
         let randomDrinkUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
         if let url = URL(string: randomDrinkUrl) {
             URLSession.shared.dataTask(with: url) { data, response, error in
@@ -77,39 +77,6 @@ class NetworkingController: ObservableObject {
                 }
             }.resume()
         }
-    }
-    
-    func fetchDrinkRecipeDictionary(drinkName: String) {
-        let drinkName = drinkName
-        
-        let drinkUrlString = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\(drinkName)"
-        
-        if let url = URL(string: drinkUrlString) {
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                DispatchQueue.main.async {
-                    if let error = error {
-                        print("There was an error with data from the drink DB: \(error.localizedDescription)")
-                    } else {
-                        let decoder = JSONDecoder()
-                        decoder.keyDecodingStrategy = .convertFromSnakeCase
-                        
-                        if let data = data {
-                            print("Dictionary data: \(data)")
-                            if let drinks = try? JSONDecoder().decode(Recipes.self, from: data) {
-                                print("Drinks: \(drinks)")
-                                if let recipeDictionary = try? JSONDecoder().decode([String: String].self, from: data) {
-                                    print("🎃🎃🎃🎃 Recipe Dictionary: \(recipeDictionary)")
-                                } else {
-                                    print("There was an error decoding the dictionary: \(error?.localizedDescription ?? "Error decoding dictionary")")
-                                }
-                            } else {
-                                print("There was an error bearer")
-                            }
-                            
-                        }
-                    }
-                }
-            }.resume()
-        }
+        return drinkRecipes[0]
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct RandomDrinkView: View {
     
     @StateObject private var nc = NetworkingController()
+    @State var drinkRecipe: RecipeModel
     @State var isHidden: Bool = false
     
     var body: some View {
@@ -17,7 +18,7 @@ struct RandomDrinkView: View {
             .opacity(isHidden ? 0 : 1)
             .onShake {
                 print("This is where we get a random recips")
-                nc.fetchRandomDrinkRecipe()
+                drinkRecipe = nc.fetchRandomDrinkRecipe()
                 isHidden.toggle()
             }
     }
@@ -25,6 +26,6 @@ struct RandomDrinkView: View {
 
 struct RandomDrinkView_Previews: PreviewProvider {
     static var previews: some View {
-        RandomDrinkView()
+        RandomDrinkView(drinkRecipe: RecipeModel(idDrink: "0", strDrink: "Martini", strInstructions: "Do this", strCategory: "Drink", strGlass: "Regular"))
     }
 }

@@ -57,11 +57,6 @@ struct RecipeDetailView: View {
                         Text(ingredient)
                     }
                 }
-                List {
-                    ForEach(drinkRecipe.measures, id: \.self) { measure in
-                        Text(measure)
-                    }
-                }
             }
 
             
