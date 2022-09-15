@@ -51,6 +51,12 @@ struct RecipeDetailView: View {
                         .font(.headline)
                 }
             }
+            List {
+                ForEach(drinkRecipe.ingredients, id: \.self) { ingredient in
+                    Text(ingredient)
+                }
+            }
+            
             Text("How to make it:")
                 .font(.largeTitle)
             Text(drinkRecipe.strInstructions)

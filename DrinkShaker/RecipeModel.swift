@@ -30,6 +30,25 @@ struct RecipeModel: Codable {
     var strIngredient14: String?
     var strIngredient15: String?
     
+    var ingredients: [String] {
+        var ingredients: [String] = []
+        
+        if let strIngredient1 = strIngredient1 {
+            ingredients.append(strIngredient1)
+        }
+        if let strIngredient2 = strIngredient2 {
+            ingredients.append(strIngredient2)
+        }
+        if let strIngredient3 = strIngredient3 {
+            ingredients.append(strIngredient3)
+        }
+        if let strIngredient4 = strIngredient4 {
+            ingredients.append(strIngredient4)
+        }
+        
+        return ingredients
+    }
+    
 }
 
 struct Recipes: Codable {
