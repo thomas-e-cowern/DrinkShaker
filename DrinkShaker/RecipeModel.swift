@@ -48,13 +48,21 @@ struct RecipeModel: Codable {
     var ingredientsAndMeasures: [String] {
         var ingredientsAndMeasures: [String] = []
         
-        let result1 = combineIngredientsAndMeasures(ingredient: strIngredient1, measure: strMeasure1)
-        let result2 = combineIngredientsAndMeasures(ingredient: strIngredient2, measure: strMeasure2)
-        let result3 = combineIngredientsAndMeasures(ingredient: strIngredient3, measure: strMeasure3)
-        let result4 = combineIngredientsAndMeasures(ingredient: strIngredient4, measure: strMeasure4)
-        let result5 = combineIngredientsAndMeasures(ingredient: strIngredient5, measure: strMeasure5)
-        let result6 = combineIngredientsAndMeasures(ingredient: strIngredient6, measure: strMeasure6)
-        let result7 = combineIngredientsAndMeasures(ingredient: strIngredient7, measure: strMeasure7)
+        let result1: String? = combineIngredientsAndMeasures(ingredient: strIngredient1, measure: strMeasure1)
+        let result2: String? = combineIngredientsAndMeasures(ingredient: strIngredient2, measure: strMeasure2)
+        let result3: String? = combineIngredientsAndMeasures(ingredient: strIngredient3, measure: strMeasure3)
+        let result4: String? = combineIngredientsAndMeasures(ingredient: strIngredient4, measure: strMeasure4)
+        let result5: String? = combineIngredientsAndMeasures(ingredient: strIngredient5, measure: strMeasure5)
+        let result6: String? = combineIngredientsAndMeasures(ingredient: strIngredient6, measure: strMeasure6)
+        let result7: String? = combineIngredientsAndMeasures(ingredient: strIngredient7, measure: strMeasure7)
+        let result8: String? = combineIngredientsAndMeasures(ingredient: strIngredient8, measure: strMeasure8)
+        let result9: String? = combineIngredientsAndMeasures(ingredient: strIngredient9, measure: strMeasure9)
+        let result10: String? = combineIngredientsAndMeasures(ingredient: strIngredient10, measure: strMeasure10)
+        let result11: String? = combineIngredientsAndMeasures(ingredient: strIngredient11, measure: strMeasure11)
+        let result12: String? = combineIngredientsAndMeasures(ingredient: strIngredient12, measure: strMeasure12)
+        let result13: String? = combineIngredientsAndMeasures(ingredient: strIngredient13, measure: strMeasure12)
+        let result14: String? = combineIngredientsAndMeasures(ingredient: strIngredient14, measure: strMeasure14)
+        let result15: String? = combineIngredientsAndMeasures(ingredient: strIngredient15, measure: strMeasure15)
         print("Result 1: \(result1)")
         print("Result 2: \(result2)")
         print("Result 3: \(result3)")
@@ -62,50 +70,50 @@ struct RecipeModel: Codable {
         print("Result 5: \(result5)")
         print("Result 6: \(result6)")
         print("Result 7: \(result7)")
-        if let strIngredient1 = strIngredient1 {
-            ingredientsAndMeasures.append(strIngredient1)
+        if let result1 = result1 {
+            ingredientsAndMeasures.append(result1)
         }
-        if let strIngredient2 = strIngredient2 {
-            ingredientsAndMeasures.append(strIngredient2)
+        if let result2 = result2 {
+            ingredientsAndMeasures.append(result2)
         }
-        if let strIngredient3 = strIngredient3 {
-            ingredientsAndMeasures.append(strIngredient3)
+        if let result3 = result3 {
+            ingredientsAndMeasures.append(result3)
         }
-        if let strIngredient4 = strIngredient4 {
-            ingredientsAndMeasures.append(strIngredient4)
+        if let result4 = result4 {
+            ingredientsAndMeasures.append(result4)
         }
-        if let strIngredient5 = strIngredient5 {
-            ingredientsAndMeasures.append(strIngredient5)
+        if let result5 = result5 {
+            ingredientsAndMeasures.append(result5)
         }
-        if let strIngredient6 = strIngredient6 {
-            ingredientsAndMeasures.append(strIngredient6)
+        if let result6 = result6 {
+            ingredientsAndMeasures.append(result6)
         }
-        if let strIngredient7 = strIngredient7 {
-            ingredientsAndMeasures.append(strIngredient7)
+        if let result7 = result7 {
+            ingredientsAndMeasures.append(result7)
         }
-        if let strIngredient8 = strIngredient8 {
-            ingredientsAndMeasures.append(strIngredient8)
+        if let result8 = result8 {
+            ingredientsAndMeasures.append(result8)
         }
-        if let strIngredient9 = strIngredient9 {
-            ingredientsAndMeasures.append(strIngredient9)
+        if let result9 = result9 {
+            ingredientsAndMeasures.append(result9)
         }
-        if let strIngredient10 = strIngredient10 {
-            ingredientsAndMeasures.append(strIngredient10)
+        if let result10 = result10 {
+            ingredientsAndMeasures.append(result10)
         }
-        if let strIngredient11 = strIngredient11 {
-            ingredientsAndMeasures.append(strIngredient11)
+        if let result11 = result11 {
+            ingredientsAndMeasures.append(result11)
         }
-        if let strIngredient12 = strIngredient12 {
-            ingredientsAndMeasures.append(strIngredient12)
+        if let result12 = result12 {
+            ingredientsAndMeasures.append(result12)
         }
-        if let strIngredient13 = strIngredient13 {
-            ingredientsAndMeasures.append(strIngredient13)
+        if let result13 = result13 {
+            ingredientsAndMeasures.append(result13)
         }
-        if let strIngredient14 = strIngredient14 {
-            ingredientsAndMeasures.append(strIngredient14)
+        if let result14 = result14 {
+            ingredientsAndMeasures.append(result14)
         }
-        if let strIngredient15 = strIngredient15 {
-            ingredientsAndMeasures.append(strIngredient15)
+        if let result15 = result15 {
+            ingredientsAndMeasures.append(result15)
         }
         
         return ingredientsAndMeasures
