@@ -14,6 +14,7 @@ class NetworkingController: ObservableObject {
     @EnvironmentObject var dataController: DataController
     
     @Published var drinkRecipes: [RecipeModel] = []
+    @Published var randomRecipe: RecipeModel?
     
     func fetchDrinkRecipes(drinkName: String) {
         
@@ -67,6 +68,7 @@ class NetworkingController: ObservableObject {
                                for recipe in recipes.drinks {
 //                                    print(recipe)
                                    self.drinkRecipes.append(recipe)
+                                   self.randomRecipe = recipe
                                 }
 //                                print("👉 👉 👉 Recipes: \(self.drinkRecipes)")
                             } else {
