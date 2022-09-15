@@ -45,56 +45,70 @@ struct RecipeModel: Codable {
     var strMeasure14: String?
     var strMeasure15: String?
     
-    var ingredients: [String] {
-        var ingredients: [String] = []
+    var ingredientsAndMeasures: [String] {
+        var ingredientsAndMeasures: [String] = []
         
+        let result1 = combineIngredientsAndMeasures(ingredient: strIngredient1, measure: strMeasure1)
+        let result2 = combineIngredientsAndMeasures(ingredient: strIngredient2, measure: strMeasure2)
+        let result3 = combineIngredientsAndMeasures(ingredient: strIngredient3, measure: strMeasure3)
+        let result4 = combineIngredientsAndMeasures(ingredient: strIngredient4, measure: strMeasure4)
+        let result5 = combineIngredientsAndMeasures(ingredient: strIngredient5, measure: strMeasure5)
+        let result6 = combineIngredientsAndMeasures(ingredient: strIngredient6, measure: strMeasure6)
+        let result7 = combineIngredientsAndMeasures(ingredient: strIngredient7, measure: strMeasure7)
+        print("Result 1: \(result1)")
+        print("Result 2: \(result2)")
+        print("Result 3: \(result3)")
+        print("Result 4: \(result4)")
+        print("Result 5: \(result5)")
+        print("Result 6: \(result6)")
+        print("Result 7: \(result7)")
         if let strIngredient1 = strIngredient1 {
-            ingredients.append(strIngredient1)
+            ingredientsAndMeasures.append(strIngredient1)
         }
         if let strIngredient2 = strIngredient2 {
-            ingredients.append(strIngredient2)
+            ingredientsAndMeasures.append(strIngredient2)
         }
         if let strIngredient3 = strIngredient3 {
-            ingredients.append(strIngredient3)
+            ingredientsAndMeasures.append(strIngredient3)
         }
         if let strIngredient4 = strIngredient4 {
-            ingredients.append(strIngredient4)
+            ingredientsAndMeasures.append(strIngredient4)
         }
         if let strIngredient5 = strIngredient5 {
-            ingredients.append(strIngredient5)
+            ingredientsAndMeasures.append(strIngredient5)
         }
         if let strIngredient6 = strIngredient6 {
-            ingredients.append(strIngredient6)
+            ingredientsAndMeasures.append(strIngredient6)
         }
         if let strIngredient7 = strIngredient7 {
-            ingredients.append(strIngredient7)
+            ingredientsAndMeasures.append(strIngredient7)
         }
         if let strIngredient8 = strIngredient8 {
-            ingredients.append(strIngredient8)
+            ingredientsAndMeasures.append(strIngredient8)
         }
         if let strIngredient9 = strIngredient9 {
-            ingredients.append(strIngredient9)
+            ingredientsAndMeasures.append(strIngredient9)
         }
         if let strIngredient10 = strIngredient10 {
-            ingredients.append(strIngredient10)
+            ingredientsAndMeasures.append(strIngredient10)
         }
         if let strIngredient11 = strIngredient11 {
-            ingredients.append(strIngredient11)
+            ingredientsAndMeasures.append(strIngredient11)
         }
         if let strIngredient12 = strIngredient12 {
-            ingredients.append(strIngredient12)
+            ingredientsAndMeasures.append(strIngredient12)
         }
         if let strIngredient13 = strIngredient13 {
-            ingredients.append(strIngredient13)
+            ingredientsAndMeasures.append(strIngredient13)
         }
         if let strIngredient14 = strIngredient14 {
-            ingredients.append(strIngredient14)
+            ingredientsAndMeasures.append(strIngredient14)
         }
         if let strIngredient15 = strIngredient15 {
-            ingredients.append(strIngredient15)
+            ingredientsAndMeasures.append(strIngredient15)
         }
         
-        return ingredients
+        return ingredientsAndMeasures
     }
     
     var measures: [String] {
@@ -122,6 +136,20 @@ struct RecipeModel: Codable {
         return measures
     }
     
+    func combineIngredientsAndMeasures (ingredient: String?, measure: String?) -> String {
+        
+        var combinedString = ""
+        
+        if let ingredient = ingredient {
+            combinedString += ingredient
+        }
+        
+        if let measure = measure {
+            combinedString += " \(measure)"
+        }
+        print(combinedString)
+        return combinedString
+    }
 }
 
 struct Recipes: Codable {

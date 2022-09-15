@@ -53,7 +53,7 @@ struct RecipeDetailView: View {
             }
             HStack {
                 List {
-                    ForEach(drinkRecipe.ingredients, id: \.self) { ingredient in
+                    ForEach(drinkRecipe.ingredientsAndMeasures, id: \.self) { ingredient in
                         Text(ingredient)
                     }
                 }
