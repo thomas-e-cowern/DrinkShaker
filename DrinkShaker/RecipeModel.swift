@@ -45,6 +45,40 @@ struct RecipeModel: Codable {
         if let strIngredient4 = strIngredient4 {
             ingredients.append(strIngredient4)
         }
+        if let strIngredient5 = strIngredient5 {
+            ingredients.append(strIngredient5)
+        }
+        if let strIngredient6 = strIngredient6 {
+            ingredients.append(strIngredient6)
+        }
+        if let strIngredient7 = strIngredient7 {
+            ingredients.append(strIngredient7)
+        }
+        if let strIngredient8 = strIngredient8 {
+            ingredients.append(strIngredient8)
+        }
+        if let strIngredient9 = strIngredient9 {
+            ingredients.append(strIngredient9)
+        }
+        if let strIngredient10 = strIngredient10 {
+            ingredients.append(strIngredient10)
+        }
+        if let strIngredient11 = strIngredient11 {
+            ingredients.append(strIngredient11)
+        }
+        if let strIngredient12 = strIngredient12 {
+            ingredients.append(strIngredient12)
+        }
+        if let strIngredient13 = strIngredient13 {
+            ingredients.append(strIngredient13)
+        }
+        if let strIngredient14 = strIngredient14 {
+            ingredients.append(strIngredient14)
+        }
+        if let strIngredient15 = strIngredient15 {
+            ingredients.append(strIngredient15)
+        }
+        
         
         return ingredients
     }
