@@ -30,6 +30,7 @@ struct SearchView: View {
                                 .frame(minWidth: 300)
                                 .onSubmit {
                                     nc.fetchDrinkRecipes(drinkName: text)
+                                    nc.fetchDrinkRecipeDictionary(drinkName: text)
                                 }
                             Button {
                                 print("Search string is \(text)")
