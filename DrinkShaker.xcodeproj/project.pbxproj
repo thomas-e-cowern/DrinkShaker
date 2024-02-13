@@ -23,6 +23,7 @@
 		4DE5521B2B7BA10700C24C48 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4DE552232B7BA7E000C24C48 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		4DE552262B7BA7FB00C24C48 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		4DE5522F2B7BCB7E00C24C48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +56,9 @@
 		4DE552132B7BA10400C24C48 /* DrinkShaker */ = {
 			isa = PBXGroup;
 			children = (
+				4DE5522F2B7BCB7E00C24C48 /* Info.plist */,
+				4DE552292B7BC88C00C24C48 /* Features */,
+				4DE552282B7BC88000C24C48 /* Base */,
 				4DE552222B7BA7B800C24C48 /* Resources */,
 				4DE552142B7BA10400C24C48 /* DrinkShakerApp.swift */,
 				4DE552162B7BA10400C24C48 /* ContentView.swift */,
@@ -79,6 +83,52 @@
 				4DE552262B7BA7FB00C24C48 /* Theme.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		4DE552282B7BC88000C24C48 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		4DE552292B7BC88C00C24C48 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				4DE5522A2B7BC89B00C24C48 /* Random */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		4DE5522A2B7BC89B00C24C48 /* Random */ = {
+			isa = PBXGroup;
+			children = (
+				4DE5522E2B7BC8D200C24C48 /* ViewModels */,
+				4DE5522D2B7BC8CC00C24C48 /* Models */,
+				4DE5522B2B7BC8B800C24C48 /* Views */,
+			);
+			path = Random;
+			sourceTree = "<group>";
+		};
+		4DE5522B2B7BC8B800C24C48 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4DE5522D2B7BC8CC00C24C48 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4DE5522E2B7BC8D200C24C48 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,9 +341,9 @@
 				DEVELOPMENT_TEAM = 56F54J4H3N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DrinkShaker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,9 +370,9 @@
 				DEVELOPMENT_TEAM = 56F54J4H3N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DrinkShaker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
