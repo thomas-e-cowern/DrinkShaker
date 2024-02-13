@@ -13,6 +13,7 @@
 		4DE5521C2B7BA10700C24C48 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DE5521B2B7BA10700C24C48 /* Preview Assets.xcassets */; };
 		4DE552242B7BA7E000C24C48 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE552232B7BA7E000C24C48 /* Symbols.swift */; };
 		4DE552272B7BA7FB00C24C48 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE552262B7BA7FB00C24C48 /* Theme.swift */; };
+		4DE552322B7BEC7E00C24C48 /* DrinksStaticJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DE552312B7BEC7E00C24C48 /* DrinksStaticJson.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4DE552232B7BA7E000C24C48 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		4DE552262B7BA7FB00C24C48 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4DE5522F2B7BCB7E00C24C48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4DE552312B7BEC7E00C24C48 /* DrinksStaticJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DrinksStaticJson.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		4DE552222B7BA7B800C24C48 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4DE552302B7BEBED00C24C48 /* JSON */,
 				4DE552232B7BA7E000C24C48 /* Symbols.swift */,
 				4DE552262B7BA7FB00C24C48 /* Theme.swift */,
 			);
@@ -129,6 +132,14 @@
 			children = (
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4DE552302B7BEBED00C24C48 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				4DE552312B7BEC7E00C24C48 /* DrinksStaticJson.json */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +202,7 @@
 			files = (
 				4DE5521C2B7BA10700C24C48 /* Preview Assets.xcassets in Resources */,
 				4DE552192B7BA10700C24C48 /* Assets.xcassets in Resources */,
+				4DE552322B7BEC7E00C24C48 /* DrinksStaticJson.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
