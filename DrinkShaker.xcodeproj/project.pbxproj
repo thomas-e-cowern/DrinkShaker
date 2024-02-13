@@ -18,6 +18,8 @@
 		4DE552372B7BF01D00C24C48 /* Drinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE552362B7BF01D00C24C48 /* Drinks.swift */; };
 		4DE5523A2B7BF1F800C24C48 /* StaticJsonMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE552392B7BF1F800C24C48 /* StaticJsonMapper.swift */; };
 		4DE5523C2B7BF3AA00C24C48 /* DrinkStaticJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DE5523B2B7BF3AA00C24C48 /* DrinkStaticJson.json */; };
+		4DE5523E2B7C08D300C24C48 /* RandomDrinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE5523D2B7C08D300C24C48 /* RandomDrinkView.swift */; };
+		4DE552442B7C0ADB00C24C48 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE552432B7C0ADB00C24C48 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		4DE552362B7BF01D00C24C48 /* Drinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drinks.swift; sourceTree = "<group>"; };
 		4DE552392B7BF1F800C24C48 /* StaticJsonMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticJsonMapper.swift; sourceTree = "<group>"; };
 		4DE5523B2B7BF3AA00C24C48 /* DrinkStaticJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DrinkStaticJson.json; sourceTree = "<group>"; };
+		4DE5523D2B7C08D300C24C48 /* RandomDrinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomDrinkView.swift; sourceTree = "<group>"; };
+		4DE552432B7C0ADB00C24C48 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,7 @@
 		4DE552292B7BC88C00C24C48 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				4DE5523F2B7C0A9400C24C48 /* Home */,
 				4DE5522A2B7BC89B00C24C48 /* Random */,
 			);
 			path = Features;
@@ -126,6 +131,7 @@
 		4DE5522B2B7BC8B800C24C48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4DE5523D2B7C08D300C24C48 /* RandomDrinkView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,6 +174,38 @@
 				4DE552392B7BF1F800C24C48 /* StaticJsonMapper.swift */,
 			);
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		4DE5523F2B7C0A9400C24C48 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4DE552422B7C0AAE00C24C48 /* ViewModels */,
+				4DE552412B7C0AA800C24C48 /* Views */,
+				4DE552402B7C0A9F00C24C48 /* Models */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4DE552402B7C0A9F00C24C48 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4DE552412B7C0AA800C24C48 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4DE552432B7C0ADB00C24C48 /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4DE552422B7C0AAE00C24C48 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,10 +280,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DE552442B7C0ADB00C24C48 /* HomeView.swift in Sources */,
 				4DE552372B7BF01D00C24C48 /* Drinks.swift in Sources */,
 				4DE552242B7BA7E000C24C48 /* Symbols.swift in Sources */,
 				4DE5523A2B7BF1F800C24C48 /* StaticJsonMapper.swift in Sources */,
 				4DE552272B7BA7FB00C24C48 /* Theme.swift in Sources */,
+				4DE5523E2B7C08D300C24C48 /* RandomDrinkView.swift in Sources */,
 				4DE552172B7BA10400C24C48 /* ContentView.swift in Sources */,
 				4DE552352B7BEF9100C24C48 /* Drink.swift in Sources */,
 				4DE552152B7BA10400C24C48 /* DrinkShakerApp.swift in Sources */,

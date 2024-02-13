@@ -17,7 +17,7 @@ struct ContentView: View {
                 .onAppear {
                     print("Drink coming....")
                     dump(
-                        try? StaticJsonMapper.decode(file: "DrinkStaticJson", type: Drink.self)
+                        try? StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
                     )
                 }
         }
