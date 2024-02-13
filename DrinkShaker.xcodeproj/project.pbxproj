@@ -16,6 +16,8 @@
 		4DE552322B7BEC7E00C24C48 /* DrinksStaticJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DE552312B7BEC7E00C24C48 /* DrinksStaticJson.json */; };
 		4DE552352B7BEF9100C24C48 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE552342B7BEF9100C24C48 /* Drink.swift */; };
 		4DE552372B7BF01D00C24C48 /* Drinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE552362B7BF01D00C24C48 /* Drinks.swift */; };
+		4DE5523A2B7BF1F800C24C48 /* StaticJsonMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE552392B7BF1F800C24C48 /* StaticJsonMapper.swift */; };
+		4DE5523C2B7BF3AA00C24C48 /* DrinkStaticJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DE5523B2B7BF3AA00C24C48 /* DrinkStaticJson.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		4DE552312B7BEC7E00C24C48 /* DrinksStaticJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DrinksStaticJson.json; sourceTree = "<group>"; };
 		4DE552342B7BEF9100C24C48 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		4DE552362B7BF01D00C24C48 /* Drinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drinks.swift; sourceTree = "<group>"; };
+		4DE552392B7BF1F800C24C48 /* StaticJsonMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticJsonMapper.swift; sourceTree = "<group>"; };
+		4DE5523B2B7BF3AA00C24C48 /* DrinkStaticJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DrinkStaticJson.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 		4DE552282B7BC88000C24C48 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				4DE552382B7BF1E800C24C48 /* Mapper */,
 				4DE552332B7BEF8100C24C48 /* Models */,
 			);
 			path = Base;
@@ -143,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				4DE552312B7BEC7E00C24C48 /* DrinksStaticJson.json */,
+				4DE5523B2B7BF3AA00C24C48 /* DrinkStaticJson.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -154,6 +160,14 @@
 				4DE552362B7BF01D00C24C48 /* Drinks.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4DE552382B7BF1E800C24C48 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				4DE552392B7BF1F800C24C48 /* StaticJsonMapper.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE5521C2B7BA10700C24C48 /* Preview Assets.xcassets in Resources */,
+				4DE5523C2B7BF3AA00C24C48 /* DrinkStaticJson.json in Resources */,
 				4DE552192B7BA10700C24C48 /* Assets.xcassets in Resources */,
 				4DE552322B7BEC7E00C24C48 /* DrinksStaticJson.json in Resources */,
 			);
@@ -229,6 +244,7 @@
 			files = (
 				4DE552372B7BF01D00C24C48 /* Drinks.swift in Sources */,
 				4DE552242B7BA7E000C24C48 /* Symbols.swift in Sources */,
+				4DE5523A2B7BF1F800C24C48 /* StaticJsonMapper.swift in Sources */,
 				4DE552272B7BA7FB00C24C48 /* Theme.swift in Sources */,
 				4DE552172B7BA10400C24C48 /* ContentView.swift in Sources */,
 				4DE552352B7BEF9100C24C48 /* Drink.swift in Sources */,

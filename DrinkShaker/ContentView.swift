@@ -14,6 +14,12 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+                .onAppear {
+                    print("Drink coming....")
+                    dump(
+                        try? StaticJsonMapper.decode(file: "DrinkStaticJson", type: Drink.self)
+                    )
+                }
         }
         .padding()
     }

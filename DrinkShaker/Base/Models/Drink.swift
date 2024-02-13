@@ -14,13 +14,15 @@ struct Drink: Codable {
     let alcohol: String
     let instructions: String
     let image: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "idDrink"
+        case name = "strDrink"
+        case glass = "strGlass"
+        case alcohol = "strAlcoholic"
+        case instructions = "strInstructions"
+        case image = "strDrinkThumb"
+    }
 }
 
-enum CodingKeys: String, CodingKey {
-    case id = "idDrink"
-    case name = "strDrink"
-    case glass = "strGlass"
-    case alcohol = "strAlcoholic"
-    case instructions = "strInstructions"
-    case image = "strDrinkThumb"
-}
+
