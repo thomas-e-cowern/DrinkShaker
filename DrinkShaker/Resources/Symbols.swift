@@ -10,7 +10,7 @@ import SwiftUI
 
 enum Symbols {
     static let wineglass = Image(systemName: "wineglass")
-    static let magnifyingglass = Image(systemName: "magnifyingglass")
+    static let magnifyingglass = Image(systemName: "magnifyingglass.circle")
     static let heart = Image(systemName: "heart")
     static let random = Image(systemName: "questionmark.circle")
     static let home = Image(systemName: "house.circle")

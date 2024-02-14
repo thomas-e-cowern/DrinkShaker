@@ -20,7 +20,12 @@ struct DrinkShakerApp: App {
                 RandomDrinkView()
                     .tabItem {
                         Symbols.random
-                        Text("Random Drink")
+                        Text("Random")
+                    }
+                SearchView()
+                    .tabItem {
+                        Symbols.magnifyingglass
+                        Text("Search")
                     }
             }
         }
