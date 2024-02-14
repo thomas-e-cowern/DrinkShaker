@@ -14,36 +14,13 @@ struct SearchView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Theme.background
-                    .ignoresSafeArea(edges: .top)
+                
+                background
+                
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 16) {
                         ForEach(0...5, id: \.self) { item in
-                            VStack(spacing: 0) {
-                                Rectangle()
-                                    .fill(.blue)
-                                    .frame(height: 130)
-                                
-                                VStack(alignment: .leading) {
-                                    Text("#\(item)")
-                                        .font(
-                                            .system(.caption, design: .rounded)
-                                            .bold()
-                                        )
-                                        .foregroundStyle(.white)
-                                        .padding(.horizontal, 9)
-                                        .padding(.vertical, 4)
-                                        .background(Theme.carmine, in: Capsule())
-                                    
-                                    Text("<Drink Name>")
-                                        .foregroundStyle(Theme.text)
-                                        .font(.system(.body, design: .rounded))
-                                        .background(Theme.detailBackground)
-                                } //: End of VStack
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            } //: End of VStack
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                            .shadow(color: Theme.text.opacity(0.1), radius: 2, x: 0, y: 1)
+//                            DrinkDetailView(drink: item)
                         }  //: End of ForEach
                         
                     } //: End of Grid
@@ -57,4 +34,11 @@ struct SearchView: View {
 
 #Preview {
     SearchView()
+}
+
+private extension SearchView {
+    var background: some View {
+        Theme.background
+            .ignoresSafeArea()
+    }
 }
