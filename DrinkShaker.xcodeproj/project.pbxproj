@@ -76,7 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				4DCF55C02B7CFEC300FA570E /* SearchView.swift */,
-				4DCF55C22B7D234700FA570E /* DrinkDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -86,6 +85,14 @@
 			children = (
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4DCF55C42B7D3CF300FA570E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4DCF55C22B7D234700FA570E /* DrinkDetailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		4DE552082B7BA10400C24C48 = {
@@ -140,6 +147,7 @@
 		4DE552282B7BC88000C24C48 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				4DCF55C42B7D3CF300FA570E /* Views */,
 				4DE552382B7BF1E800C24C48 /* Mapper */,
 				4DE552332B7BEF8100C24C48 /* Models */,
 			);
