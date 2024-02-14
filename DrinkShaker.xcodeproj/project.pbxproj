@@ -51,6 +51,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4DCF55BC2B7CF64300FA570E /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				4DCF55BF2B7CF65700FA570E /* ViewModels */,
+				4DCF55BE2B7CF65000FA570E /* Views */,
+				4DCF55BD2B7CF64A00FA570E /* Models */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		4DCF55BD2B7CF64A00FA570E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4DCF55BE2B7CF65000FA570E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4DCF55BF2B7CF65700FA570E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		4DE552082B7BA10400C24C48 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +143,7 @@
 		4DE552292B7BC88C00C24C48 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				4DCF55BC2B7CF64300FA570E /* Search */,
 				4DE5523F2B7C0A9400C24C48 /* Home */,
 				4DE5522A2B7BC89B00C24C48 /* Random */,
 			);
