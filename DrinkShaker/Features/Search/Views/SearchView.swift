@@ -22,9 +22,9 @@ struct SearchView: View {
         
                     }
                 }
-                .navigationTitle("Search Drinks")
             }
         }
+        .navigationTitle("Search Drinks")
     }
 }
 

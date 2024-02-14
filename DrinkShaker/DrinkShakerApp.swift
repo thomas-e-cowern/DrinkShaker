@@ -11,25 +11,7 @@ import SwiftUI
 struct DrinkShakerApp: App {
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                TabView {
-                    HomeView()
-                        .tabItem {
-                            Symbols.home
-                            Text("Home")
-                        }
-                    RandomDrinkView()
-                        .tabItem {
-                            Symbols.random
-                            Text("Random")
-                        }
-                    SearchView()
-                        .tabItem {
-                            Symbols.magnifyingglass
-                            Text("Search")
-                        }
-                }
-            }
+            ContentView()
         }
     }
 }

@@ -9,19 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-                .onAppear {
-                    print("Drink coming....")
-                    dump(
-                        try? StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
-                    )
-                }
+//        NavigationStack {
+            TabView {
+                HomeView()
+                    .tabItem {
+                        Symbols.home
+                        Text("Home")
+                    }
+                RandomDrinkView()
+                    .tabItem {
+                        Symbols.random
+                        Text("Random")
+                    }
+                SearchView()
+                    .tabItem {
+                        Symbols.magnifyingglass
+                        Text("Search")
+                    }
+//            }
         }
-        .padding()
     }
 }
 
