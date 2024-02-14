@@ -9,24 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-//        NavigationStack {
-            TabView {
-                HomeView()
-                    .tabItem {
-                        Symbols.home
-                        Text("Home")
-                    }
-                RandomDrinkView()
-                    .tabItem {
-                        Symbols.random
-                        Text("Random")
-                    }
-                SearchView()
-                    .tabItem {
-                        Symbols.magnifyingglass
-                        Text("Search")
-                    }
-//            }
+        TabView {
+            HomeView()
+                .tabItem {
+                    Symbols.home
+                    Text("Home")
+                }
+            RandomDrinkView()
+                .tabItem {
+                    Symbols.random
+                    Text("Random")
+                }
+            SearchView()
+                .tabItem {
+                    Symbols.magnifyingglass
+                    Text("Search")
+                }
         }
     }
 }
