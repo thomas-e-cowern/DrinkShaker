@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Drink: Codable {
+struct Drink: Codable, Identifiable {
     let id: String
     let name: String
     let glass: String

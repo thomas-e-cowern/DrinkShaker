@@ -40,7 +40,6 @@ struct SearchView: View {
                 } catch {
                     print(error)
                 }
-                
             }
         } // MARK: End of Navigation Stack
     }
