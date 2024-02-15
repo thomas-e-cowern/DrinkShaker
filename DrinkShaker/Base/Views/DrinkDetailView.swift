@@ -34,6 +34,8 @@ struct DrinkDetailView: View {
                     
                     generalInfo
                     
+                    ingredientsAndMeasures
+                    
                     instructions
                     
                     Spacer()
@@ -43,6 +45,7 @@ struct DrinkDetailView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .shadow(color: Theme.text.opacity(0.1), radius: 2, x: 0, y: 1)
                 .padding([.leading, .trailing], 10)
+
             }
         }
     }
@@ -110,9 +113,30 @@ private extension DrinkDetailView {
     
     @ViewBuilder
     var instructions: some View {
-        Text(drink.instructions)
-            .multilineTextAlignment(.leading)
+        VStack(alignment: .leading) {
+            Text("Instructions:")
+                .font(.system(.body, design: .rounded).weight(.semibold))
+                .padding([.bottom], 5)
+            
+            Text(drink.instructions)
+                .multilineTextAlignment(.leading)
+                .font(.system(.subheadline, design: .rounded).weight(.semibold))
+        }
+        .padding(([.top]))
+    }
+    
+    @ViewBuilder
+    var ingredientsAndMeasures: some View {
+        VStack(alignment: .leading) {
+            Text("Ingredients:")
+                .font(.system(.body, design: .rounded).weight(.semibold))
+                .padding([.bottom], 5)
+            
+            ForEach(drink.ingredientsAndMeasures, id: \.self) { item in
+                Text(item)
+            }
             .font(.system(.subheadline, design: .rounded).weight(.semibold))
-            .padding()
+        }
+        .padding(([.top]))
     }
 }
