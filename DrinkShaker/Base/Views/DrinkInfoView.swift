@@ -11,22 +11,31 @@ struct DrinkInfoView: View {
     
     let drink: Drink
     
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .center, spacing: 10) {
             
-            RowAppInfoView(itemOne: "Image By", itemTwo: drink.imageAttribute ?? "")
-            RowAppInfoView(itemOne: "Creative Commons", itemTwo: drink.creativeCommonsConfirmed ?? "")
-            RowAppInfoView(itemOne: "Date Modified", itemTwo: drink.dateModified ?? "")
-            
+            Text("Drink Info")
+                .fontWeight(.black)
             
             VStack(alignment: .leading) {
-                Text("Image source")
-                    .foregroundColor(.gray)
-                Text(drink.imageSource ?? "")
-                    .multilineTextAlignment(.leading)
-                    .font(.footnote)
+                drinkInfo
+                
+                imageSource
             }
+            
+            Button {
+                dismiss()
+            } label: {
+                Text("Continue".uppercased())
+            }
+            .padding([.top], 10)
         }
+        .frame(minWidth: 0, maxWidth: .infinity)
+        .padding(.top, 15)
+        .padding(.bottom, 25)
+        .padding(.horizontal, 25)
     }
 }
 
@@ -58,3 +67,24 @@ struct RowAppInfoView: View {
         }
     }
 }
+
+private extension DrinkInfoView {
+    var drinkInfo: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            RowAppInfoView(itemOne: "Image By", itemTwo: drink.imageAttribute ?? "")
+            RowAppInfoView(itemOne: "Creative Commons", itemTwo: drink.creativeCommonsConfirmed ?? "")
+            RowAppInfoView(itemOne: "Date Modified", itemTwo: drink.dateModified ?? "")
+        }
+    }
+    
+    var imageSource: some View {
+        VStack(alignment: .leading) {
+            Text("Image source")
+                .foregroundColor(.gray)
+            Text(drink.imageSource ?? "")
+                .multilineTextAlignment(.leading)
+                .font(.footnote)
+        }
+    }
+}
+
