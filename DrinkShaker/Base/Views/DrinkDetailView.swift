@@ -31,10 +31,10 @@ struct DrinkDetailView: View {
                         .frame(maxWidth: .infinity)
                         .background(Theme.dodgerBlue)
                     
-//                    Spacer()
                     
-                    isAlcoholic
-                    glassUsed
+                    generalInfo
+                    
+                    instructions
                     
                     Spacer()
                     
@@ -80,10 +80,12 @@ private extension DrinkDetailView {
         }
     }
     
-    var general: some View {
-        VStack {
-            
+    var generalInfo: some View {
+        VStack(spacing: 10) {
+            isAlcoholic
+            glassUsed
         }
+        .padding([.top], 12)
     }
     
     @ViewBuilder
@@ -95,7 +97,6 @@ private extension DrinkDetailView {
             Image(systemName: drink.alcohol == "Alcoholic" ? "checkmark.seal.fill" : "x.circle.fill")
                 .foregroundStyle(drink.alcohol == "Alcoholic" ? Color.green : Color.red)
         }
-        .padding(.top, 10)
     }
     
     @ViewBuilder
@@ -108,6 +109,13 @@ private extension DrinkDetailView {
                 .font(.system(.subheadline, design: .rounded).weight(.semibold))
             
         }
-        .padding(.top, 10)
+    }
+    
+    @ViewBuilder
+    var instructions: some View {
+        Text(drink.instructions)
+            .multilineTextAlignment(.leading)
+            .font(.system(.subheadline, design: .rounded).weight(.semibold))
+            .padding()
     }
 }
