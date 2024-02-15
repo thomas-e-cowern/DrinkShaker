@@ -11,6 +11,8 @@ struct SearchView: View {
     
     private let columns = Array(repeating: GridItem(.flexible()), count: 2)
     
+    @State private var drinks: [Drink] = []
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -18,16 +20,23 @@ struct SearchView: View {
                 background
                 
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach(0...5, id: \.self) { item in
-//                            DrinkDetailView(drink: item)
-                        }  //: End of ForEach
-                        
-                    } //: End of Grid
+                    ForEach(drinks,  id: \.id) { drink in
+                        DrinkCardView(drink: drink)
+                    }  //: End of ForEach
                     .padding()
                 }  //: End of ScrollView
             } //: End of ZStack
             .navigationTitle("Search Drinks")
+            .onAppear {
+                do {
+                    let res = try StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
+                    
+                    drinks = res.drinks
+                } catch {
+                    print(error)
+                }
+                
+            }
         } // MARK: End of Navigation Stack
     }
 }
