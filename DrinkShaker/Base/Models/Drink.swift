@@ -44,6 +44,10 @@ struct Drink: Codable {
     let measure13: String?
     let measure14: String?
     let measure15: String?
+    let imageSource: String?
+    let imageAttribute: String?
+    let creativeCommonsConfirmed: String?
+    let dateModified: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "idDrink"
@@ -82,6 +86,10 @@ struct Drink: Codable {
         case measure13 = "strMeasure13"
         case measure14 = "strMeasure14"
         case measure15 = "strMeasure15"
+        case imageSource = "strImageSource"
+        case imageAttribute = "strImageAttribution"
+        case creativeCommonsConfirmed = "strCreativeCommonsConfirmed"
+        case dateModified = "dateModified"
     }
     
     var ingredientsAndMeasures: [String] {

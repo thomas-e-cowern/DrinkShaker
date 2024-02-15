@@ -16,35 +16,37 @@ struct DrinkDetailView: View {
             
             background
             
-            ScrollView {
-                VStack(alignment: .center, spacing: 0) {
-                    
-                    
-                    drinkImage
-                        .frame(width: 300, height: 300)
-                    
-                    Text(drink.name)
-                        .padding([.top, .bottom], 10)
-                        .font(.callout)
-                        .foregroundStyle(.white)
-                        .font(.system(.body, design: .rounded))
-                        .frame(maxWidth: .infinity)
-                        .background(Theme.dodgerBlue)
-                    
-                    
-                    generalInfo
-                    
-                    ingredientsAndMeasures
-                    
-                    instructions
-                    
-                    Spacer()
-                    
-                } //: End of VStack
-                .frame(width: 300)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-                .shadow(color: Theme.text.opacity(0.1), radius: 2, x: 0, y: 1)
+             Form {
+                 ScrollView {
+                    VStack(alignment: .center, spacing: 0) {
+                        
+                        
+                        drinkImage
+                            .frame(width: 300, height: 300)
+                        
+                        Text(drink.name)
+                            .padding([.top, .bottom], 10)
+                            .font(.callout)
+                            .foregroundStyle(.white)
+                            .font(.system(.body, design: .rounded))
+                            .frame(maxWidth: .infinity)
+                            .background(Theme.dodgerBlue)
+                        
+                        
+                        generalInfo
+                        
+                        ingredientsAndMeasures
+                        
+                        instructions
+                        
+                        Spacer()
+                        
+                    } //: End of VStack
+                    .frame(width: 300)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .shadow(color: Theme.text.opacity(0.1), radius: 2, x: 0, y: 1)
                 .padding([.leading, .trailing], 10)
+                }
 
             }
         }
