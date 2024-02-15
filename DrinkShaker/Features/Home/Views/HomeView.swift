@@ -46,7 +46,6 @@ struct HomeView: View {
                         }
                         .frame(width: UIScreen.main.bounds.width)
                         
-                        
                         // Latest drink
                         
                         
