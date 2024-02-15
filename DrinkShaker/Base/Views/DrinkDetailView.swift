@@ -42,12 +42,9 @@ struct DrinkDetailView: View {
                 .frame(width: 300)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .shadow(color: Theme.text.opacity(0.1), radius: 2, x: 0, y: 1)
-            .padding([.leading, .trailing], 10)
+                .padding([.leading, .trailing], 10)
             }
-            
-            
         }
-        
     }
 }
 

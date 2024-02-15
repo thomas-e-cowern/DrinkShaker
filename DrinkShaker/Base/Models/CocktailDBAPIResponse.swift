@@ -1,5 +1,5 @@
 //
-//  Drinks.swift
+//  CocktailDBAPIResponse.swift
 //  DrinkShaker
 //
 //  Created by Thomas Cowern on 2/13/24.
