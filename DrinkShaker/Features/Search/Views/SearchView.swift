@@ -21,7 +21,12 @@ struct SearchView: View {
                 
                 ScrollView {
                     ForEach(drinks,  id: \.id) { drink in
-                        DrinkCardView(drink: drink)
+                        NavigationLink {
+                            DrinkDetailView(drink: drink)
+                        } label: {
+                            DrinkCardView(drink: drink)
+                        }
+                        
                     }  //: End of ForEach
                     .padding()
                 }  //: End of ScrollView
