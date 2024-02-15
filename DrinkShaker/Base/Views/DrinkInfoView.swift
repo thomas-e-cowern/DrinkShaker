@@ -25,12 +25,7 @@ struct DrinkInfoView: View {
                 imageSource
             }
             
-            Button {
-                dismiss()
-            } label: {
-                Text("Continue".uppercased())
-            }
-            .padding([.top], 10)
+            dismissButton
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(.top, 15)
@@ -44,7 +39,7 @@ struct DrinkInfoView: View {
     var previewDrink: Drink {
         let drinks = try! StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
         
-        return drinks.drinks[0]
+        return drinks.drinks[1]
     }
     
     return DrinkInfoView(drink: previewDrink)
@@ -71,7 +66,9 @@ struct RowAppInfoView: View {
 private extension DrinkInfoView {
     var drinkInfo: some View {
         VStack(alignment: .leading, spacing: 10) {
-            RowAppInfoView(itemOne: "Image By", itemTwo: drink.imageAttribute ?? "")
+            if let drinkImage = drink.imageAttribute {
+                RowAppInfoView(itemOne: "Image By", itemTwo: drinkImage)
+            }
             RowAppInfoView(itemOne: "Creative Commons", itemTwo: drink.creativeCommonsConfirmed ?? "")
             RowAppInfoView(itemOne: "Date Modified", itemTwo: drink.dateModified ?? "")
         }
@@ -79,12 +76,26 @@ private extension DrinkInfoView {
     
     var imageSource: some View {
         VStack(alignment: .leading) {
-            Text("Image source")
-                .foregroundColor(.gray)
-            Text(drink.imageSource ?? "")
-                .multilineTextAlignment(.leading)
-                .font(.footnote)
+            if let imageSource = drink.imageSource {
+                Text("Image source")
+                    .foregroundColor(.gray)
+                Text(imageSource)
+                    .multilineTextAlignment(.leading)
+                    .font(.footnote)
+            } else {
+                EmptyView()
+            }
         }
+    }
+    
+    var dismissButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Text("Continue".uppercased())
+        }
+        .buttonStyle(.bordered)
+        .padding([.top], 10)
     }
 }
 

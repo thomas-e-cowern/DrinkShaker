@@ -14,4 +14,5 @@ enum Symbols {
     static let heart = Image(systemName: "heart")
     static let random = Image(systemName: "questionmark.circle")
     static let home = Image(systemName: "house.circle")
+    static let drinkInfo = Image(systemName: "questionmark.circle.fill")
 }

@@ -10,14 +10,15 @@ import SwiftUI
 struct DrinkDetailView: View {
     
     let drink: Drink
+    @State private var showInfo: Bool = false
     
     var body: some View {
         ZStack {
             
             background
             
-             Form {
-                 ScrollView {
+            Form {
+                ScrollView {
                     VStack(alignment: .center, spacing: 0) {
                         
                         
@@ -45,11 +46,19 @@ struct DrinkDetailView: View {
                     .frame(width: 300)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                     .shadow(color: Theme.text.opacity(0.1), radius: 2, x: 0, y: 1)
-                .padding([.leading, .trailing], 10)
+                    .padding([.leading, .trailing], 10)
                 }
-
+                
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                info
+            }
+        }
+        .sheet(isPresented: $showInfo, content: {
+            DrinkInfoView(drink: drink)
+        })
     }
 }
 
@@ -140,5 +149,15 @@ private extension DrinkDetailView {
             .font(.system(.subheadline, design: .rounded).weight(.semibold))
         }
         .padding(([.top]))
+    }
+    
+    var info: some View {
+        Button(action: {
+            showInfo.toggle()
+        }, label: {
+            Symbols.drinkInfo
+                .font(.system(.headline, design: .rounded))
+                .bold()
+        })
     }
 }
