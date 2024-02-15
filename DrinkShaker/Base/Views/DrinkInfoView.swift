@@ -13,27 +13,18 @@ struct DrinkInfoView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text("Image by")
-                Text(drink.imageAttribute ?? "")
-            }
+            
+            RowAppInfoView(itemOne: "Image By", itemTwo: drink.imageAttribute ?? "")
+            RowAppInfoView(itemOne: "Creative Commons", itemTwo: drink.creativeCommonsConfirmed ?? "")
+            RowAppInfoView(itemOne: "Date Modified", itemTwo: drink.dateModified ?? "")
+            
             
             VStack(alignment: .leading) {
                 Text("Image source")
+                    .foregroundColor(.gray)
                 Text(drink.imageSource ?? "")
                     .multilineTextAlignment(.leading)
-            }
-            
-            HStack(alignment: .center) {
-                Text("Creative Commons")
-                Text(drink.creativeCommonsConfirmed ?? "")
-                    .multilineTextAlignment(.leading)
-            }
-            
-            HStack(alignment: .center) {
-                Text("Date Modified")
-                Text(drink.dateModified ?? "")
-                    .multilineTextAlignment(.leading)
+                    .font(.footnote)
             }
         }
     }
@@ -50,3 +41,20 @@ struct DrinkInfoView: View {
     return DrinkInfoView(drink: previewDrink)
 }
 
+struct RowAppInfoView: View {
+    // MARK: - Properties
+    var itemOne: String
+    var itemTwo: String
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Text(itemOne)
+                    .foregroundColor(.gray)
+                Spacer()
+                Text(itemTwo)
+            }
+            Divider()
+        }
+    }
+}
