@@ -123,7 +123,7 @@ private extension HomeView {
             
             HStack(spacing: 10) {
                 if let ingredient = ingredientOfDay {
-                    Text(ingredient)
+                    IngredientView(ingredient: ingredient)
                 }
             }
             

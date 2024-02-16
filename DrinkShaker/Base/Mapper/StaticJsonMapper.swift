@@ -18,7 +18,6 @@ struct StaticJsonMapper {
         
         let decoder = JSONDecoder()
         let decodedData = try decoder.decode(T.self, from: data)
-        print("Decoded data: \(decodedData)")
         return decodedData
     }
 }
