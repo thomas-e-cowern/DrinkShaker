@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var drinkOfDay: Drink?
-    @State private var ingredientOfDay: Ingredient?
+    @State private var ingredientOfDay: String?
     @State private var drinks: [Drink] = []
     @State private var ingredients: [Ingredient] = []
     
@@ -40,6 +40,7 @@ struct HomeView: View {
                         Divider()
                         
                         // Ingredient of the day
+                        ingredientOfTheDay
                         
                     }
                 }
@@ -56,8 +57,7 @@ struct HomeView: View {
                 let ingredientRes = try StaticJsonMapper.decode(file: "IngredientsStaticJson", type: IngredientsAPIResponse.self)
                 
                 ingredients = ingredientRes.drinks
-                ingredientOfDay = ingredients.randomElement()
-                print("Ingredient of the day: \(ingredientOfDay)")
+                ingredientOfDay = alcolohIngredients.randomElement()
                 
                 
             } catch {
@@ -112,6 +112,21 @@ private extension HomeView {
                     }
                 }
             }
+            .frame(width: UIScreen.main.bounds.width)
+        }
+    }
+    
+    var ingredientOfTheDay: some View {
+        VStack {
+            Text("Booze of the day...")
+                .font(.largeTitle)
+            
+            HStack(spacing: 10) {
+                if let ingredient = ingredientOfDay {
+                    Text(ingredient)
+                }
+            }
+            
             .frame(width: UIScreen.main.bounds.width)
         }
     }
