@@ -118,7 +118,7 @@ private extension HomeView {
     
     var ingredientOfTheDay: some View {
         VStack {
-            Text("Booze of the day...")
+            Text("Spirit of the day...")
                 .font(.largeTitle)
             
             HStack(spacing: 10) {

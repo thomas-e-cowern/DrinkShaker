@@ -10,7 +10,6 @@ import Foundation
 struct StaticJsonMapper {
     
     static func decode<T: Decodable>(file: String, type: T.Type) throws -> T {
-        print("Inside JSON static mapper")
         guard let path = Bundle.main.path(forResource: file, ofType: "json"), let data = FileManager.default.contents(atPath: path) else {
             print("Error in path")
             throw MappingError.failedToLoadContents

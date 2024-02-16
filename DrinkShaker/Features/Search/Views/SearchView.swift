@@ -19,7 +19,7 @@ struct SearchView: View {
                 
                 background
                 
-                ScrollView {
+                ScrollView(.vertical, showsIndicators: false) {
                     ForEach(drinks,  id: \.id) { drink in
                         NavigationLink {
                             DrinkDetailView(drink: drink)
