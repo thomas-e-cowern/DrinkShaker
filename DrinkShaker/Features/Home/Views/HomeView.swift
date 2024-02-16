@@ -23,33 +23,22 @@ struct HomeView: View {
                 ScrollView {
                     VStack {
                         // Drink of the day (Random drink)
-                        Text("Drink of the day....")
-                            .font(.largeTitle)
-                        
-                        if let drinkOfDay = drinkOfDay {
-                            DrinkCardView(drink: drinkOfDay)
-                                .frame(width: 200)
-                        }
+                        drinkOfTheDay
                         
                         Divider()
                         
                         // Popular drinks
-                        Text("Popular drinks...")
-                            .font(.largeTitle)
+                        popularDrinks
                         
-                        ScrollView(.horizontal) {
-                            HStack(spacing: 10) {
-                                ForEach(drinks) { drink in
-                                    DrinkCardView(drink: drink)
-                                }
-                            }
-                        }
-                        .frame(width: UIScreen.main.bounds.width)
+                        Divider()
                         
-                        // Latest drink
+                        // Newest drinks
+                        newestDrinks
                         
+                        Divider()
                         
-                        // Booze of the day (Vodka, whiskey, etc.)
+                        // Booze of the day
+                        
                     }
                 }
             }
@@ -70,4 +59,50 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+}
+
+private extension HomeView {
+    var drinkOfTheDay: some View {
+        VStack {
+            Text("Drink of the day....")
+                .font(.largeTitle)
+            
+            if let drinkOfDay = drinkOfDay {
+                DrinkCardView(drink: drinkOfDay)
+                    .frame(width: 200)
+            }
+        }
+    }
+    
+    var popularDrinks: some View {
+        VStack {
+            Text("Popular drinks...")
+                .font(.largeTitle)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    ForEach(drinks) { drink in
+                        DrinkCardView(drink: drink)
+                    }
+                }
+            }
+            .frame(width: UIScreen.main.bounds.width)
+        }
+    }
+    
+    var newestDrinks: some View {
+        VStack {
+            Text("Newest drinks...")
+                .font(.largeTitle)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    ForEach(drinks) { drink in
+                        DrinkCardView(drink: drink)
+                    }
+                }
+            }
+            .frame(width: UIScreen.main.bounds.width)
+        }
+    }
 }
