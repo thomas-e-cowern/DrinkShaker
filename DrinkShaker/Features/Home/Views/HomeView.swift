@@ -10,7 +10,9 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var drinkOfDay: Drink?
+    @State private var ingredientOfDay: Ingredient?
     @State private var drinks: [Drink] = []
+    @State private var ingredients: [Ingredient] = []
     
     var body: some View {
         ZStack {
@@ -37,7 +39,7 @@ struct HomeView: View {
                         
                         Divider()
                         
-                        // Booze of the day
+                        // Ingredient of the day
                         
                     }
                 }
@@ -50,6 +52,14 @@ struct HomeView: View {
                 
                 drinks = res.drinks
                 drinkOfDay = res.drinks.randomElement()
+                
+                let ingredientRes = try StaticJsonMapper.decode(file: "IngredientsStaticJson", type: IngredientsAPIResponse.self)
+                
+                ingredients = ingredientRes.drinks
+                ingredientOfDay = ingredients.randomElement()
+                print("Ingredient of the day: \(ingredientOfDay)")
+                
+                
             } catch {
                 print(error)
             }
