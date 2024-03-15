@@ -98,6 +98,5 @@ DrinkShaker.xcodeproj/project.xcworkspace/xcuserdata/thomascowern.xcuserdatad/Us
 DrinkShaker/.DS_Store
 
 # Keys
-DrinkShaker/Config.xcconfig
 Config.xcconfig
 

@@ -33,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D0A3B982BA4969C0052979C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		4D55B8812B7E6D8F002F888D /* DrinkInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkInfoView.swift; sourceTree = "<group>"; };
 		4D55B8832B7E9C21002F888D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		4D55B8862B7FB1D2002F888D /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -125,6 +126,7 @@
 		4DE552082B7BA10400C24C48 = {
 			isa = PBXGroup;
 			children = (
+				4D0A3B982BA4969C0052979C /* Config.xcconfig */,
 				4DE552132B7BA10400C24C48 /* DrinkShaker */,
 				4DE552122B7BA10400C24C48 /* Products */,
 			);
