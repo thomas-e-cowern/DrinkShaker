@@ -24,6 +24,7 @@ struct HomeView: View {
                     .padding(.top, 25)
                 ScrollView {
                     VStack {
+                        
                         // Drink of the day (Random drink)
                         drinkOfTheDay
                         

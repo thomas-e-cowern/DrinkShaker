@@ -126,7 +126,6 @@
 		4DE552082B7BA10400C24C48 = {
 			isa = PBXGroup;
 			children = (
-				4D0A3B982BA4969C0052979C /* Config.xcconfig */,
 				4DE552132B7BA10400C24C48 /* DrinkShaker */,
 				4DE552122B7BA10400C24C48 /* Products */,
 			);
@@ -143,6 +142,7 @@
 		4DE552132B7BA10400C24C48 /* DrinkShaker */ = {
 			isa = PBXGroup;
 			children = (
+				4D0A3B982BA4969C0052979C /* Config.xcconfig */,
 				4DE5522F2B7BCB7E00C24C48 /* Info.plist */,
 				4DE552292B7BC88C00C24C48 /* Features */,
 				4DE552282B7BC88000C24C48 /* Base */,
@@ -506,6 +506,7 @@
 		};
 		4DE552202B7BA10700C24C48 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D0A3B982BA4969C0052979C /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -535,6 +536,7 @@
 		};
 		4DE552212B7BA10700C24C48 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D0A3B982BA4969C0052979C /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
