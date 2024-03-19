@@ -21,7 +21,19 @@ struct Ingredients: Codable {
 }
 
 struct Ingredient: Codable {
-    let idIngredient, strIngredient, strDescription, strType: String
-    let strAlcohol: String
-    let strABV: String?
+    let id: String
+    let ingredientName: String
+    let ingredientDescrtiption: String
+    let ingredientType: String
+    let ingredientContainsAlcohol: String
+    let alcoholByVolume: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id = "idIngredient"
+        case ingredientName = "strIngredient"
+        case ingredientDescrtiption = "strDescription"
+        case ingredientType = "strType"
+        case ingredientContainsAlcohol = "strAlcohol"
+        case alcoholByVolume = "strABV"
+    }
 }
