@@ -115,7 +115,11 @@ private extension HomeView {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(drinks) { drink in
-                        DrinkCardView(drink: drink)
+                        NavigationLink {
+                            DrinkDetailView(drink: drink)
+                        } label: {
+                            DrinkCardView(drink: drink)
+                        }
                     }
                 }
             }
