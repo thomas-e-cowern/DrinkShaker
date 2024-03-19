@@ -7,11 +7,21 @@
 
 import Foundation
 
-struct Ingredient: Codable {
+struct IngredientName: Codable {
     let strIngredient1: String
 }
 
 
 struct IngredientsAPIResponse: Codable {
-    let drinks: [Ingredient]
+    let drinks: [IngredientName]
+}
+
+struct Ingredients: Codable {
+    let ingredients: [Ingredient]
+}
+
+struct Ingredient: Codable {
+    let idIngredient, strIngredient, strDescription, strType: String
+    let strAlcohol: String
+    let strABV: String?
 }

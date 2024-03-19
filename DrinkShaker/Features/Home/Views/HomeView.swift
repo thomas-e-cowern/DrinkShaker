@@ -12,7 +12,7 @@ struct HomeView: View {
     @State private var drinkOfDay: Drink?
     @State private var ingredientOfDay: String?
     @State private var drinks: [Drink] = []
-    @State private var ingredients: [Ingredient] = []
+    @State private var ingredients: [IngredientName] = []
     
     var body: some View {
         NavigationStack {
