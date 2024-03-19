@@ -19,7 +19,7 @@ struct DrinkDetailView: View {
             
             Form {
                 ScrollView {
-                    VStack(alignment: .center, spacing: 0) {
+                    VStack(alignment: .leading, spacing: 0) {
                         
                         
                         drinkImage
@@ -34,7 +34,11 @@ struct DrinkDetailView: View {
                             .background(Theme.dodgerBlue)
                         
                         
-                        generalInfo
+                        HStack(alignment: .center) {
+                            Spacer()
+                            generalInfo
+                            Spacer()
+                        }
                         
                         ingredientsAndMeasures
                         
@@ -92,8 +96,9 @@ private extension DrinkDetailView {
     }
     
     var generalInfo: some View {
-        VStack(spacing: 10) {
+        HStack(spacing: 10) {
             isAlcoholic
+            Divider()
             glassUsed
         }
         .padding([.top], 12)
@@ -102,7 +107,7 @@ private extension DrinkDetailView {
     @ViewBuilder
     var isAlcoholic: some View {
         HStack {
-            Text("Has Alcohol")
+            Text("Alcohol:")
                 .font(.system(.body, design: .rounded).weight(.semibold))
             
             Image(systemName: drink.alcohol == "Alcoholic" ? "checkmark.seal.fill" : "x.circle.fill")
@@ -113,9 +118,6 @@ private extension DrinkDetailView {
     @ViewBuilder
     var glassUsed: some View {
         HStack {
-            Text("Glass Used:")
-                .font(.system(.body, design: .rounded).weight(.semibold))
-            
             Text(drink.glass)
                 .font(.system(.subheadline, design: .rounded).weight(.semibold))
             
