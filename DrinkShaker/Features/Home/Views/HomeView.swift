@@ -15,55 +15,57 @@ struct HomeView: View {
     @State private var ingredients: [Ingredient] = []
     
     var body: some View {
-        ZStack {
-            Theme.background
-                .ignoresSafeArea()
-            
-            VStack {
-                HeaderView()
-                    .padding(.top, 25)
-                ScrollView {
-                    VStack {
-                        
-                        // Drink of the day (Random drink)
-                        drinkOfTheDay
-                        
-                        Divider()
-                        
-                        // Popular drinks
-                        popularDrinks
-                        
-                        Divider()
-                        
-                        // Newest drinks
-                        newestDrinks
-                        
-                        Divider()
-                        
-                        // Ingredient of the day
-                        ingredientOfTheDay
-                        
+        NavigationStack {
+            ZStack {
+                Theme.background
+                    .ignoresSafeArea()
+                
+                VStack {
+                    HeaderView()
+                        .padding(.top, 25)
+                    ScrollView {
+                        VStack {
+                            
+                            // Drink of the day (Random drink)
+                            drinkOfTheDay
+                            
+                            Divider()
+                            
+                            // Popular drinks
+                            popularDrinks
+                            
+                            Divider()
+                            
+                            // Newest drinks
+                            newestDrinks
+                            
+                            Divider()
+                            
+                            // Ingredient of the day
+                            ingredientOfTheDay
+                            
+                        }
                     }
                 }
+                
             }
-            
+            .onAppear {
+                do {
+                    let res = try StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
+                    
+                    drinks = res.drinks
+                    drinkOfDay = res.drinks.randomElement()
+                    
+                    let ingredientRes = try StaticJsonMapper.decode(file: "IngredientsStaticJson", type: IngredientsAPIResponse.self)
+                    
+                    ingredients = ingredientRes.drinks
+                    ingredientOfDay = alcolohIngredients.randomElement()
+                    
+                    
+                } catch {
+                    print(error)
+                }
         }
-        .onAppear {
-            do {
-                let res = try StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
-                
-                drinks = res.drinks
-                drinkOfDay = res.drinks.randomElement()
-                
-                let ingredientRes = try StaticJsonMapper.decode(file: "IngredientsStaticJson", type: IngredientsAPIResponse.self)
-                
-                ingredients = ingredientRes.drinks
-                ingredientOfDay = alcolohIngredients.randomElement()
-                
-                
-            } catch {
-                print(error)
-            }
         }
     }
 }
@@ -93,7 +95,11 @@ private extension HomeView {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(drinks) { drink in
-                        DrinkCardView(drink: drink)
+                        NavigationLink {
+                            DrinkDetailView(drink: drink)
+                        } label: {
+                            DrinkCardView(drink: drink)
+                        }
                     }
                 }
             }
