@@ -58,6 +58,9 @@ struct HomeView: View {
                     
                     let ingredientRes = try StaticJsonMapper.decode(file: "IngredientsStaticJson", type: IngredientsAPIResponse.self)
                     
+                    // MARK: TODO - Change to get indredient details by name
+                    // MARK: TODO - Randomly select a booze and store till end of day
+                    
                     ingredients = ingredientRes.drinks
                     ingredientOfDay = alcolohIngredients.randomElement()
                     
@@ -132,12 +135,13 @@ private extension HomeView {
             Text("Spirit of the day...")
                 .font(.largeTitle)
             
+            
+            // MARK: TODO - Change to get indredient details by name
             HStack(spacing: 10) {
                 if let ingredient = ingredientOfDay {
                     IngredientView(ingredient: ingredient)
                 }
             }
-            
             .frame(width: UIScreen.main.bounds.width)
         }
     }
