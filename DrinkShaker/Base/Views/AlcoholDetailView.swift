@@ -49,7 +49,14 @@ struct AlcoholDetailView: View {
             }
         }
         .onAppear {
-            print("Appearing")
+            NetworkingManager.shared.request("www.thecocktaildb.com/api/json/v2/1/search.php?i=Whiskey", type: Ingredients.self) { res in
+                switch res {
+                case .success(let data):
+                    print(data)
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
     }
 }

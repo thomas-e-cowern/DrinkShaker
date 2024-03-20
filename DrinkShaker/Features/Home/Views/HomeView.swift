@@ -160,6 +160,7 @@ private extension HomeView {
                 if let alcohol = alcoholOfTheDay {
                     NavigationLink {
                         // MARK: TODO - Add nav to alcohol detail view
+                        AlcoholDetailView(spirit: alcohol)
                     } label: {
                         AlcoholView(alcohol: alcohol)
                     }
