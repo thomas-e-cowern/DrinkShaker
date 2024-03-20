@@ -12,7 +12,7 @@ struct HeaderView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 0)
                 .foregroundStyle(.carmine)
-                .rotationEffect(Angle(degrees: 15))
+//                .rotationEffect(Angle(degrees: 15))
             
             VStack {
                 Text("Drink Shaker")
