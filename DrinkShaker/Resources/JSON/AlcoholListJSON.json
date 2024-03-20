@@ -1,187 +1,187 @@
 {
     "alcohols": [
         {
-            "strIngredient1": "Light rum"
+            "alcohol": "Light rum"
         },
         {
-            "strIngredient1": "Applejack"
+            "alcohol": "Applejack"
         },
         {
-            "strIngredient1": "Gin"
+            "alcohol": "Gin"
         },
         {
-            "strIngredient1": "Dark rum"
+            "alcohol": "Dark rum"
         },
         {
-            "strIngredient1": "Sweet Vermouth"
+            "alcohol": "Sweet Vermouth"
         },
         {
-            "strIngredient1": "Strawberry schnapps"
+            "alcohol": "Strawberry schnapps"
         },
         {
-            "strIngredient1": "Scotch"
+            "alcohol": "Scotch"
         },
         {
-            "strIngredient1": "Apricot brandy"
+            "alcohol": "Apricot brandy"
         },
         {
-            "strIngredient1": "Triple sec"
+            "alcohol": "Triple sec"
         },
         {
-            "strIngredient1": "Southern Comfort"
+            "alcohol": "Southern Comfort"
         },
         {
-            "strIngredient1": "Orange bitters"
+            "alcohol": "Orange bitters"
         },
         {
-            "strIngredient1": "Brandy"
+            "alcohol": "Brandy"
         },
         {
-            "strIngredient1": "Lemon vodka"
+            "alcohol": "Lemon vodka"
         },
         {
-            "strIngredient1": "Blended whiskey"
+            "alcohol": "Blended whiskey"
         },
         {
-            "strIngredient1": "Dry Vermouth"
+            "alcohol": "Dry Vermouth"
         },
         {
-            "strIngredient1": "Amaretto"
+            "alcohol": "Amaretto"
         },
         {
-            "strIngredient1": "Champagne"
+            "alcohol": "Champagne"
         },
         {
-            "strIngredient1": "Coffee liqueur"
+            "alcohol": "Coffee liqueur"
         },
         {
-            "strIngredient1": "Bourbon"
+            "alcohol": "Bourbon"
         },
         {
-            "strIngredient1": "Tequila"
+            "alcohol": "Tequila"
         },
         {
-            "strIngredient1": "Vodka"
+            "alcohol": "Vodka"
         },
         {
-            "strIngredient1": "Añejo rum"
+            "alcohol": "Añejo rum"
         },
         {
-            "strIngredient1": "Bitters"
+            "alcohol": "Bitters"
         },
         {
-            "strIngredient1": "Kahlua"
+            "alcohol": "Kahlua"
         },
         {
-            "strIngredient1": "demerara Sugar"
+            "alcohol": "demerara Sugar"
         },
         {
-            "strIngredient1": "Dubonnet Rouge"
+            "alcohol": "Dubonnet Rouge"
         },
         {
-            "strIngredient1": "Irish whiskey"
+            "alcohol": "Irish whiskey"
         },
         {
-            "strIngredient1": "Apple brandy"
+            "alcohol": "Apple brandy"
         },
         {
-            "strIngredient1": "Cherry brandy"
+            "alcohol": "Cherry brandy"
         },
         {
-            "strIngredient1": "Creme de Cacao"
+            "alcohol": "Creme de Cacao"
         },
         {
-            "strIngredient1": "Port"
+            "alcohol": "Port"
         },
         {
-            "strIngredient1": "Coffee brandy"
+            "alcohol": "Coffee brandy"
         },
         {
-            "strIngredient1": "Red wine"
+            "alcohol": "Red wine"
         },
         {
-            "strIngredient1": "Rum"
+            "alcohol": "Rum"
         },
         {
-            "strIngredient1": "Ricard"
+            "alcohol": "Ricard"
         },
         {
-            "strIngredient1": "Sherry"
+            "alcohol": "Sherry"
         },
         {
-            "strIngredient1": "Cognac"
+            "alcohol": "Cognac"
         },
         {
-            "strIngredient1": "Sloe gin"
+            "alcohol": "Sloe gin"
         },
         {
-            "strIngredient1": "Galliano"
+            "alcohol": "Galliano"
         },
         {
-            "strIngredient1": "Peach Vodka"
+            "alcohol": "Peach Vodka"
         },
         {
-            "strIngredient1": "Ouzo"
+            "alcohol": "Ouzo"
         },
         {
-            "strIngredient1": "Spiced rum"
+            "alcohol": "Spiced rum"
         },
         {
-            "strIngredient1": "Angelica root"
+            "alcohol": "Angelica root"
         },
         {
-            "strIngredient1": "Johnnie Walker"
+            "alcohol": "Johnnie Walker"
         },
         {
-            "strIngredient1": "Everclear"
+            "alcohol": "Everclear"
         },
         {
-            "strIngredient1": "Peach nectar"
+            "alcohol": "Peach nectar"
         },
         {
-            "strIngredient1": "Firewater"
+            "alcohol": "Firewater"
         },
         {
-            "strIngredient1": "Lager"
+            "alcohol": "Lager"
         },
         {
-            "strIngredient1": "Whiskey"
+            "alcohol": "Whiskey"
         },
         {
-            "strIngredient1": "Absolut Citron"
+            "alcohol": "Absolut Citron"
         },
         {
-            "strIngredient1": "Pisco"
+            "alcohol": "Pisco"
         },
         {
-            "strIngredient1": "Irish cream"
+            "alcohol": "Irish cream"
         },
         {
-            "strIngredient1": "Ale"
+            "alcohol": "Ale"
         },
         {
-            "strIngredient1": "Chocolate liqueur"
+            "alcohol": "Chocolate liqueur"
         },
         {
-            "strIngredient1": "Midori melon liqueur"
+            "alcohol": "Midori melon liqueur"
         },
         {
-            "strIngredient1": "Sambuca"
+            "alcohol": "Sambuca"
         },
         {
-            "strIngredient1": "Cider"
+            "alcohol": "Cider"
         },
         {
-            "strIngredient1": "Blackberry brandy"
+            "alcohol": "Blackberry brandy"
         },
         {
-            "strIngredient1": "Peppermint schnapps"
+            "alcohol": "Peppermint schnapps"
         },
         {
-            "strIngredient1": "Creme de Cassis"
+            "alcohol": "Creme de Cassis"
         },
         {
-            "strIngredient1": "Jack Daniels"
+            "alcohol": "Jack Daniels"
         }
     ]
 }

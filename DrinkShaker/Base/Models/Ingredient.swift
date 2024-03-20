@@ -37,3 +37,11 @@ struct Ingredient: Codable {
         case alcoholByVolume = "strABV"
     }
 }
+
+struct Alcohols: Codable {
+    let alcohols: [Alcohol]
+}
+
+struct Alcohol: Codable {
+    let alcohol: String
+}

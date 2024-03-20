@@ -13,6 +13,8 @@ struct HomeView: View {
     @State private var ingredientOfDay: String?
     @State private var drinks: [Drink] = []
     @State private var ingredients: [IngredientName] = []
+    @State private var alcoholOfTheDay: Alcohol?
+    @State private var alcoholList: [Alcohol] = []
     
     var body: some View {
         NavigationStack {
@@ -60,6 +62,12 @@ struct HomeView: View {
                     
                     // MARK: TODO - Change to get indredient details by name
                     // MARK: TODO - Randomly select a booze and store till end of day
+                    
+                    let alcoholsRes = try StaticJsonMapper.decode(file: "AlcoholListJSON", type: Alcohols.self)
+                    
+                    alcoholList = alcoholsRes.alcohols
+                    alcoholOfTheDay = alcoholList.randomElement()
+                    print(alcoholOfTheDay as Any)
                     
                     ingredients = ingredientRes.drinks
                     ingredientOfDay = alcolohIngredients.randomElement()
@@ -138,8 +146,8 @@ private extension HomeView {
             
             // MARK: TODO - Change to get indredient details by name
             HStack(spacing: 10) {
-                if let ingredient = ingredientOfDay {
-                    IngredientView(ingredient: ingredient)
+                if let alcohol = alcoholOfTheDay {
+                    AlcoholView(alcohol: alcohol.alcohol)
                 }
             }
             .frame(width: UIScreen.main.bounds.width)
