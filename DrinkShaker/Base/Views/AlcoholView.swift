@@ -15,6 +15,12 @@ struct AlcoholView: View {
         if let alcohol = alcohol {
             VStack {
                 Text(alcohol)
+                    .padding([.top, .bottom], 10)
+                    .font(.callout)
+                    .foregroundStyle(.white)
+                    .font(.system(.body, design: .rounded))
+                    .frame(maxWidth: .infinity)
+                    .background(Theme.dodgerBlue)
                 
                 AsyncImage(url: URL(string: "https://www.thecocktaildb.com/images/ingredients/\(alcohol)-Medium.png")) { image in
                     image
@@ -25,6 +31,7 @@ struct AlcoholView: View {
                     ProgressView()
                 }
             }
+            .frame(width: 200)
         }
     }
 }

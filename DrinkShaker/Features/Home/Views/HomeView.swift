@@ -13,8 +13,9 @@ struct HomeView: View {
     @State private var ingredientOfDay: String?
     @State private var drinks: [Drink] = []
     @State private var ingredients: [IngredientName] = []
-    @State private var alcoholOfTheDay: Alcohol?
+    @State private var alcoholOfTheDay: String?
     @State private var alcoholList: [Alcohol] = []
+    private var date: Date = Date.now
     
     var body: some View {
         NavigationStack {
@@ -62,17 +63,27 @@ struct HomeView: View {
                     
                     // MARK: TODO - Change to get indredient details by name
                     // MARK: TODO - Randomly select a booze and store till end of day
-                    
-                    let alcoholsRes = try StaticJsonMapper.decode(file: "AlcoholListJSON", type: Alcohols.self)
-                    
-                    alcoholList = alcoholsRes.alcohols
-                    alcoholOfTheDay = alcoholList.randomElement()
-                    print(alcoholOfTheDay as Any)
-                    
+        
                     ingredients = ingredientRes.drinks
                     ingredientOfDay = alcolohIngredients.randomElement()
                     
-                    
+                    // MARK: Date check for spirit of the day.
+                    // 1. get the current date
+                    // 2. check stored date and compare, if the same do nothing, if different get a new spirit of the day
+                    print(date)
+                    print(Calendar.current.isDateInToday(date))
+                    if !Calendar.current.isDateInToday(date) {
+                        let alcoholsRes = try StaticJsonMapper.decode(file: "AlcoholListJSON", type:Alcohols.self)
+                        alcoholList = alcoholsRes.alcohols
+                        let todaySpirit = alcoholList.randomElement()
+                        print(todaySpirit?.alcohol as Any)
+                        UserDefaults.standard.set(alcoholOfTheDay, forKey: "alcoholOfTheDay")
+                    } else {
+                        let alcoholToday = UserDefaults.standard.object(forKey: "alcoholOfTheDay")
+                        if let alcoholToday = alcoholToday {
+                            alcoholOfTheDay = alcoholToday as? String
+                        }
+                    }
                 } catch {
                     print(error)
                 }
@@ -147,7 +158,12 @@ private extension HomeView {
             // MARK: TODO - Change to get indredient details by name
             HStack(spacing: 10) {
                 if let alcohol = alcoholOfTheDay {
-                    AlcoholView(alcohol: alcohol.alcohol)
+                    NavigationLink {
+                        // MARK: TODO - Add nav to alcohol detail view
+                    } label: {
+                        AlcoholView(alcohol: alcohol)
+                    }
+                    
                 }
             }
             .frame(width: UIScreen.main.bounds.width)
