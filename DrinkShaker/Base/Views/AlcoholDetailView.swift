@@ -9,14 +9,15 @@ import SwiftUI
 
 struct AlcoholDetailView: View {
     
-    var spirit: String
+    //    var spiritName: String?
+    var spiritDetail: Ingredient
     
     var body: some View {
         ZStack {
             
             Form {
                 ScrollView {
-                    Text(spirit)
+                    Text(spiritDetail.ingredientName)
                         .padding([.top, .bottom], 10)
                         .font(.title)
                         .foregroundStyle(.white)
@@ -24,43 +25,40 @@ struct AlcoholDetailView: View {
                         .frame(maxWidth: .infinity)
                         .background(Theme.dodgerBlue)
                     
-//                    if (ingredient.alcoholByVolume != nil) {
-//                        VStack(spacing: 10) {
-//                            HStack {
-//                                Text("Alcohol by Volume")
-//                                Text(ingredient.alcoholByVolume! + "%")
-//                            }
-//                            Divider()
-//                            HStack {
-//                                Text("Contains Alcohol")
-//                                Image(systemName: ingredient.ingredientContainsAlcohol == "Yes" ? "checkmark.seal.fill" : "x.circle.fill")
-//                                    .foregroundStyle(ingredient.ingredientContainsAlcohol == "Yes" ? Color.green : Color.red)
-//                            }
-//                        }
-//                        .padding(.vertical)
-//                    }
-//                    
-//                    Text(ingredient.ingredientDescrtiption)
-//                        .multilineTextAlignment(.leading)
-//                        .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                    if (spiritDetail.alcoholByVolume != nil) {
+                        VStack(spacing: 10) {
+                            HStack {
+                                Text("Alcohol by Volume")
+                                Text((spiritDetail.alcoholByVolume!) + "%")
+                            }
+                        }
+                        
+                        Divider()
+                    }
+
+                    HStack {
+                        Text("Contains Alcohol")
+                        Image(systemName: spiritDetail.ingredientContainsAlcohol == "Yes" ? "checkmark.seal.fill" : "x.circle.fill")
+                            .foregroundStyle(spiritDetail.ingredientContainsAlcohol == "Yes" ? Color.green : Color.red)
+                    }
+                    .padding(10)
                     
-                    
-                }
-            }
-        }
-        .onAppear {
-            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/1/search.php?i=Whiskey", type: Ingredients.self) { res in
-                switch res {
-                case .success(let data):
-                    print(data)
-                case .failure(let error):
-                    print(error)
+                    Text(spiritDetail.ingredientDescrtiption)
+                        .multilineTextAlignment(.leading)
+                        .font(.system(.subheadline, design: .rounded).weight(.semibold))
                 }
             }
         }
     }
 }
 
-#Preview {
-    AlcoholDetailView(spirit: "Vodka")
-}
+//#Preview {
+//    var previewSpiritDetail: Ingredients {
+//        let spirit = try! StaticJsonMapper.decode(file: "IngredientDetailStaticJSON", type: Ingredients.self)
+//        print("Spirit :\(spirit)")
+//
+//        return spirit
+//    }
+//
+//    return AlcoholDetailView(spiritName: previewSpiritDetail, spiritDetail: <#Ingredient#>)
+//}

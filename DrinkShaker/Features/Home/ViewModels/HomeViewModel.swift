@@ -9,7 +9,8 @@ import Foundation
 
 final class HomeViewModel: ObservableObject {
     
-    @Published private(set) var spiritOfTheDay: String?
+    @Published private(set) var spiritOfTheDayName: String?
+    @Published private(set) var spiritOfTheDay: Ingredients?
     private var date: Date = Date.now
     
     func getSpiritOfTheDay() {
@@ -24,19 +25,30 @@ final class HomeViewModel: ObservableObject {
         
         if storedSpiritOfTheDay == nil {
             print("store spirit is nil")
-            spiritOfTheDay = spirits.randomElement()
+            spiritOfTheDayName = spirits.randomElement()
             UserDefaults.standard.set(spiritOfTheDay, forKey: "alcoholOfTheDay")
             UserDefaults.standard.set(date, forKey: "spiritDate")
         } else {
             print("We have a spirit in user data")
             if !Calendar.current.isDateInToday(date) {
                 print("This is from a previous day and needs to be updated")
-                spiritOfTheDay = spirits.randomElement()
+                spiritOfTheDayName = spirits.randomElement()
                 UserDefaults.standard.set(spiritOfTheDay, forKey: "alcoholOfTheDay")
                 UserDefaults.standard.set(date, forKey: "spiritDate")
             } else {
                 print("This is todays spirit of the day")
-                spiritOfTheDay = storedSpiritOfTheDay as? String
+                spiritOfTheDayName = storedSpiritOfTheDay as? String
+            }
+        }
+        if let spiritOfTheDayName = spiritOfTheDayName {
+            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/1/search.php?i=\(spiritOfTheDayName)", type: Ingredients.self) { res in
+                switch res {
+                case .success(let data):
+                    self.spiritOfTheDay = data
+                    print("SOTD: ", self.spiritOfTheDay ?? "No SOTD")
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }

@@ -14,6 +14,7 @@ struct HomeView: View {
     @State private var drinks: [Drink] = []
     @State private var ingredients: [IngredientName] = []
     @State private var alcoholList: [Alcohol] = []
+    @State private var spirit: Ingredient?
     
     @StateObject private var hvm = HomeViewModel()
     
@@ -55,6 +56,10 @@ struct HomeView: View {
             .onAppear {
                 
                 hvm.getSpiritOfTheDay()
+                
+                if let spirit = hvm.spiritOfTheDay {
+                    print("SPIRIT: ", spirit)
+                }
                 
                 do {
                     let res = try StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
@@ -140,12 +145,13 @@ private extension HomeView {
             
             // MARK: TODO - Change to get indredient details by name
             HStack(spacing: 10) {
-                if let alcohol = hvm.spiritOfTheDay {
+                if let spirit = hvm.spiritOfTheDay {
+//                    Text("\(spirit.ingredients.first)")
                     NavigationLink {
                         // MARK: TODO - Add nav to alcohol detail view
-                        AlcoholDetailView(spirit: alcohol)
+                        AlcoholDetailView(spiritDetail: spirit.ingredients.first!)
                     } label: {
-                        AlcoholView(alcohol: alcohol)
+                        AlcoholView(alcohol: spirit.ingredients.first?.ingredientName)
                     }
                 }
             }
