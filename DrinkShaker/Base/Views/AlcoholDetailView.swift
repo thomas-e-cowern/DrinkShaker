@@ -52,13 +52,13 @@ struct AlcoholDetailView: View {
     }
 }
 
-//#Preview {
-//    var previewSpiritDetail: Ingredients {
-//        let spirit = try! StaticJsonMapper.decode(file: "IngredientDetailStaticJSON", type: Ingredients.self)
-//        print("Spirit :\(spirit)")
-//
-//        return spirit
-//    }
-//
-//    return AlcoholDetailView(spiritName: previewSpiritDetail, spiritDetail: <#Ingredient#>)
-//}
+#Preview {
+    var previewSpiritDetail: Ingredients {
+        let spirit = try! StaticJsonMapper.decode(file: "IngredientDetailStaticJSON", type: Ingredients.self)
+        print("Spirit :\(spirit)")
+
+        return spirit
+    }
+
+    return AlcoholDetailView(spiritDetail: previewSpiritDetail.ingredients.first!)
+}

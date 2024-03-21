@@ -7,16 +7,14 @@
 
 import Foundation
 
+
 final class HomeViewModel: ObservableObject {
     
-    @Published private(set) var spiritOfTheDayName: String?
+    private var spiritOfTheDayName: String?
     @Published private(set) var spiritOfTheDay: Ingredients?
     private var date: Date = Date.now
     
-    func getSpiritOfTheDay() {
-        
-//        spiritOfTheDay = spirits.randomElement()
-//        print("Spirit of the day: \(spiritOfTheDay ?? "No spirit today!")")
+    @MainActor func getSpiritOfTheDay() {
 
         let storedSpiritOfTheDay = UserDefaults.standard.object(forKey: "alcoholOfTheDay")
         let storedSpiritDate = UserDefaults.standard.object(forKey: "spiritDate")
@@ -40,17 +38,22 @@ final class HomeViewModel: ObservableObject {
                 spiritOfTheDayName = storedSpiritOfTheDay as? String
             }
         }
-        if let spiritOfTheDayName = spiritOfTheDayName {
-            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/1/search.php?i=\(spiritOfTheDayName)", type: Ingredients.self) { res in
-                switch res {
-                case .success(let data):
-                    self.spiritOfTheDay = data
-                    print("SOTD: ", self.spiritOfTheDay ?? "No SOTD")
-                case .failure(let error):
-                    print(error)
+        do {
+            if let spiritOfTheDayName = spiritOfTheDayName {
+                NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/1/search.php?i=\(spiritOfTheDayName)", type: Ingredients.self) { res in
+                    switch res {
+                    case .success(let data):
+                        self.spiritOfTheDay = data
+                        print("SOTD: ", self.spiritOfTheDay ?? "No SOTD")
+                    case .failure(let error):
+                        print(error)
+                    }
                 }
             }
+        } catch {
+            
         }
+        
     }
 }
 
