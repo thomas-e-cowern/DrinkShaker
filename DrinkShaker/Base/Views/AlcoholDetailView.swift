@@ -49,7 +49,7 @@ struct AlcoholDetailView: View {
             }
         }
         .onAppear {
-            NetworkingManager.shared.request("www.thecocktaildb.com/api/json/v2/1/search.php?i=Whiskey", type: Ingredients.self) { res in
+            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/1/search.php?i=Whiskey", type: Ingredients.self) { res in
                 switch res {
                 case .success(let data):
                     print(data)

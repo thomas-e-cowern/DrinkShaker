@@ -33,7 +33,6 @@ final class NetworkingManager {
             // Check the response status code
             guard let response = response as? HTTPURLResponse, (200...300) ~= response.statusCode else {
                 let statusCode = (response as! HTTPURLResponse).statusCode
-                print("Status code: \(statusCode)")
                 completion(.failure(NetworkingError.invalidStatusCode(statusCode: statusCode)))
                 return
             }
