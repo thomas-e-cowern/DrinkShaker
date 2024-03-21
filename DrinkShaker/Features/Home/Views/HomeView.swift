@@ -17,6 +17,8 @@ struct HomeView: View {
     @State private var alcoholList: [Alcohol] = []
     private var date: Date = Date.now
     
+    @StateObject private var hvm = HomeViewModel()
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -54,9 +56,7 @@ struct HomeView: View {
             }
             .onAppear {
                 
-                alcoholOfTheDay = spirits.randomElement()
-                
-                print("alcoholOfTheDay: ", alcoholOfTheDay ?? "No alcohol of the day")
+                hvm.getSpiritOfTheDay()
                 
                 do {
                     let res = try StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
@@ -76,19 +76,19 @@ struct HomeView: View {
                     // 1. get the current date
                     // 2. check stored date and compare, if the same do nothing, if different get a new spirit of the day
                     let aOfDay = UserDefaults.standard.object(forKey: "alcoholOfTheDay")
-                    print("aOfDay", aOfDay as Any)
+//                    print("aOfDay", aOfDay as Any)
                     if aOfDay == nil {
                         let alcoholsRes = try StaticJsonMapper.decode(file: "AlcoholListJSON", type:Alcohols.self)
                         alcoholList = alcoholsRes.alcohols
                         let todaySpirit = alcoholList.randomElement()
-                        print("If nil", todaySpirit?.alcohol as Any)
+//                        print("If nil", todaySpirit?.alcohol as Any)
                         UserDefaults.standard.set(alcoholOfTheDay, forKey: "alcoholOfTheDay")
                     } else {
                         if !Calendar.current.isDateInToday(date) {
                             let alcoholsRes = try StaticJsonMapper.decode(file: "AlcoholListJSON", type:Alcohols.self)
                             alcoholList = alcoholsRes.alcohols
                             let todaySpirit = alcoholList.randomElement()
-                            print("Not equal", todaySpirit?.alcohol as Any)
+//                            print("Not equal", todaySpirit?.alcohol as Any)
                             UserDefaults.standard.set(alcoholOfTheDay, forKey: "alcoholOfTheDay")
                         } else {
                             let alcoholToday = UserDefaults.standard.object(forKey: "alcoholOfTheDay")
@@ -97,9 +97,6 @@ struct HomeView: View {
                             }
                         }
                     }
-                    
-                    
-                    
                 } catch {
                     print(error)
                 }

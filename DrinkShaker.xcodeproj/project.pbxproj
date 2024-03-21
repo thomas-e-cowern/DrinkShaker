@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D1385362BAC7F3000F57FF3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1385352BAC7F3000F57FF3 /* HomeViewModel.swift */; };
 		4D55B8822B7E6D8F002F888D /* DrinkInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55B8812B7E6D8F002F888D /* DrinkInfoView.swift */; };
 		4D55B8842B7E9C21002F888D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55B8832B7E9C21002F888D /* HeaderView.swift */; };
 		4D55B8872B7FB1D2002F888D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55B8862B7FB1D2002F888D /* Utilities.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		4D0A3B982BA4969C0052979C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		4D1385352BAC7F3000F57FF3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4D55B8812B7E6D8F002F888D /* DrinkInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkInfoView.swift; sourceTree = "<group>"; };
 		4D55B8832B7E9C21002F888D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		4D55B8862B7FB1D2002F888D /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 		4DE552422B7C0AAE00C24C48 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				4D1385352BAC7F3000F57FF3 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				4DE552272B7BA7FB00C24C48 /* Theme.swift in Sources */,
 				4DE5523E2B7C08D300C24C48 /* RandomDrinkView.swift in Sources */,
 				4DE552172B7BA10400C24C48 /* ContentView.swift in Sources */,
+				4D1385362BAC7F3000F57FF3 /* HomeViewModel.swift in Sources */,
 				4DE552352B7BEF9100C24C48 /* Drink.swift in Sources */,
 				4DE552152B7BA10400C24C48 /* DrinkShakerApp.swift in Sources */,
 				4D55B8842B7E9C21002F888D /* HeaderView.swift in Sources */,
