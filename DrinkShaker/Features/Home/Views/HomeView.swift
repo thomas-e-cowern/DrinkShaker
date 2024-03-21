@@ -170,14 +170,13 @@ private extension HomeView {
             
             // MARK: TODO - Change to get indredient details by name
             HStack(spacing: 10) {
-                if let alcohol = alcoholOfTheDay {
+                if let alcohol = hvm.spiritOfTheDay {
                     NavigationLink {
                         // MARK: TODO - Add nav to alcohol detail view
                         AlcoholDetailView(spirit: alcohol)
                     } label: {
                         AlcoholView(alcohol: alcohol)
                     }
-                    
                 }
             }
             .frame(width: UIScreen.main.bounds.width)
