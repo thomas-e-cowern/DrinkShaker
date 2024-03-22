@@ -43,6 +43,11 @@ final class HomeViewModel: ObservableObject {
                 UserDefaults.standard.set(spiritOfTheDayName, forKey: "spiritOfTheDay")
                 UserDefaults.standard.set(date, forKey: "spiritDate")
             }
+        } else {
+            //6.  If not spirit of the day, get one and save to user defaults
+            spiritOfTheDayName = spirits.randomElement()
+            UserDefaults.standard.set(spiritOfTheDayName, forKey: "spiritOfTheDay")
+            UserDefaults.standard.set(date, forKey: "spiritDate")
         }
     }
 }
