@@ -10,47 +10,44 @@ import Foundation
 
 final class HomeViewModel: ObservableObject {
     
-    private var spiritOfTheDayName: String?
-    @Published private(set) var spiritOfTheDay: Ingredients?
+    @Published private(set) var spiritOfTheDayName: String?
+//    @Published private(set) var spiritOfTheDay: Ingredients?
     private var date: Date = Date.now
     
+    
     func getSpiritOfTheDay() {
-        
-        let storedSpiritOfTheDay = UserDefaults.standard.object(forKey: "alcoholOfTheDay")
+
+        print("Inside SOTD")
+        // 1. Check to see if there is a saved spirit of the day and date
+        let storedSpiritOfTheDay = UserDefaults.standard.string(forKey: "spiritOfTheDay")
         let storedSpiritDate = UserDefaults.standard.object(forKey: "spiritDate")
-        print("storedSpiritOfTheDay: ", storedSpiritOfTheDay ?? "No spirit today")
-        print("spiritDate: ", storedSpiritDate ?? "No spirit date")
-        print(Calendar.current.isDateInToday(date))
-        if storedSpiritOfTheDay == nil {
-            print("store spirit is nil")
-            spiritOfTheDayName = spirits.randomElement()
-            print("spiritOfTheDayName: ", spiritOfTheDayName as Any)
-            UserDefaults.standard.set(spiritOfTheDay, forKey: "alcoholOfTheDay")
-            UserDefaults.standard.set(date, forKey: "spiritDate")
-        } else {
-            print("We have a spirit in user data")
-            
+        
+        if let storedSpiritOfTheDay = storedSpiritOfTheDay {
+            print("storedSpiritOfTheDay: ", storedSpiritOfTheDay)
+        }
+        
+        if let storedSpiritDate = storedSpiritDate {
+            print("spiritDate: ", storedSpiritDate)
+        }
+        
+        // 2. If not get a random spirit and save the spirit object
+        if let storedSpiritOfTheDay = storedSpiritOfTheDay {
+            print("storedSpiritOfTheDay: ", storedSpiritOfTheDay)
+            // 3. If there is, we need check to see if it is todays spirit
             if Calendar.current.isDateInToday(date) {
-                print("This is todays spirit of the day")
-                spiritOfTheDayName = storedSpiritOfTheDay as? String
+                // 4. If it is, spirit of the day stays the same
+                spiritOfTheDayName = storedSpiritOfTheDay
             } else {
-                print("This is from a previous day and needs to be updated")
+                // 5. If it is not, get a new random spirit and save
                 spiritOfTheDayName = spirits.randomElement()
-                UserDefaults.standard.set(spiritOfTheDay, forKey: "alcoholOfTheDay")
+                UserDefaults.standard.set(spiritOfTheDayName, forKey: "spiritOfTheDay")
                 UserDefaults.standard.set(date, forKey: "spiritDate")
             }
         }
-        if let spiritOfTheDayName = spiritOfTheDayName {
-            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/1/search.php?i=\(spiritOfTheDayName)", type: Ingredients.self) { res in
-                switch res {
-                case .success(let data):
-                    self.spiritOfTheDay = data
-                    print("SOTD: ", self.spiritOfTheDay ?? "No SOTD")
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
+        
+        
+        
+        
     }
 }
 

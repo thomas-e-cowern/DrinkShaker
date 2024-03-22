@@ -13,8 +13,7 @@ struct HomeView: View {
     @State private var ingredientOfDay: String?
     @State private var drinks: [Drink] = []
     @State private var ingredients: [IngredientName] = []
-    @State private var alcoholList: [Alcohol] = []
-    @State private var spirit: Ingredient?
+    @State var spirit: String?
     
     @StateObject private var hvm = HomeViewModel()
     
@@ -55,19 +54,12 @@ struct HomeView: View {
             }
             .onAppear {
                 do {
-                    
                     hvm.getSpiritOfTheDay()
-                    print(hvm.spiritOfTheDay as Any)
                     
                     let res = try StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
                     
                     drinks = res.drinks
                     drinkOfDay = res.drinks.randomElement()
-                    
-                    let ingredientRes = try StaticJsonMapper.decode(file: "IngredientsStaticJson", type: IngredientsAPIResponse.self)
-                    
-                    ingredients = ingredientRes.drinks
-                    ingredientOfDay = alcolohIngredients.randomElement()
                 
                 } catch {
                     print(error)
@@ -142,12 +134,13 @@ private extension HomeView {
             
             // MARK: TODO - Change to get indredient details by name
             HStack(spacing: 10) {
-                if let spirit = hvm.spiritOfTheDay {
+                if let spirit = hvm.spiritOfTheDayName {
                     NavigationLink {
                         // MARK: TODO - Add nav to alcohol detail view
-                        AlcoholDetailView(spiritDetail: spirit.ingredients.first!)
+                        Text("\(spirit)")
+//                        AlcoholDetailView(spiritDetail: spirit)
                     } label: {
-                        AlcoholView(alcohol: spirit.ingredients.first?.ingredientName)
+                        AlcoholView(alcohol: spirit)
                     }
                 }
             }
