@@ -9,10 +9,9 @@ import Foundation
 
 final class SpiritDetailViewModel: ObservableObject {
     
-    var spiritName: String?
-    @Published private var spiriteDetail: Ingredient?
+    @Published var spiriteDetail: Ingredient?
     
-    func getSpiritDetails() {
+    func getSpiritDetails(spiritName: String?) {
         
         if let spiritName = spiritName {
             NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/1/search.php?i=\(spiritName)", type: Ingredients.self) { res in

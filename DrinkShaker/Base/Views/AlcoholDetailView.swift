@@ -9,15 +9,14 @@ import SwiftUI
 
 struct AlcoholDetailView: View {
     
-    //    var spiritName: String?
-    var spiritDetail: Ingredient
+    var spiritName: String
+    @StateObject private var sdvm = SpiritDetailViewModel()
     
     var body: some View {
         ZStack {
-            
             Form {
                 ScrollView {
-                    Text(spiritDetail.ingredientName)
+                    Text(sdvm.spiriteDetail?.ingredientName ?? "")
                         .padding([.top, .bottom], 10)
                         .font(.title)
                         .foregroundStyle(.white)
@@ -25,11 +24,11 @@ struct AlcoholDetailView: View {
                         .frame(maxWidth: .infinity)
                         .background(Theme.dodgerBlue)
                     
-                    if (spiritDetail.alcoholByVolume != nil) {
+                    if (sdvm.spiriteDetail?.alcoholByVolume != nil) {
                         VStack(spacing: 10) {
                             HStack {
                                 Text("Alcohol by Volume")
-                                Text((spiritDetail.alcoholByVolume!) + "%")
+                                Text((sdvm.spiriteDetail?.alcoholByVolume ?? "0") + "%")
                             }
                         }
                         
@@ -38,27 +37,30 @@ struct AlcoholDetailView: View {
 
                     HStack {
                         Text("Contains Alcohol")
-                        Image(systemName: spiritDetail.ingredientContainsAlcohol == "Yes" ? "checkmark.seal.fill" : "x.circle.fill")
-                            .foregroundStyle(spiritDetail.ingredientContainsAlcohol == "Yes" ? Color.green : Color.red)
+                        Image(systemName: sdvm.spiriteDetail?.ingredientContainsAlcohol == "Yes" ? "checkmark.seal.fill" : "x.circle.fill")
+                            .foregroundStyle(sdvm.spiriteDetail?.ingredientContainsAlcohol == "Yes" ? Color.green : Color.red)
                     }
                     .padding(10)
                     
-                    Text(spiritDetail.ingredientDescrtiption)
+                    Text(sdvm.spiriteDetail?.ingredientDescrtiption ?? "")
                         .multilineTextAlignment(.leading)
                         .font(.system(.subheadline, design: .rounded).weight(.semibold))
                 }
             }
         }
+        .onAppear {
+            sdvm.getSpiritDetails(spiritName: spiritName)
+        }
     }
 }
 
 #Preview {
-    var previewSpiritDetail: Ingredients {
+    var previewSpiritDetail: String {
         let spirit = try! StaticJsonMapper.decode(file: "IngredientDetailStaticJSON", type: Ingredients.self)
         print("Spirit :\(spirit)")
 
-        return spirit
+        return spirit.ingredients.first?.ingredientName ?? ""
     }
 
-    return AlcoholDetailView(spiritDetail: previewSpiritDetail.ingredients.first!)
+    return AlcoholDetailView(spiritName: previewSpiritDetail)
 }
