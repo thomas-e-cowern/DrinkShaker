@@ -44,10 +44,6 @@ final class HomeViewModel: ObservableObject {
                 UserDefaults.standard.set(date, forKey: "spiritDate")
             }
         }
-        
-        
-        
-        
     }
 }
 
