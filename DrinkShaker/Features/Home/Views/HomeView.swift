@@ -57,6 +57,7 @@ struct HomeView: View {
                 do {
                     
                     hvm.getSpiritOfTheDay()
+                    print(hvm.spiritOfTheDay as Any)
                     
                     let res = try StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
                     
