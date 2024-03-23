@@ -34,8 +34,13 @@ final class HomeViewModel: ObservableObject {
         if let storedSpiritOfTheDay = storedSpiritOfTheDay {
             print("storedSpiritOfTheDay: ", storedSpiritOfTheDay)
             // 3. If there is, we need check to see if it is todays spirit
-            if Calendar.current.isDateInToday(date) {
+            if Calendar.current.isDate(date, equalTo: storedSpiritDate as! Date, toGranularity: .day) {
                 // 4. If it is, spirit of the day stays the same
+                let dateTest = Calendar.current.isDate(date, equalTo: storedSpiritDate as! Date, toGranularity: .day)
+                print("Date test: ", dateTest)
+                print("Date: ", date)
+                print("Stored date", storedSpiritDate ?? "No date")
+                print("Date check: ", Calendar.current.isDateInToday(date))
                 spiritOfTheDayName = storedSpiritOfTheDay
             } else {
                 // 5. If it is not, get a new random spirit and save
