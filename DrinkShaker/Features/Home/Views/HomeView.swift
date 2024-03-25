@@ -53,14 +53,17 @@ struct HomeView: View {
                 
             }
             .onAppear {
+                
+                hvm.getDrinkOfTheDay()
+                
                 // 1. Get spirit of the day
                 hvm.getSpiritOfTheDay()
                 
-                // 2. Get list of popular drinks
-                hvm.getPopularDrinks()
-                
-                // 3. Get list of newest drinks
-                hvm.getNewestDrinks()
+//                // 2. Get list of popular drinks
+//                hvm.getPopularDrinks()
+//                
+//                // 3. Get list of newest drinks
+//                hvm.getNewestDrinks()
             }
         }
     }
@@ -76,7 +79,7 @@ private extension HomeView {
             Text("Drink of the day....")
                 .font(.largeTitle)
             
-            if let drinkOfDay = drinkOfDay {
+            if let drinkOfDay = hvm.drinkOfTheDayName {
                 DrinkCardView(drink: drinkOfDay)
                     .frame(width: 200)
             }
