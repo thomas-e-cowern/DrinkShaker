@@ -53,19 +53,14 @@ struct HomeView: View {
                 
             }
             .onAppear {
-                do {
-                    hvm.getSpiritOfTheDay()
-                    
-                    hvm.getPopularDrinks()
-                    
-                    let res = try StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
-                    
-                    drinks = res.drinks
-                    drinkOfDay = res.drinks.randomElement()
+                // 1. Get spirit of the day
+                hvm.getSpiritOfTheDay()
                 
-                } catch {
-                    print(error)
-                }
+                // 2. Get list of popular drinks
+                hvm.getPopularDrinks()
+                
+                // 3. Get list of newest drinks
+                hvm.getNewestDrinks()
             }
         }
     }
@@ -115,7 +110,7 @@ private extension HomeView {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
-                    ForEach(drinks) { drink in
+                    ForEach(hvm.newestDrinks) { drink in
                         NavigationLink {
                             DrinkDetailView(drink: drink)
                         } label: {
@@ -138,7 +133,6 @@ private extension HomeView {
             HStack(spacing: 10) {
                 if let spirit = hvm.spiritOfTheDayName {
                     NavigationLink {
-                        // MARK: TODO - Add nav to alcohol detail view
                         SpiritDetailView(spiritName: spirit)
                     } label: {
                         SpiritView(alcohol: spirit)

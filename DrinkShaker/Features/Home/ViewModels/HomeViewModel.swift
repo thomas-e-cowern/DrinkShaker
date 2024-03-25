@@ -12,6 +12,7 @@ final class HomeViewModel: ObservableObject {
     
     @Published private(set) var spiritOfTheDayName: String?
     @Published private(set) var popularDrinks: [Drink] = []
+    @Published private(set) var newestDrinks: [Drink] = []
     private var date: Date = Date.now
     
     
@@ -57,11 +58,14 @@ final class HomeViewModel: ObservableObject {
     }
     
     func getPopularDrinks() {
-        
+        // 1. Get the api key from config file
         if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
+            
+            // 2. Make the network request
             NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/\(apiKey)/popular.php", type: CocktailDBAPIResponse.self) { res in
                 DispatchQueue.main.async {
                     switch res {
+                        // 3. update the array with the data
                     case .success(let data):
                         self.popularDrinks = data.drinks
                         print("Popular drinks", self.popularDrinks)
@@ -73,8 +77,28 @@ final class HomeViewModel: ObservableObject {
         } else {
             print("Something went wrong")
         }
-        
-        
+    }
+    
+    func getNewestDrinks() {
+        // 1. Get the api key from config file
+        if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
+            
+            // 2. Make the network request
+            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/\(apiKey)/latest.php", type: CocktailDBAPIResponse.self) { res in
+                DispatchQueue.main.async {
+                    switch res {
+                        // 3. update the array with the data
+                    case .success(let data):
+                        self.newestDrinks = data.drinks
+                        print("Newest drinks", self.newestDrinks)
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            }
+        } else {
+            print("Something went wrong")
+        }
     }
 }
 

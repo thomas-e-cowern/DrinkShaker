@@ -11,7 +11,7 @@ struct HeaderView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 0)
-                .foregroundStyle(.carmine)
+                .foregroundStyle(.dodgerBlue)
 //                .rotationEffect(Angle(degrees: 15))
             
             VStack {
