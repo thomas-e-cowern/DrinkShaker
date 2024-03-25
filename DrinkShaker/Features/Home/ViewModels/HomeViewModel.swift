@@ -58,6 +58,23 @@ final class HomeViewModel: ObservableObject {
     
     func getPopularDrinks() {
         
+        if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
+            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/\(apiKey)/popular.php", type: CocktailDBAPIResponse.self) { res in
+                DispatchQueue.main.async {
+                    switch res {
+                    case .success(let data):
+                        self.popularDrinks = data.drinks
+                        print("Popular drinks", self.popularDrinks)
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            }
+        } else {
+            print("Something went wrong")
+        }
+        
+        
     }
 }
 

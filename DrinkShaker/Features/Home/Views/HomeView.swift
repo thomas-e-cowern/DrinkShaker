@@ -56,6 +56,8 @@ struct HomeView: View {
                 do {
                     hvm.getSpiritOfTheDay()
                     
+                    hvm.getPopularDrinks()
+                    
                     let res = try StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
                     
                     drinks = res.drinks
@@ -93,7 +95,7 @@ private extension HomeView {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
-                    ForEach(drinks) { drink in
+                    ForEach(hvm.popularDrinks) { drink in
                         NavigationLink {
                             DrinkDetailView(drink: drink)
                         } label: {
