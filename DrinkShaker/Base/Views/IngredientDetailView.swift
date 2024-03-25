@@ -40,9 +40,12 @@ struct IngredientDetailView: View {
                         .padding(.vertical)
                     }
                     
-                    Text(ingredient.ingredientDescrtiption)
-                        .multilineTextAlignment(.leading)
-                        .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                    if let ingeredientDescription = ingredient.ingredientDescrtiption {
+                        Text(ingeredientDescription)
+                            .multilineTextAlignment(.leading)
+                            .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                    }
+                    
                     
                     
                 }

@@ -23,7 +23,7 @@ struct Ingredients: Codable {
 struct Ingredient: Codable {
     let id: String
     let ingredientName: String
-    let ingredientDescrtiption: String
+    let ingredientDescrtiption: String?
     let ingredientType: String
     let ingredientContainsAlcohol: String
     let alcoholByVolume: String?
