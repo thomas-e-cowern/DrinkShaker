@@ -79,7 +79,7 @@ private extension HomeView {
             Text("Drink of the day....")
                 .font(.largeTitle)
             
-            if let drinkOfDay = hvm.drinkOfTheDayName {
+            if let drinkOfDay = drinkOfDay {
                 DrinkCardView(drink: drinkOfDay)
                     .frame(width: 200)
             }
