@@ -137,9 +137,9 @@ private extension HomeView {
                 if let spirit = hvm.spiritOfTheDayName {
                     NavigationLink {
                         // MARK: TODO - Add nav to alcohol detail view
-                        AlcoholDetailView(spiritName: spirit)
+                        SpiritDetailView(spiritName: spirit)
                     } label: {
-                        AlcoholView(alcohol: spirit)
+                        SpiritView(alcohol: spirit)
                     }
                 }
             }

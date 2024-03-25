@@ -15,12 +15,14 @@ final class SpiritDetailViewModel: ObservableObject {
         
         if let spiritName = spiritName {
             NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/1/search.php?i=\(spiritName)", type: Ingredients.self) { res in
-                switch res {
-                case .success(let data):
-                    self.spiriteDetail = data.ingredients.first
-                    print("SOTD: ", self.spiriteDetail ?? "No SOTD")
-                case .failure(let error):
-                    print(error)
+                DispatchQueue.main.async {
+                    switch res {
+                    case .success(let data):
+                        self.spiriteDetail = data.ingredients.first
+                        print("SOTD: ", self.spiriteDetail ?? "No SOTD")
+                    case .failure(let error):
+                        print(error)
+                    }
                 }
             }
         }

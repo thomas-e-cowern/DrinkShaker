@@ -11,7 +11,7 @@ import Foundation
 final class HomeViewModel: ObservableObject {
     
     @Published private(set) var spiritOfTheDayName: String?
-//    @Published private(set) var spiritOfTheDay: Ingredients?
+    @Published private(set) var popularDrinks: [Drink] = []
     private var date: Date = Date.now
     
     
@@ -54,6 +54,10 @@ final class HomeViewModel: ObservableObject {
             UserDefaults.standard.set(spiritOfTheDayName, forKey: "spiritOfTheDay")
             UserDefaults.standard.set(date, forKey: "spiritDate")
         }
+    }
+    
+    func getPopularDrinks() {
+        
     }
 }
 

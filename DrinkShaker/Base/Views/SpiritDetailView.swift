@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AlcoholDetailView: View {
+struct SpiritDetailView: View {
     
     var spiritName: String
     @StateObject private var sdvm = SpiritDetailViewModel()
@@ -42,9 +42,14 @@ struct AlcoholDetailView: View {
                     }
                     .padding(10)
                     
-                    Text(sdvm.spiriteDetail?.ingredientDescrtiption ?? "")
-                        .multilineTextAlignment(.leading)
-                        .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                    if let spiritDescription = sdvm.spiriteDetail?.ingredientDescrtiption {
+                        Text(spiritDescription)
+                            .multilineTextAlignment(.leading)
+                            .font(.system(.subheadline, design: .rounded).weight(.semibold))
+                    } else {
+                        Text("No Description Available")
+                    }
+                    
                 }
             }
         }
@@ -62,5 +67,5 @@ struct AlcoholDetailView: View {
         return spirit.ingredients.first?.ingredientName ?? ""
     }
 
-    return AlcoholDetailView(spiritName: previewSpiritDetail)
+    return SpiritDetailView(spiritName: previewSpiritDetail)
 }

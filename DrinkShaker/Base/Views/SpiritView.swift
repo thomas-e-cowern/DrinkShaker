@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AlcoholView: View {
+struct SpiritView: View {
     
     let alcohol: String?
     
@@ -37,5 +37,5 @@ struct AlcoholView: View {
 }
 
 #Preview {
-    AlcoholView(alcohol: "Vodka")
+    SpiritView(alcohol: "Vodka")
 }
