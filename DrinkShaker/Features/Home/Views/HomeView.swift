@@ -59,11 +59,11 @@ struct HomeView: View {
                 // 1. Get spirit of the day
                 hvm.getSpiritOfTheDay()
                 
-//                // 2. Get list of popular drinks
-//                hvm.getPopularDrinks()
-//                
-//                // 3. Get list of newest drinks
-//                hvm.getNewestDrinks()
+                // 2. Get list of popular drinks
+                hvm.getPopularDrinks()
+                
+                // 3. Get list of newest drinks
+                hvm.getNewestDrinks()
             }
         }
     }
