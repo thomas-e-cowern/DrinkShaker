@@ -27,6 +27,7 @@
 		4DCF55C32B7D234700FA570E /* DrinkDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCF55C22B7D234700FA570E /* DrinkDetailView.swift */; };
 		4DCF55C62B7D41F200FA570E /* DrinkCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCF55C52B7D41F100FA570E /* DrinkCardView.swift */; };
 		4DE2A9D12BB30BF00014BF90 /* PopularDrinksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2A9D02BB30BF00014BF90 /* PopularDrinksViewModel.swift */; };
+		4DE2A9D32BB33C1E0014BF90 /* NewestDrinksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2A9D22BB33C1E0014BF90 /* NewestDrinksViewModel.swift */; };
 		4DE552152B7BA10400C24C48 /* DrinkShakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE552142B7BA10400C24C48 /* DrinkShakerApp.swift */; };
 		4DE552172B7BA10400C24C48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE552162B7BA10400C24C48 /* ContentView.swift */; };
 		4DE552192B7BA10700C24C48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DE552182B7BA10700C24C48 /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		4DCF55C22B7D234700FA570E /* DrinkDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailView.swift; sourceTree = "<group>"; };
 		4DCF55C52B7D41F100FA570E /* DrinkCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkCardView.swift; sourceTree = "<group>"; };
 		4DE2A9D02BB30BF00014BF90 /* PopularDrinksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularDrinksViewModel.swift; sourceTree = "<group>"; };
+		4DE2A9D22BB33C1E0014BF90 /* NewestDrinksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewestDrinksViewModel.swift; sourceTree = "<group>"; };
 		4DE552112B7BA10400C24C48 /* DrinkShaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinkShaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE552142B7BA10400C24C48 /* DrinkShakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkShakerApp.swift; sourceTree = "<group>"; };
 		4DE552162B7BA10400C24C48 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				4D1385352BAC7F3000F57FF3 /* HomeViewModel.swift */,
 				4DB8F3682BAE06A4007FFB0D /* SpiritDetailViewModel.swift */,
 				4DE2A9D02BB30BF00014BF90 /* PopularDrinksViewModel.swift */,
+				4DE2A9D22BB33C1E0014BF90 /* NewestDrinksViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				4DCF55C32B7D234700FA570E /* DrinkDetailView.swift in Sources */,
 				4DCF55C12B7CFEC300FA570E /* SearchView.swift in Sources */,
 				4D74EAF02BB1EE2400201F79 /* Endpoints.swift in Sources */,
+				4DE2A9D32BB33C1E0014BF90 /* NewestDrinksViewModel.swift in Sources */,
 				4DB8F3692BAE06A4007FFB0D /* SpiritDetailViewModel.swift in Sources */,
 				4D55B8822B7E6D8F002F888D /* DrinkInfoView.swift in Sources */,
 				4D55B8872B7FB1D2002F888D /* Utilities.swift in Sources */,

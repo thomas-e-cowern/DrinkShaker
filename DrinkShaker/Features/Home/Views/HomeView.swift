@@ -13,6 +13,7 @@ struct HomeView: View {
     
     @StateObject private var hvm = HomeViewModel()
     @StateObject private var pdvm = PopularDrinksViewModel()
+    @StateObject private var ndvm = NewestDrinksViewModel()
     
     var body: some View {
         NavigationStack {
@@ -51,16 +52,17 @@ struct HomeView: View {
             }
             .onAppear {
                 
-//                hvm.getDrinkOfTheDay()
+                hvm.getDrinkOfTheDay()
                 
                 // 1. Get spirit of the day
                 hvm.getSpiritOfTheDay()
                 
                 // 2. Get list of popular drinks
-                pdvm.getPopularDrinks()
+//                pdvm.getPopularDrinks()
                 
                 // 3. Get list of newest drinks
-//                hvm.getNewestDrinks()
+//                ndvm.getNewestDrinks()
+                
             }
         }
     }
@@ -73,13 +75,19 @@ struct HomeView: View {
 private extension HomeView {
     var drinkOfTheDay: some View {
         VStack {
-            Text("Drink of the day....")
+            Text("Drink of the day...")
                 .font(.largeTitle)
-            
-            if let drinkOfDay = drinkOfDay {
-                DrinkCardView(drink: drinkOfDay)
-                    .frame(width: 200)
+
+            HStack(spacing: 10) {
+                if let drink = hvm.drinkOfTheDay {
+                    NavigationLink {
+                        DrinkDetailView(drink: drink)
+                    } label: {
+                        DrinkCardView(drink: drink)
+                    }
+                }
             }
+            .frame(width: UIScreen.main.bounds.width)
         }
     }
     
@@ -114,7 +122,7 @@ private extension HomeView {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
-                    ForEach(hvm.newestDrinks) { drink in
+                    ForEach(ndvm.newestDrinks) { drink in
                         NavigationLink {
                             DrinkDetailView(drink: drink)
                         } label: {
