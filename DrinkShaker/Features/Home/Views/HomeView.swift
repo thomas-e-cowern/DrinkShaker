@@ -59,10 +59,7 @@ struct HomeView: View {
                 hvm.getPopularDrinks()
                 
                 // 3. Get list of newest drinks
-                hvm.getNewestDrinks()
-            }
-            .alert(isPresented: $hvm.hasError, error: hvm.error) {
-                Button("Ok") { }
+//                hvm.getNewestDrinks()
             }
         }
     }
@@ -90,18 +87,22 @@ private extension HomeView {
             Text("Popular drinks...")
                 .font(.largeTitle)
             
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 10) {
-                    ForEach(hvm.popularDrinks) { drink in
-                        NavigationLink {
-                            DrinkDetailView(drink: drink)
-                        } label: {
-                            DrinkCardView(drink: drink)
+            if hvm.hasError {
+                Text(hvm.error?.localizedDescription ?? "Something went wrong")
+            } else {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        ForEach(hvm.popularDrinks) { drink in
+                            NavigationLink {
+                                DrinkDetailView(drink: drink)
+                            } label: {
+                                DrinkCardView(drink: drink)
+                            }
                         }
                     }
                 }
+                .frame(width: UIScreen.main.bounds.width)
             }
-            .frame(width: UIScreen.main.bounds.width)
         }
     }
     

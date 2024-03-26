@@ -18,7 +18,7 @@ final class NetworkingManager {
     func request<T: Codable>(_ absoluteURL: String, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         
         guard let url = URL(string: absoluteURL) else {
-            completion(.failure(NetworkingError.invaludUrl))
+            completion(.failure(NetworkingError.invalidUrl))
             return
         }
         
@@ -58,10 +58,27 @@ final class NetworkingManager {
 
 extension NetworkingManager {
     enum NetworkingError: LocalizedError {
-        case invaludUrl
+        case invalidUrl
         case custom(error: Error)
         case invalidStatusCode(statusCode: Int)
         case invalidData
         case failedToDecode(error: Error)
+    }
+}
+
+extension NetworkingManager.NetworkingError {
+    var errorDescription: String? {
+        switch self {
+        case .invalidUrl:
+            return "The URL is invalid"
+        case .invalidStatusCode:
+            return "Status code falls into the wrong range"
+        case .invalidData:
+            return "Response data is invalid"
+        case .failedToDecode:
+            return "Failed to decode data"
+        case .custom(let error):
+            return "Something went wrong \(error.localizedDescription)"
+        }
     }
 }
