@@ -16,7 +16,7 @@ struct SpiritDetailView: View {
         ZStack {
             Form {
                 ScrollView {
-                    Text(sdvm.spiriteDetail?.ingredientName ?? "")
+                    Text(sdvm.spiritDetail?.ingredientName ?? "")
                         .padding([.top, .bottom], 10)
                         .font(.title)
                         .foregroundStyle(.white)
@@ -24,11 +24,11 @@ struct SpiritDetailView: View {
                         .frame(maxWidth: .infinity)
                         .background(Theme.dodgerBlue)
                     
-                    if (sdvm.spiriteDetail?.alcoholByVolume != nil) {
+                    if (sdvm.spiritDetail?.alcoholByVolume != nil) {
                         VStack(spacing: 10) {
                             HStack {
                                 Text("Alcohol by Volume")
-                                Text((sdvm.spiriteDetail?.alcoholByVolume ?? "0") + "%")
+                                Text((sdvm.spiritDetail?.alcoholByVolume ?? "0") + "%")
                             }
                         }
                         
@@ -37,12 +37,12 @@ struct SpiritDetailView: View {
 
                     HStack {
                         Text("Contains Alcohol")
-                        Image(systemName: sdvm.spiriteDetail?.ingredientContainsAlcohol == "Yes" ? "checkmark.seal.fill" : "x.circle.fill")
-                            .foregroundStyle(sdvm.spiriteDetail?.ingredientContainsAlcohol == "Yes" ? Color.green : Color.red)
+                        Image(systemName: sdvm.spiritDetail?.ingredientContainsAlcohol == "Yes" ? "checkmark.seal.fill" : "x.circle.fill")
+                            .foregroundStyle(sdvm.spiritDetail?.ingredientContainsAlcohol == "Yes" ? Color.green : Color.red)
                     }
                     .padding(10)
                     
-                    if let spiritDescription = sdvm.spiriteDetail?.ingredientDescrtiption {
+                    if let spiritDescription = sdvm.spiritDetail?.ingredientDescrtiption {
                         Text(spiritDescription)
                             .multilineTextAlignment(.leading)
                             .font(.system(.subheadline, design: .rounded).weight(.semibold))

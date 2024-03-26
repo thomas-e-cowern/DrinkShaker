@@ -13,7 +13,6 @@ final class HomeViewModel: ObservableObject {
     @Published private(set) var spiritOfTheDayName: String?
     @Published private(set) var drinkOfTheDayName: String?
     @Published private(set) var drinkOfTheDay: Drink?
-    @Published private(set) var popularDrinks: [Drink] = []
     @Published private(set) var newestDrinks: [Drink] = []
     @Published private(set) var randomDrink: [Drink] = []
     
@@ -138,7 +137,7 @@ final class HomeViewModel: ObservableObject {
         if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
             
             // 2. Make the network request
-            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/\(apiKey)/latest.php", type: CocktailDBAPIResponse.self) { [weak self] res in
+            NetworkingManager.shared.request(.newestDrinks(apiKey: apiKey), type: CocktailDBAPIResponse.self) { [weak self] res in
                 DispatchQueue.main.async {
                     switch res {
                         // 3. update the array with the data
@@ -162,7 +161,7 @@ final class HomeViewModel: ObservableObject {
         if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
             
             // 2. Make the network request
-            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/\(apiKey)/random.php", type: CocktailDBAPIResponse.self) { [weak self] res in
+            NetworkingManager.shared.request(.randomDrink(apiKey: apiKey), type: CocktailDBAPIResponse.self) { [weak self] res in
                 DispatchQueue.main.async {
                     switch res {
                         // 3. update the array with the data

@@ -51,7 +51,7 @@ struct HomeView: View {
             }
             .onAppear {
                 
-                hvm.getDrinkOfTheDay()
+//                hvm.getDrinkOfTheDay()
                 
                 // 1. Get spirit of the day
                 hvm.getSpiritOfTheDay()

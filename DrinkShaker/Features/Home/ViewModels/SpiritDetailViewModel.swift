@@ -9,19 +9,23 @@ import Foundation
 
 final class SpiritDetailViewModel: ObservableObject {
     
-    @Published var spiriteDetail: Ingredient?
+    @Published var spiritDetail: Ingredient?
     
     func getSpiritDetails(spiritName: String?) {
-        
-        if let spiritName = spiritName {
-            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/1/search.php?i=\(spiritName)", type: Ingredients.self) { res in
-                DispatchQueue.main.async {
-                    switch res {
-                    case .success(let data):
-                        self.spiriteDetail = data.ingredients.first
-                        print("SOTD: ", self.spiriteDetail ?? "No SOTD")
-                    case .failure(let error):
-                        print(error)
+        // 1. Get the api key from config file
+        if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
+            
+            
+            if let spiritName = spiritName {
+                NetworkingManager.shared.request(.spiritDetail(apiKey: apiKey, searchTerm: spiritName), type: Ingredients.self) { res in
+                    DispatchQueue.main.async {
+                        switch res {
+                        case .success(let data):
+                            self.spiritDetail = data.ingredients.first
+                            print("SOTD: ", self.spiritDetail ?? "No SOTD")
+                        case .failure(let error):
+                            print(error)
+                        }
                     }
                 }
             }

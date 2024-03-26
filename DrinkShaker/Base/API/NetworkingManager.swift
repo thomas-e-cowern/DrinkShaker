@@ -15,14 +15,9 @@ final class NetworkingManager {
         
     }
     
-    func request<T: Codable>(_ absoluteURL: String, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
+    func request<T: Codable>(_ endpoint: Endpoints, type: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         
-        guard let url = URL(string: absoluteURL) else {
-            completion(.failure(NetworkingError.invalidUrl))
-            return
-        }
-        
-        let request = URLRequest(url: url)
+        let request = endpoint.url
         
         let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
             print("In dataTask")
@@ -54,6 +49,29 @@ final class NetworkingManager {
         dataTask.resume()
         
     }
+    
+    func request(_ endpoint: Endpoints, completion: @escaping (Result<Void, Error>) -> Void) {
+        
+        let request = endpoint.url
+        
+        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+            print("In dataTask")
+            // Check for errors
+            if error != nil {
+                completion(.failure(NetworkingError.custom(error: error!)))
+            }
+            // Check the response status code
+            guard let response = response as? HTTPURLResponse, (200...300) ~= response.statusCode else {
+                let statusCode = (response as! HTTPURLResponse).statusCode
+                completion(.failure(NetworkingError.invalidStatusCode(statusCode: statusCode)))
+                return
+            }
+           
+            completion(.success(()))
+        }
+        
+        dataTask.resume()
+    }
 }
 
 extension NetworkingManager {
@@ -82,3 +100,4 @@ extension NetworkingManager.NetworkingError {
         }
     }
 }
+
