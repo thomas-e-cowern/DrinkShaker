@@ -10,10 +10,6 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var drinkOfDay: Drink?
-    @State private var ingredientOfDay: String?
-    @State private var drinks: [Drink] = []
-    @State private var ingredients: [IngredientName] = []
-    @State var spirit: String?
     
     @StateObject private var hvm = HomeViewModel()
     
@@ -64,6 +60,9 @@ struct HomeView: View {
                 
                 // 3. Get list of newest drinks
                 hvm.getNewestDrinks()
+            }
+            .alert(isPresented: $hvm.hasError, error: hvm.error) {
+                Button("Ok") { }
             }
         }
     }

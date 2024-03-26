@@ -57,7 +57,7 @@ final class NetworkingManager {
 }
 
 extension NetworkingManager {
-    enum NetworkingError: Error {
+    enum NetworkingError: LocalizedError {
         case invaludUrl
         case custom(error: Error)
         case invalidStatusCode(statusCode: Int)

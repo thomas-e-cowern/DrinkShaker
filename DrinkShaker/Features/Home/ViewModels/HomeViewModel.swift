@@ -16,6 +16,10 @@ final class HomeViewModel: ObservableObject {
     @Published private(set) var popularDrinks: [Drink] = []
     @Published private(set) var newestDrinks: [Drink] = []
     @Published private(set) var randomDrink: [Drink] = []
+    
+    @Published private(set) var error: NetworkingManager.NetworkingError?
+    @Published var hasError = false
+    
     private var date: Date = Date.now
     
     
@@ -134,15 +138,17 @@ final class HomeViewModel: ObservableObject {
         if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
             
             // 2. Make the network request
-            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/\(apiKey)/popular.php", type: CocktailDBAPIResponse.self) { res in
+            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/\(apiKey)/popular1.php", type: CocktailDBAPIResponse.self) { [weak self] res in
                 DispatchQueue.main.async {
                     switch res {
                         // 3. update the array with the data
                     case .success(let data):
-                        self.popularDrinks = data.drinks
-                        print("Popular drinks", self.popularDrinks)
+                        self?.popularDrinks = data.drinks
+                        print("Popular drinks", self?.popularDrinks ?? "No popular drinks")
                     case .failure(let error):
                         print(error)
+                        self?.hasError = true
+                        self?.error = error as? NetworkingManager.NetworkingError
                     }
                 }
             }
@@ -156,15 +162,17 @@ final class HomeViewModel: ObservableObject {
         if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
             
             // 2. Make the network request
-            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/\(apiKey)/latest.php", type: CocktailDBAPIResponse.self) { res in
+            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/\(apiKey)/latest.php", type: CocktailDBAPIResponse.self) { [weak self] res in
                 DispatchQueue.main.async {
                     switch res {
                         // 3. update the array with the data
                     case .success(let data):
-                        self.newestDrinks = data.drinks
-                        print("Newest drinks", self.newestDrinks)
+                        self?.newestDrinks = data.drinks
+                        print("Newest drinks", self?.newestDrinks ?? "No new drinks")
                     case .failure(let error):
                         print(error)
+                        self?.hasError = true
+                        self?.error = error as? NetworkingManager.NetworkingError
                     }
                 }
             }
@@ -178,15 +186,17 @@ final class HomeViewModel: ObservableObject {
         if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
             
             // 2. Make the network request
-            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/\(apiKey)/random.php", type: CocktailDBAPIResponse.self) { res in
+            NetworkingManager.shared.request("https://www.thecocktaildb.com/api/json/v2/\(apiKey)/random.php", type: CocktailDBAPIResponse.self) { [weak self] res in
                 DispatchQueue.main.async {
                     switch res {
                         // 3. update the array with the data
                     case .success(let data):
-                        self.randomDrink = data.drinks
-                        print("Random drink", self.randomDrink)
+                        self?.randomDrink = data.drinks
+                        print("Random drink", self?.randomDrink ?? "No random drink")
                     case .failure(let error):
                         print(error)
+                        self?.hasError = true
+                        self?.error = error as? NetworkingManager.NetworkingError
                     }
                 }
             }
