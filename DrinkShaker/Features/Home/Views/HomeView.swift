@@ -12,6 +12,7 @@ struct HomeView: View {
     @State private var drinkOfDay: Drink?
     
     @StateObject private var hvm = HomeViewModel()
+    @StateObject private var pdvm = PopularDrinksViewModel()
     
     var body: some View {
         NavigationStack {
@@ -56,7 +57,7 @@ struct HomeView: View {
                 hvm.getSpiritOfTheDay()
                 
                 // 2. Get list of popular drinks
-                hvm.getPopularDrinks()
+                pdvm.getPopularDrinks()
                 
                 // 3. Get list of newest drinks
 //                hvm.getNewestDrinks()
@@ -87,12 +88,12 @@ private extension HomeView {
             Text("Popular drinks...")
                 .font(.largeTitle)
             
-            if hvm.hasError {
-                Text(hvm.error?.localizedDescription ?? "Something went wrong")
+            if pdvm.hasError {
+                Text(pdvm.error?.localizedDescription ?? "Something went wrong")
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 10) {
-                        ForEach(hvm.popularDrinks) { drink in
+                        ForEach(pdvm.popularDrinks) { drink in
                             NavigationLink {
                                 DrinkDetailView(drink: drink)
                             } label: {
