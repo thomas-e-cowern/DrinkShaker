@@ -51,7 +51,7 @@ struct HomeView: View {
                 
             }
             .task {
-                await hvm.getRandomDrink()
+                await hvm.getDrinkOfTheDay()
             }
             .onAppear {
                 
@@ -80,31 +80,11 @@ private extension HomeView {
                 .font(.largeTitle)
 
             HStack(spacing: 10) {
-                if let drink = hvm.drinkOfTheDayName {
+                if let drink = hvm.drinkOfTheDay {
                     NavigationLink {
-                        DrinkOfTheDayDetailView(drinkName: drink)
+                        DrinkDetailView(drink: drink)
                     } label: {
-
-                            VStack {
-                                Text(drink)
-                                    .padding([.top, .bottom], 10)
-                                    .font(.callout)
-                                    .foregroundStyle(.white)
-                                    .font(.system(.body, design: .rounded))
-                                    .frame(maxWidth: .infinity)
-                                    .background(Theme.dodgerBlue)
-                                
-                                AsyncImage(url: URL(string: "https://www.thecocktaildb.com/images/ingredients/\(drink)-Medium.png")) { image in
-                                    image
-                                        .resizable()
-                                        .scaledToFit()
-                                        
-                                } placeholder: {
-                                    ProgressView()
-                                }
-                            }
-                            .frame(width: 200)
-
+                        DrinkCardView(drink: drink)
                     }
                 }
             }

@@ -18,7 +18,7 @@ final class NetworkingManager {
     func request<T: Codable>(_ endpoint: Endpoints, type: T.Type) async throws -> T {
         
         let request = URLRequest(url: endpoint.url)
-        print("Request: \(request)")
+//        print("Request: \(request)")
         
         let (data, response) = try await URLSession.shared.data(for: request)
 
@@ -30,7 +30,7 @@ final class NetworkingManager {
 
         let decoder = JSONDecoder()
         let decodedData = try decoder.decode(T.self, from: data)
-        print("res: \(decodedData)")
+//        print("res: \(decodedData)")
         return decodedData
                 
     }

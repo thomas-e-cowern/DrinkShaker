@@ -110,8 +110,8 @@ private extension DrinkDetailView {
             Text("Alcohol:")
                 .font(.system(.body, design: .rounded).weight(.semibold))
             
-            Image(systemName: drink.alcohol == "Alcoholic" ? "checkmark.seal.fill" : "x.circle.fill")
-                .foregroundStyle(drink.alcohol == "Alcoholic" ? Color.green : Color.red)
+            Image(systemName: drink.alcohol == "Alcoholic" || drink.alcohol == "Optional alcohol" ? "checkmark.seal.fill" : "x.circle.fill")
+                .foregroundStyle(drink.alcohol == "Alcoholic" || drink.alcohol == "Optional alcohol" ? Color.green : Color.red)
         }
     }
     
