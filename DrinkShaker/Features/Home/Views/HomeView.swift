@@ -58,10 +58,10 @@ struct HomeView: View {
                 hvm.getSpiritOfTheDay()
                 
                 // 2. Get list of popular drinks
-//                pdvm.getPopularDrinks()
+                pdvm.getPopularDrinks()
                 
                 // 3. Get list of newest drinks
-//                ndvm.getNewestDrinks()
+                ndvm.getNewestDrinks()
                 
             }
         }
@@ -79,11 +79,31 @@ private extension HomeView {
                 .font(.largeTitle)
 
             HStack(spacing: 10) {
-                if let drink = hvm.drinkOfTheDay {
+                if let drink = hvm.drinkOfTheDayName {
                     NavigationLink {
-                        DrinkDetailView(drink: drink)
+                        DrinkOfTheDayDetailView(drinkName: drink)
                     } label: {
-                        DrinkCardView(drink: drink)
+
+                            VStack {
+                                Text(drink)
+                                    .padding([.top, .bottom], 10)
+                                    .font(.callout)
+                                    .foregroundStyle(.white)
+                                    .font(.system(.body, design: .rounded))
+                                    .frame(maxWidth: .infinity)
+                                    .background(Theme.dodgerBlue)
+                                
+                                AsyncImage(url: URL(string: "https://www.thecocktaildb.com/images/ingredients/\(drink)-Medium.png")) { image in
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                        
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                            }
+                            .frame(width: 200)
+
                     }
                 }
             }

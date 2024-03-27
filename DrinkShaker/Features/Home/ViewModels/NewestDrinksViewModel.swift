@@ -26,7 +26,7 @@ final class NewestDrinksViewModel: ObservableObject {
                         // 3. update the array with the data
                     case .success(let data):
                         self?.newestDrinks = data.drinks
-                        print("Popular drinks", self?.newestDrinks ?? "No new drinks")
+//                        print("Popular drinks", self?.newestDrinks ?? "No new drinks")
                     case .failure(let error):
                         print(error)
                         self?.hasError = true

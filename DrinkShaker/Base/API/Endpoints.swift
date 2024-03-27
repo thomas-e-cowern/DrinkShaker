@@ -12,6 +12,7 @@ enum Endpoints {
     case newestDrinks(apiKey: String)
     case randomDrink(apiKey: String)
     case spiritDetail(apiKey: String, searchTerm: String)
+    case drinkOfTheDayDetail(apiKey: String, searchTerm: String)
 }
 
 extension Endpoints {
@@ -24,6 +25,8 @@ extension Endpoints {
         case .randomDrink(let apiKey):
             return URL(string: "https://www.thecocktaildb.com/api/json/v2/\(apiKey)/random.php")!
         case .spiritDetail(let apiKey, let searchTerm):
+            return URL(string: "https://www.thecocktaildb.com/api/json/v2/\(apiKey)/search.php?i=\(searchTerm)")!
+        case .drinkOfTheDayDetail(let apiKey, let searchTerm):
             return URL(string: "https://www.thecocktaildb.com/api/json/v2/\(apiKey)/search.php?i=\(searchTerm)")!
         }
     }

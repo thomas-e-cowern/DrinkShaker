@@ -17,12 +17,12 @@ final class SpiritDetailViewModel: ObservableObject {
             
             
             if let spiritName = spiritName {
-                NetworkingManager.shared.request(.spiritDetail(apiKey: apiKey, searchTerm: spiritName), type: Ingredients.self) { res in
+                NetworkingManager.shared.request(.spiritDetail(apiKey: apiKey, searchTerm: spiritName), type: Ingredients.self) { [weak self] res in
                     DispatchQueue.main.async {
                         switch res {
                         case .success(let data):
-                            self.spiritDetail = data.ingredients.first
-                            print("SOTD: ", self.spiritDetail ?? "No SOTD")
+                            self?.spiritDetail = data.ingredients.first
+//                            print("SOTD: ", self?.spiritDetail ?? "No SOTD")
                         case .failure(let error):
                             print(error)
                         }

@@ -11,7 +11,7 @@ import Foundation
 final class HomeViewModel: ObservableObject {
     
     @Published private(set) var spiritOfTheDayName: String?
-    @Published private(set) var drinkOfTheDay: Drink?
+    @Published private(set) var drinkOfTheDayName: String?
     @Published private(set) var randomDrink: [Drink] = []
     
     @Published private(set) var error: NetworkingManager.NetworkingError?
@@ -62,27 +62,58 @@ final class HomeViewModel: ObservableObject {
     }
     
     func getDrinkOfTheDay() {
-//        clearUserData()
-        // Get a random drink
-        if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
-            
-            // 2. Make the network request
-            NetworkingManager.shared.request(.randomDrink(apiKey: apiKey), type: CocktailDBAPIResponse.self) { [weak self] res in
-                DispatchQueue.main.async {
-                    switch res {
-                        // 3. update the array with the data
-                    case .success(let data):
-                        self?.randomDrink = data.drinks
-                        print("Random drink", self?.randomDrink ?? "No random drink")
-                    case .failure(let error):
-                        print(error)
-                        self?.hasError = true
-                        self?.error = error as? NetworkingManager.NetworkingError
-                    }
-                }
+
+        let storedDrinkOfTheDay = UserDefaults.standard.string(forKey: "DrinkOfTheDay")
+        let storedDrinkDate = UserDefaults.standard.object(forKey: "DrinkDate")
+        
+        if let storedDrinkOfTheDay = storedDrinkOfTheDay {
+            if Calendar.current.isDate(date, equalTo: storedDrinkDate as! Date, toGranularity: .day) {
+                drinkOfTheDayName = storedDrinkOfTheDay
             }
         } else {
-            print("Something went wrong getting a random drink")
+            if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
+                
+                // 2. Make the network request
+                NetworkingManager.shared.request(.randomDrink(apiKey: apiKey), type: CocktailDBAPIResponse.self) { [weak self] res in
+                    DispatchQueue.main.async {
+                        switch res {
+                            // 3. update the array with the data
+                        case .success(let data):
+                            self?.drinkOfTheDayName = data.drinks.first?.name
+    //                        print("Random drink", self?.randomDrink ?? "No random drink")
+                        case .failure(let error):
+                            print(error)
+                            self?.hasError = true
+                            self?.error = error as? NetworkingManager.NetworkingError
+                        }
+                    }
+                }
+                
+                UserDefaults.standard.set(drinkOfTheDayName, forKey: "drinkOfTheDay")
+                UserDefaults.standard.set(date, forKey: "drinkDate")
+            } else {
+                if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
+                    
+                    // 2. Make the network request
+                    NetworkingManager.shared.request(.randomDrink(apiKey: apiKey), type: CocktailDBAPIResponse.self) { [weak self] res in
+                        DispatchQueue.main.async {
+                            switch res {
+                                // 3. update the array with the data
+                            case .success(let data):
+                                self?.drinkOfTheDayName = data.drinks.first?.name
+                                //                        print("Random drink", self?.randomDrink ?? "No random drink")
+                            case .failure(let error):
+                                print(error)
+                                self?.hasError = true
+                                self?.error = error as? NetworkingManager.NetworkingError
+                            }
+                        }
+                    }
+                    
+                    UserDefaults.standard.set(drinkOfTheDayName, forKey: "drinkOfTheDay")
+                    UserDefaults.standard.set(date, forKey: "drinkDate")
+                }
+            }
         }
        
         func clearUserData() {
@@ -92,9 +123,10 @@ final class HomeViewModel: ObservableObject {
         }
     }
         
-    func getRandomDrink() {
+    func getRandomDrink() -> String {
         // 1. Get the api key from config file
-//        print("Inside random drink")
+        var drinkOfTheDayName: String?
+        
         if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
             
             // 2. Make the network request
@@ -104,6 +136,7 @@ final class HomeViewModel: ObservableObject {
                         // 3. update the array with the data
                     case .success(let data):
                         self?.randomDrink = data.drinks
+                        drinkOfTheDayName = data.drinks.first?.name
 //                        print("Random drink", self?.randomDrink ?? "No random drink")
                     case .failure(let error):
                         print(error)
@@ -115,6 +148,12 @@ final class HomeViewModel: ObservableObject {
         } else {
             print("Something went wrong getting a random drink")
         }
+        
+        if let drinkOfTheDayName = drinkOfTheDayName {
+            return drinkOfTheDayName
+        }
+        
+        return ""
     }
 }
 
