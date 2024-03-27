@@ -21,20 +21,20 @@ final class PopularDrinksViewModel: ObservableObject {
         if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
             
             // 2. Make the network request
-            NetworkingManager.shared.request(.popularDrinks(apiKey: apiKey), type: CocktailDBAPIResponse.self) { [weak self] res in
-                DispatchQueue.main.async {
-                    switch res {
-                        // 3. update the array with the data
-                    case .success(let data):
-                        self?.popularDrinks = data.drinks
-//                        print("Popular drinks", self?.popularDrinks ?? "No popular drinks")
-                    case .failure(let error):
-                        print(error)
-                        self?.hasError = true
-                        self?.error = error as? NetworkingManager.NetworkingError
-                    }
-                }
-            }
+//            NetworkingManager.shared.request(.popularDrinks(apiKey: apiKey), type: CocktailDBAPIResponse.self) { [weak self] res in
+//                DispatchQueue.main.async {
+//                    switch res {
+//                        // 3. update the array with the data
+//                    case .success(let data):
+//                        self?.popularDrinks = data.drinks
+////                        print("Popular drinks", self?.popularDrinks ?? "No popular drinks")
+//                    case .failure(let error):
+//                        print(error)
+//                        self?.hasError = true
+//                        self?.error = error as? NetworkingManager.NetworkingError
+//                    }
+//                }
+//            }
         } else {
             print("Something went wrong")
         }

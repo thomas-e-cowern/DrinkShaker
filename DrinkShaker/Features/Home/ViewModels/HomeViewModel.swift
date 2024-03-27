@@ -13,6 +13,7 @@ final class HomeViewModel: ObservableObject {
     @Published private(set) var spiritOfTheDayName: String?
     @Published private(set) var drinkOfTheDayName: String?
     @Published private(set) var randomDrink: [Drink] = []
+    @Published private(set) var drinkOfTheDay: CocktailDBAPIResponse?
     
     @Published private(set) var error: NetworkingManager.NetworkingError?
     @Published var hasError = false
@@ -61,60 +62,107 @@ final class HomeViewModel: ObservableObject {
         }
     }
     
-    func getDrinkOfTheDay() {
-
-        let storedDrinkOfTheDay = UserDefaults.standard.string(forKey: "DrinkOfTheDay")
-        let storedDrinkDate = UserDefaults.standard.object(forKey: "DrinkDate")
+    func getDrinkOfTheDay() async {
         
-        if let storedDrinkOfTheDay = storedDrinkOfTheDay {
-            if Calendar.current.isDate(date, equalTo: storedDrinkDate as! Date, toGranularity: .day) {
-                drinkOfTheDayName = storedDrinkOfTheDay
-            }
-        } else {
-            if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
-                
-                // 2. Make the network request
-                NetworkingManager.shared.request(.randomDrink(apiKey: apiKey), type: CocktailDBAPIResponse.self) { [weak self] res in
-                    DispatchQueue.main.async {
-                        switch res {
-                            // 3. update the array with the data
-                        case .success(let data):
-                            self?.drinkOfTheDayName = data.drinks.first?.name
-    //                        print("Random drink", self?.randomDrink ?? "No random drink")
-                        case .failure(let error):
-                            print(error)
-                            self?.hasError = true
-                            self?.error = error as? NetworkingManager.NetworkingError
-                        }
-                    }
-                }
-                
-                UserDefaults.standard.set(drinkOfTheDayName, forKey: "drinkOfTheDay")
-                UserDefaults.standard.set(date, forKey: "drinkDate")
-            } else {
-                if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
-                    
-                    // 2. Make the network request
-                    NetworkingManager.shared.request(.randomDrink(apiKey: apiKey), type: CocktailDBAPIResponse.self) { [weak self] res in
-                        DispatchQueue.main.async {
-                            switch res {
-                                // 3. update the array with the data
-                            case .success(let data):
-                                self?.drinkOfTheDayName = data.drinks.first?.name
-                                //                        print("Random drink", self?.randomDrink ?? "No random drink")
-                            case .failure(let error):
-                                print(error)
-                                self?.hasError = true
-                                self?.error = error as? NetworkingManager.NetworkingError
-                            }
-                        }
-                    }
-                    
-                    UserDefaults.standard.set(drinkOfTheDayName, forKey: "drinkOfTheDay")
-                    UserDefaults.standard.set(date, forKey: "drinkDate")
-                }
-            }
+        print("Inside DOTD")
+        
+        await getRandomDrink()
+        
+//        if let data = UserDefaults.standard.data(forKey: "DrinkOfTheDay") {
+//            do {
+//                let decoder = JSONDecoder()
+//                print("Decoding DOTD")
+//                drinkOfTheDay = try decoder.decode([CocktailDBAPIResponse].self, from: data)
+//                
+//                print("DOTD from data: \(String(describing: drinkOfTheDay))")
+//                
+//            } catch {
+//                print("Unable to Decode DOTD (\(error))")
+//            }
+//        } else {
+//
+////                getRandomDrink()
+//            
+//            do {
+//                let newDrink = randomDrink
+//                
+//                let encoder = JSONEncoder()
+//                
+//                let data = try encoder.encode(newDrink)
+//                
+//                UserDefaults.standard.set(data, forKey: "DrinkOfTheDay")
+//            } catch {
+//                print("Unable to Encode DOTD (\(error))")
+//            }
+//        }
+        
+//        getRandomDrink()
+        
+        do {
+            let newDrink = randomDrink
+            
+            let encoder = JSONEncoder()
+            
+            let data = try encoder.encode(newDrink)
+            
+            UserDefaults.standard.set(data, forKey: "DrinkOfTheDay")
+        } catch {
+            print("Unable to Encode DOTD (\(error))")
         }
+        
+
+//        let storedDrinkOfTheDay = UserDefaults.standard.string(forKey: "DrinkOfTheDay")
+//        let storedDrinkDate = UserDefaults.standard.object(forKey: "DrinkDate")
+//        
+//        if let storedDrinkOfTheDay = storedDrinkOfTheDay {
+//            if Calendar.current.isDate(date, equalTo: storedDrinkDate as! Date, toGranularity: .day) {
+//                drinkOfTheDayName = storedDrinkOfTheDay
+//            }
+//        } else {
+//            if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
+//                
+//                // 2. Make the network request
+//                NetworkingManager.shared.request(.randomDrink(apiKey: apiKey), type: CocktailDBAPIResponse.self) { [weak self] res in
+//                    DispatchQueue.main.async {
+//                        switch res {
+//                            // 3. update the array with the data
+//                        case .success(let data):
+//                            self?.drinkOfTheDayName = data.drinks.first?.name
+//    //                        print("Random drink", self?.randomDrink ?? "No random drink")
+//                        case .failure(let error):
+//                            print(error)
+//                            self?.hasError = true
+//                            self?.error = error as? NetworkingManager.NetworkingError
+//                        }
+//                    }
+//                }
+//                
+//                UserDefaults.standard.set(drinkOfTheDayName, forKey: "drinkOfTheDay")
+//                UserDefaults.standard.set(date, forKey: "drinkDate")
+//            } else {
+//                if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
+//                    
+//                    // 2. Make the network request
+//                    NetworkingManager.shared.request(.randomDrink(apiKey: apiKey), type: CocktailDBAPIResponse.self) { [weak self] res in
+//                        DispatchQueue.main.async {
+//                            switch res {
+//                                // 3. update the array with the data
+//                            case .success(let data):
+//                                self?.drinkOfTheDayName = data.drinks.first?.name
+//                                //                        print("Random drink", self?.randomDrink ?? "No random drink")
+//                            case .failure(let error):
+//                                print(error)
+//                                self?.hasError = true
+//                                self?.error = error as? NetworkingManager.NetworkingError
+//                            }
+//                        }
+//                    }
+//                    
+//                    UserDefaults.standard.set(drinkOfTheDayName, forKey: "drinkOfTheDay")
+//                    UserDefaults.standard.set(date, forKey: "drinkDate")
+//                }
+//            }
+//        }
        
         func clearUserData() {
             UserDefaults.standard.removeObject(forKey: "Test")
@@ -123,37 +171,20 @@ final class HomeViewModel: ObservableObject {
         }
     }
         
-    func getRandomDrink() -> String {
+    func getRandomDrink() async {
         // 1. Get the api key from config file
-        var drinkOfTheDayName: String?
-        
         if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
-            
+            print("Get ar random drink")
             // 2. Make the network request
-            NetworkingManager.shared.request(.randomDrink(apiKey: apiKey), type: CocktailDBAPIResponse.self) { [weak self] res in
-                DispatchQueue.main.async {
-                    switch res {
-                        // 3. update the array with the data
-                    case .success(let data):
-                        self?.randomDrink = data.drinks
-                        drinkOfTheDayName = data.drinks.first?.name
-//                        print("Random drink", self?.randomDrink ?? "No random drink")
-                    case .failure(let error):
-                        print(error)
-                        self?.hasError = true
-                        self?.error = error as? NetworkingManager.NetworkingError
-                    }
-                }
+            do {
+                let test = try await NetworkingManager.shared.request(.randomDrink(apiKey: apiKey), type: CocktailDBAPIResponse.self)
+                print("res: \(String(describing: test))")
+            } catch {
+                print("Problem in get random drink")
             }
         } else {
             print("Something went wrong getting a random drink")
         }
-        
-        if let drinkOfTheDayName = drinkOfTheDayName {
-            return drinkOfTheDayName
-        }
-        
-        return ""
     }
 }
 

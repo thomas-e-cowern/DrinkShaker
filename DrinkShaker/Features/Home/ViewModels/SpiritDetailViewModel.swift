@@ -16,19 +16,20 @@ final class SpiritDetailViewModel: ObservableObject {
         if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
             
             
-            if let spiritName = spiritName {
-                NetworkingManager.shared.request(.spiritDetail(apiKey: apiKey, searchTerm: spiritName), type: Ingredients.self) { [weak self] res in
-                    DispatchQueue.main.async {
-                        switch res {
-                        case .success(let data):
-                            self?.spiritDetail = data.ingredients.first
+//            if let spiritName = spiritName {
+//                
+//                NetworkingManager.shared.request(.spiritDetail(apiKey: apiKey, searchTerm: spiritName), type: Ingredients.self) { [weak self] res in
+//                    DispatchQueue.main.async {
+//                        switch res {
+//                        case .success(let data):
+//                            self?.spiritDetail = data.ingredients.first
 //                            print("SOTD: ", self?.spiritDetail ?? "No SOTD")
-                        case .failure(let error):
-                            print(error)
-                        }
-                    }
-                }
-            }
+//                        case .failure(let error):
+//                            print(error)
+//                        }
+//                    }
+//                }
+//            }
         }
     }
 }

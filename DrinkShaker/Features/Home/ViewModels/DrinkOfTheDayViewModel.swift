@@ -11,25 +11,23 @@ final class DrinkOfTheDayViewModel: ObservableObject {
     
     @Published var drinkOfTheDayDetails: Ingredient?
     
-    func getDrinkOfTheDay(drinkName: String) {
+    func getDrinkOfTheDay(drinkName: String) async {
         print("In drink of the day")
         if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
             
-            // 2. Make the network request
-            NetworkingManager.shared.request(.drinkOfTheDayDetail(apiKey: apiKey, searchTerm: drinkName), type: Ingredients.self) { [weak self] res in
-                DispatchQueue.main.async {
-                    switch res {
-                        // 3. update the array with the data
-                    case .success(let data):
-                        self?.drinkOfTheDayDetails = data.ingredients.first
-                        print("DOTD: ", self?.drinkOfTheDayDetails ?? "No DOTD")
-                    case .failure(let error):
-                        print("DOTD Error: ", error)
-                    }
-                }
+            //             2. Make the network request
+            if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
+                
+                // 2. Make the network request
+//                do {
+//                    drinkOfTheDay = try await NetworkingManager.shared.request(.randomDrink(apiKey: apiKey), type: [CocktailDBAPIResponse].self)
+//                    print("res: \(drinkOfTheDay)")
+//                } catch {
+//                    print("Problem in get random drink")
+//                }
+            } else {
+                print("Something went wrong getting a random drink")
             }
-        } else {
-            print("Something went wrong getting a random drink")
         }
     }
 }
