@@ -19,34 +19,50 @@ final class HomeViewModel: ObservableObject {
     
     private var date: Date = Date.now
     
+    // true if spirit of the day has already been called
+    var currentSpiritOfTheDay: Bool {
+        let storedSpiritDate = UserDefaults.standard.object(forKey: "spiritDate")
+        let modifiedDate = Calendar.current.date(byAdding: .day, value: 1, to: storedSpiritDate as! Date)!
+        print(modifiedDate)
+        // if the date is today, return true
+        if Calendar.current.isDate(date, equalTo: modifiedDate , toGranularity: .day) {
+            return true
+        }
+        
+        // if not return false
+        return false
+    }
+    
     
     // MARK: Get spirit of the day
     func getSpiritOfTheDay() {
         
-        //        print("Inside SOTD")
+        if currentSpiritOfTheDay {
+            print("has been called already today")
+        } else {
+            print("has not been called today")
+            // 1. check to see if there is a store SOTD
+            if UserDefaults.standard.string(forKey: "spiritOfTheDay") != nil {
+                print("there is a stored spirit of the day")
+                // 2. if there is make sure it is displaying
+            } else {
+                print("There is no stored spirit of the day")
+            }
+            // 2. if there is make sure it is displaying
+            
+            // 3. if not, get a new spirit of the day and store it and the new date
+        }
+
         // 1. Check to see if there is a saved spirit of the day and date
         let storedSpiritOfTheDay = UserDefaults.standard.string(forKey: "spiritOfTheDay")
         let storedSpiritDate = UserDefaults.standard.object(forKey: "spiritDate")
-        
-        //        if let storedSpiritOfTheDay = storedSpiritOfTheDay {
-        //            print("storedSpiritOfTheDay: ", storedSpiritOfTheDay)
-        //        }
-        //
-        //        if let storedSpiritDate = storedSpiritDate {
-        //            print("spiritDate: ", storedSpiritDate)
-        //        }
-        
+
         // 2. If not get a random spirit and save the spirit object
         if let storedSpiritOfTheDay = storedSpiritOfTheDay {
             //            print("storedSpiritOfTheDay: ", storedSpiritOfTheDay)
             // 3. If there is, we need check to see if it is todays spirit
             if Calendar.current.isDate(date, equalTo: storedSpiritDate as! Date, toGranularity: .day) {
                 // 4. If it is, spirit of the day stays the same
-                //                let dateTest = Calendar.current.isDate(date, equalTo: storedSpiritDate as! Date, toGranularity: .day)
-                //                print("Date test: ", dateTest)
-                //                print("Date: ", date)
-                //                print("Stored date", storedSpiritDate ?? "No date")
-                //                print("Date check: ", Calendar.current.isDateInToday(date))
                 spiritOfTheDayName = storedSpiritOfTheDay
             } else {
                 // 5. If it is not, get a new random spirit and save
