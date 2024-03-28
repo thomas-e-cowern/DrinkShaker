@@ -52,11 +52,13 @@ struct HomeView: View {
             }
             .task {
 //                await hvm.getDrinkOfTheDay()
+                
+                // 1. Get spirit of the day
+                await hvm.getSpiritOfTheDay()
             }
             .onAppear {
                 
-                // 1. Get spirit of the day
-                hvm.getSpiritOfTheDay()
+               
                 
                 // 2. Get list of popular drinks
 //                pdvm.getPopularDrinks()
@@ -144,11 +146,11 @@ private extension HomeView {
             
             // MARK: TODO - Change to get indredient details by name
             HStack(spacing: 10) {
-                if let spirit = hvm.spiritOfTheDayName {
+                if let spirit = hvm.spiritOfTheDay {
                     NavigationLink {
-                        SpiritDetailView(spiritName: spirit)
+                        SpiritDetailView(spirit: spirit)
                     } label: {
-                        SpiritView(alcohol: spirit)
+                        SpiritView(alcohol: spirit.ingredientName)
                     }
                 }
             }

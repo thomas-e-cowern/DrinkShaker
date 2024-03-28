@@ -11,6 +11,7 @@ import Foundation
 final class HomeViewModel: ObservableObject {
     
     @Published private(set) var spiritOfTheDayName: String?
+    @Published private(set) var spiritOfTheDay: Ingredient?
     @Published private(set) var randomDrink: Drink?
     @Published private(set) var drinkOfTheDay: Drink?
     
@@ -25,7 +26,7 @@ final class HomeViewModel: ObservableObject {
         let modifiedDate = Calendar.current.date(byAdding: .day, value: 1, to: storedSpiritDate as! Date)!
         print(modifiedDate)
         // if the date is today, return true
-        if Calendar.current.isDate(date, equalTo: modifiedDate , toGranularity: .day) {
+        if Calendar.current.isDate(date, equalTo: storedSpiritDate as! Date, toGranularity: .day) {
             return true
         }
         
@@ -35,46 +36,36 @@ final class HomeViewModel: ObservableObject {
     
     
     // MARK: Get spirit of the day
-    func getSpiritOfTheDay() {
+    func getSpiritOfTheDay() async {
         
+        // Use currentSpiritOfTheDay to check if called already today
         if currentSpiritOfTheDay {
             print("has been called already today")
+            if let data = UserDefaults.standard.data(forKey: "spiritOfTheDay2") {
+                spiritOfTheDay = customDecoder(data: data, type: Ingredient.self)
+            }
+//            print("object SOTD: \(String(describing: spiritOfTheDay))")
         } else {
             print("has not been called today")
             // 1. check to see if there is a store SOTD
-            if UserDefaults.standard.string(forKey: "spiritOfTheDay") != nil {
+            if UserDefaults.standard.string(forKey: "spiritOfTheDay2") != nil {
                 print("there is a stored spirit of the day")
                 // 2. if there is make sure it is displaying
+                let storedSpiritOfTheDay2 = UserDefaults.standard.data(forKey: "spiritOfTheDay2")
+//                print("stored spirit: \(String(describing: storedSpiritOfTheDay2))")
+                
             } else {
+                // 3. if not, get a new spirit of the day and store it and the new date
                 print("There is no stored spirit of the day")
+                if let spiritOfTheDayName2 = spirits.randomElement() {
+                    print("new spirit of the day: \(String(describing: spiritOfTheDayName2))")
+                    let result = await getIngredientDetails(name: spiritOfTheDayName2)
+//                    print("new spirit details: \(String(describing: result))")
+                    
+                    customEncoder(data: result, key: "spiritOfTheDay2")
+                    customEncoder(data: date, key: "spiritDate2")
+                }
             }
-            // 2. if there is make sure it is displaying
-            
-            // 3. if not, get a new spirit of the day and store it and the new date
-        }
-
-        // 1. Check to see if there is a saved spirit of the day and date
-        let storedSpiritOfTheDay = UserDefaults.standard.string(forKey: "spiritOfTheDay")
-        let storedSpiritDate = UserDefaults.standard.object(forKey: "spiritDate")
-
-        // 2. If not get a random spirit and save the spirit object
-        if let storedSpiritOfTheDay = storedSpiritOfTheDay {
-            //            print("storedSpiritOfTheDay: ", storedSpiritOfTheDay)
-            // 3. If there is, we need check to see if it is todays spirit
-            if Calendar.current.isDate(date, equalTo: storedSpiritDate as! Date, toGranularity: .day) {
-                // 4. If it is, spirit of the day stays the same
-                spiritOfTheDayName = storedSpiritOfTheDay
-            } else {
-                // 5. If it is not, get a new random spirit and save
-                spiritOfTheDayName = spirits.randomElement()
-                UserDefaults.standard.set(spiritOfTheDayName, forKey: "spiritOfTheDay")
-                UserDefaults.standard.set(date, forKey: "spiritDate")
-            }
-        } else {
-            //6.  If not spirit of the day, get one and save to user defaults
-            spiritOfTheDayName = spirits.randomElement()
-            UserDefaults.standard.set(spiritOfTheDayName, forKey: "spiritOfTheDay")
-            UserDefaults.standard.set(date, forKey: "spiritDate")
         }
     }
     
@@ -157,20 +148,33 @@ final class HomeViewModel: ObservableObject {
             }
         }
         
-        // MARK: Custom decoder
-        func customDecoder<T: Decodable>(data: Data, type: T.Type) -> T? {
-            var result: T
-            let decoder = JSONDecoder()
-            
-            do {
-                result = try decoder.decode(T.self, from: data)
-                print("Result from customDecoder: \(result)")
-                return result
-            } catch {
-                print("Error in customDecoder; \(error)")
-            }
-            return nil
-        }
+//        // MARK: Custom decoder
+//        func customDecoder<T: Decodable>(data: Data, type: T.Type) -> T? {
+//            var result: T
+//            let decoder = JSONDecoder()
+//            
+//            do {
+//                result = try decoder.decode(T.self, from: data)
+//                print("Result from customDecoder: \(result)")
+//                return result
+//            } catch {
+//                print("Error in customDecoder; \(error)")
+//            }
+//            return nil
+//        }
+//        
+//        func customEncoder(data: Encodable, key: String) {
+//            let encoder = JSONEncoder()
+//            
+//            do {
+//                let encodedData = try encoder.encode(data)
+//                UserDefaults.standard.set(encodedData, forKey: key)
+//                print("data: \(data) has been saved for key: \(key)")
+//                
+//            } catch {
+//                print("Error in customEncoder; \(error)")
+//            }
+//        }
         
         // clear user data for testing
         func clearUserData() {
@@ -198,5 +202,53 @@ final class HomeViewModel: ObservableObject {
         }
         
         return nil
+    }
+    
+    // MARK: Get Ingredient Details
+    func getIngredientDetails(name: String) async -> Ingredient? {
+        print("getting ingredient details")
+        // 1. Get the api key from config file
+        if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
+            
+            do {
+                let ingredients = try await NetworkingManager.shared.request(.spiritDetail(apiKey: apiKey, searchTerm: name), type: Ingredients.self).ingredients.first!
+                return ingredients
+            } catch {
+                print("Problem getting ingredient details")
+            }
+            
+        } else {
+            print("problem with api key in get ingredient details")
+        }
+        return nil
+    }
+    
+    // MARK: Custom decoder
+    func customDecoder<T: Decodable>(data: Data, type: T.Type) -> T? {
+        var result: T
+        let decoder = JSONDecoder()
+        
+        do {
+            result = try decoder.decode(T.self, from: data)
+            print("Result from customDecoder: \(result)")
+            return result
+        } catch {
+            print("Error in customDecoder; \(error)")
+        }
+        return nil
+    }
+    
+    // MARK: Custom encoder
+    func customEncoder(data: Encodable, key: String) {
+        let encoder = JSONEncoder()
+        
+        do {
+            let encodedData = try encoder.encode(data)
+            UserDefaults.standard.set(encodedData, forKey: key)
+            print("data: \(data) has been saved for key: \(key)")
+            
+        } catch {
+            print("Error in customEncoder; \(error)")
+        }
     }
 }
