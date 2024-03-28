@@ -86,6 +86,31 @@ final class HomeViewModel: ObservableObject {
                 if Calendar.current.isDate(date, equalTo: updatedDate , toGranularity: .day) {
                     print("Hurray, Today!")
                     drinkOfTheDay = storedDrinkOfTheDay
+                } else {
+                    print("Yeah it's a new day!")
+                    // 1. get a random drink
+                    let newDrinkOfTheDay = await getRandomDrink()
+                    
+                    if let newDrinkOfTheDay = newDrinkOfTheDay {
+                        print("newDrinkOfTheDay: \(newDrinkOfTheDay)")
+                    }
+                    
+                    drinkOfTheDay = newDrinkOfTheDay
+                    // 2. save to user defaults for 24 hours
+                    
+                    do {
+                        let encoder = JSONEncoder()
+                        
+                        let drinkData = try encoder.encode(newDrinkOfTheDay)
+                        let dateData = try encoder.encode(date)
+                        
+                        UserDefaults.standard.set(drinkData, forKey: "DrinkOfTheDay")
+                        print("New drink of the day should be saved")
+                        UserDefaults.standard.set(dateData, forKey: "DrinkOfTheDayDate")
+                        print("New drink of the day date should be saved")
+                    } catch {
+                        print("Unable to Encode DOTD (\(error))")
+                    }
                 }
             } else {
                 print("We have no stored date")
@@ -104,21 +129,12 @@ final class HomeViewModel: ObservableObject {
             do {
                 let encoder = JSONEncoder()
                 
-                let data = try encoder.encode(newDrinkOfTheDay)
+                let drinkData = try encoder.encode(newDrinkOfTheDay)
+                let dateData = try encoder.encode(date)
                 
-                UserDefaults.standard.set(data, forKey: "DrinkOfTheDay")
+                UserDefaults.standard.set(drinkData, forKey: "DrinkOfTheDay")
                 print("New drink of the day should be saved")
-            } catch {
-                print("Unable to Encode DOTD (\(error))")
-            }
-             // encode the date
-            do {
-                let encoder = JSONEncoder()
-                
-                let data = try encoder.encode(date)
-                
-                
-                UserDefaults.standard.set(data, forKey: "DrinkOfTheDayDate")
+                UserDefaults.standard.set(dateData, forKey: "DrinkOfTheDayDate")
                 print("New drink of the day date should be saved")
             } catch {
                 print("Unable to Encode DOTD (\(error))")
