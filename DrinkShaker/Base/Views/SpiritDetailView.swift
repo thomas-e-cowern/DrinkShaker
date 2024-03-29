@@ -11,7 +11,7 @@ struct SpiritDetailView: View {
     
     var spirit: Ingredient
 //    var spiritName: String
-    @StateObject private var sdvm = SpiritDetailViewModel()
+//    @StateObject private var sdvm = SpiritDetailViewModel()
     
     var body: some View {
         ZStack {
@@ -29,7 +29,7 @@ struct SpiritDetailView: View {
                         VStack(spacing: 10) {
                             HStack {
                                 Text("Alcohol by Volume")
-                                Text((sdvm.spiritDetail?.alcoholByVolume ?? "0") + "%")
+                                Text((spirit.alcoholByVolume ?? "0") + "%")
                             }
                         }
                         
@@ -54,9 +54,6 @@ struct SpiritDetailView: View {
                 }
             }
         }
-//        .onAppear {
-//            sdvm.getSpiritDetails(spiritName: spiritName)
-//        }
     }
 }
 

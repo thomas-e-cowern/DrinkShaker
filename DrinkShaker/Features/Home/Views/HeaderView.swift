@@ -12,7 +12,6 @@ struct HeaderView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 0)
                 .foregroundStyle(.dodgerBlue)
-//                .rotationEffect(Angle(degrees: 15))
             
             VStack {
                 Text("Drink Shaker")
@@ -24,10 +23,8 @@ struct HeaderView: View {
                     .font(.system(size: 30))
                     .foregroundStyle(Color.white)
             }
-            .padding(.top, 30)
         }
-        .frame(width: UIScreen.main.bounds.width * 3, height: 200)
-        .offset(y: -100)
+        .frame(width: UIScreen.main.bounds.width * 3, height: 250)
     }
 }
 

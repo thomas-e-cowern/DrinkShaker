@@ -23,7 +23,8 @@ struct HomeView: View {
                 
                 VStack {
                     HeaderView()
-                        .padding(.top, 25)
+                        .padding([.bottom], 10)
+                        
                     ScrollView {
                         VStack {
                             
@@ -46,9 +47,10 @@ struct HomeView: View {
                             ingredientOfTheDay
                             
                         }
+                        .padding([.top], 0)
                     }
                 }
-                
+                .ignoresSafeArea()
             }
             .task {
                 // 1. get drink of the day
@@ -76,7 +78,7 @@ private extension HomeView {
         VStack {
             Text("Drink of the day...")
                 .font(.largeTitle)
-
+            
             HStack(spacing: 10) {
                 if let drink = hvm.drinkOfTheDay {
                     NavigationLink {
@@ -138,9 +140,6 @@ private extension HomeView {
         VStack {
             Text("Spirit of the day...")
                 .font(.largeTitle)
-            
-            
-            // MARK: TODO - Change to get indredient details by name
             HStack(spacing: 10) {
                 if let spirit = hvm.spiritOfTheDay {
                     NavigationLink {
@@ -152,5 +151,6 @@ private extension HomeView {
             }
             .frame(width: UIScreen.main.bounds.width)
         }
+        .padding(.bottom, 100)
     }
 }
