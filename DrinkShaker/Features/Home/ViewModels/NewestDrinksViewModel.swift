@@ -22,7 +22,9 @@ final class NewestDrinksViewModel: ObservableObject {
             // 2. Make the network request
             do {
                 let NDRequest = try await NetworkingManager.shared.request(.newestDrinks(apiKey: apiKey), type: CocktailDBAPIResponse.self)
-                newestDrinks = NDRequest.drinks
+                DispatchQueue.main.async {
+                    self.newestDrinks = NDRequest.drinks
+                }
             } catch {
                 print("Problem in request for newest drinks: \(error.localizedDescription)")
             }

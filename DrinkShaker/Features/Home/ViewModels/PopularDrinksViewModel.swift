@@ -23,7 +23,9 @@ final class PopularDrinksViewModel: ObservableObject {
             // 2. Make the network request
             do {
                 let PDRequest = try await NetworkingManager.shared.request(.popularDrinks(apiKey: apiKey), type: CocktailDBAPIResponse.self)
-                popularDrinks = PDRequest.drinks
+                DispatchQueue.main.async {
+                    self.popularDrinks = PDRequest.drinks
+                }
             } catch {
                 print("Problem in request for popular drinks: \(error.localizedDescription)")
             }
