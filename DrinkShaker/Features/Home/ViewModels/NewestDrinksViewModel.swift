@@ -16,24 +16,16 @@ final class NewestDrinksViewModel: ObservableObject {
     @Published private(set) var error: NetworkingManager.NetworkingError?
     @Published var hasError = false
     
-    func getNewestDrinks() {
+    func getNewestDrinks() async {
         if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
             
             // 2. Make the network request
-//            NetworkingManager.shared.request(.newestDrinks(apiKey: apiKey), type: CocktailDBAPIResponse.self) { [weak self] res in
-//                DispatchQueue.main.async {
-//                    switch res {
-//                        // 3. update the array with the data
-//                    case .success(let data):
-//                        self?.newestDrinks = data.drinks
-////                        print("Popular drinks", self?.newestDrinks ?? "No new drinks")
-//                    case .failure(let error):
-//                        print(error)
-//                        self?.hasError = true
-//                        self?.error = error as? NetworkingManager.NetworkingError
-//                    }
-//                }
-//            }
+            do {
+                let NDRequest = try await NetworkingManager.shared.request(.newestDrinks(apiKey: apiKey), type: CocktailDBAPIResponse.self)
+                newestDrinks = NDRequest.drinks
+            } catch {
+                print("Problem in request for newest drinks: \(error.localizedDescription)")
+            }
         } else {
             print("Something went wrong")
         }
