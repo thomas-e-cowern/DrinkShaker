@@ -51,9 +51,16 @@ struct HomeView: View {
                 
             }
             .task {
-//                await hvm.getDrinkOfTheDay()
+                // 1. get drink of the day
+                await hvm.getDrinkOfTheDay()
                 
-                // 1. Get spirit of the day
+                // 2. Get list of popular drinks
+//                await pdvm.getPopularDrinks()
+                
+                // 3. Get list of newest drinks
+//                await ndvm.getNewestDrinks()
+                
+                // 4. get spirit of the day
                 await hvm.getSpiritOfTheDay()
             }
             .onAppear {
