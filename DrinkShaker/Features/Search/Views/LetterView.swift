@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct LetterView: View {
+    
+    var letters: [String] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    
+    @Binding var chosenLetter: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ForEach(letters, id: \.self) { letter in
+                Button(letter) {
+                    chosenLetter = letter
+                    print("Letter: \(chosenLetter)")
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    LetterView()
+    LetterView(chosenLetter: .constant("B"))
 }

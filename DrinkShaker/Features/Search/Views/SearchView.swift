@@ -12,6 +12,7 @@ struct SearchView: View {
     private let columns = Array(repeating: GridItem(.flexible()), count: 2)
     
     @State private var drinks: [Drink] = []
+    @State private var letter: String = ""
     
     var body: some View {
         NavigationStack {
@@ -19,17 +20,22 @@ struct SearchView: View {
                 
                 background
                 
-                ScrollView(.vertical, showsIndicators: false) {
-                    ForEach(drinks,  id: \.id) { drink in
-                        NavigationLink {
-                            DrinkDetailView(drink: drink)
-                        } label: {
-                            DrinkCardView(drink: drink)
-                        }
-                        
-                    }  //: End of ForEach
-                    .padding()
-                }  //: End of ScrollView
+                HStack {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        ForEach(drinks,  id: \.id) { drink in
+                            NavigationLink {
+                                DrinkDetailView(drink: drink)
+                            } label: {
+                                DrinkCardView(drink: drink)
+                            }
+                            
+                        }  //: End of ForEach
+                        .padding()
+                    }//: End of ScrollView
+                    LetterView(chosenLetter: $letter)
+                    Text(letter)
+                } //: End of HStack
+                
             } //: End of ZStack
             .navigationTitle("Search Drinks")
             .onAppear {
