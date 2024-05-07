@@ -23,18 +23,24 @@ struct SearchView: View {
                 background
                 
                 HStack {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        ForEach(drinks,  id: \.id) { drink in
-                            NavigationLink {
-                                DrinkDetailView(drink: drink)
-                            } label: {
-                                DrinkCardView(drink: drink)
-                            }
-                            
-                        }  //: End of ForEach
-                        .padding()
+                    if !svm.searchDrinks.isEmpty {
+                        ScrollView(.vertical, showsIndicators: false) {
+                            ForEach(svm.searchDrinks,  id: \.id) { drink in
+                                NavigationLink {
+                                    DrinkDetailView(drink: drink)
+                                } label: {
+                                    DrinkCardView(drink: drink)
+                                }
+                                
+                            }  //: End of ForEach
+                            .padding()
+                        }
+                    } else {
+                        Spacer()
+                        Text("Use the letters at left to search for a drink by name")
                     }//: End of ScrollView
                     LetterView(chosenLetter: $letter)
+                        .padding()
                         .onChange(of: letter, {
                             Task {
                                 await svm.getDrinksByFirstLetter(letter: letter)
@@ -44,15 +50,15 @@ struct SearchView: View {
                 
             } //: End of ZStack
             .navigationTitle("Search Drinks")
-            .onAppear {
-                do {
-                    let res = try StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
-                    
-                    drinks = res.drinks
-                } catch {
-                    print(error)
-                }
-            } // End of onAppear
+//            .onAppear {
+//                do {
+//                    let res = try StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
+//                    
+//                    drinks = res.drinks
+//                } catch {
+//                    print(error)
+//                }
+//            } // End of onAppear
             
         } // MARK: End of Navigation Stack
     }
