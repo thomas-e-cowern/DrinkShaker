@@ -24,10 +24,10 @@ final class SearchViewModel: ObservableObject {
                 let PDRequest = try await NetworkingManager.shared.request(.searchDrinks(apiKey: apiKey, searchTerm: letter), type: CocktailDBAPIResponse.self)
                 DispatchQueue.main.async {
                     self.searchDrinks = PDRequest.drinks
-                    print("Searched Drinks: \(self.searchDrinks)")
                 }
             } catch {
                 print("Problem in request for popular drinks: \(error.localizedDescription)")
+                hasError = true
             }
         } else {
             print("Something went wrong")

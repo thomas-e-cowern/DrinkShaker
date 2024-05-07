@@ -17,49 +17,47 @@ struct SearchView: View {
     @State private var letter: String = ""
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                
-                background
-                
-                HStack {
-                    if !svm.searchDrinks.isEmpty {
-                        ScrollView(.vertical, showsIndicators: false) {
-                            ForEach(svm.searchDrinks,  id: \.id) { drink in
-                                NavigationLink {
-                                    DrinkDetailView(drink: drink)
-                                } label: {
-                                    DrinkCardView(drink: drink)
+        GeometryReader { geo in
+            NavigationStack {
+                ZStack {
+                    
+                    background
+                    
+                    VStack(alignment: .trailing) {
+                        HStack() {
+                            if !svm.searchDrinks.isEmpty {
+                                ScrollView(.vertical, showsIndicators: false) {
+                                    ForEach(svm.searchDrinks,  id: \.id) { drink in
+                                        NavigationLink {
+                                            DrinkDetailView(drink: drink)
+                                        } label: {
+                                            DrinkCardView(drink: drink)
+                                        }
+                                        
+                                    }  //: End of ForEach
+                                    .padding()
                                 }
-                                
-                            }  //: End of ForEach
-                            .padding()
+                            } else {
+                                Spacer()
+                                    .frame(width: geo.size.width * 0.1)
+                                Text("Use the letters at left to search for a drink by name")
+                            }//: End of ScrollView
+                            Spacer()
+                                .frame(width: geo.size.width * 0.1)
+                            LetterView(chosenLetter: $letter)
+                                .padding(.trailing, 62)
+                                .onChange(of: letter, {
+                                    Task {
+                                        await svm.getDrinksByFirstLetter(letter: letter)
+                                    }
+                                })
                         }
-                    } else {
-                        Spacer()
-                        Text("Use the letters at left to search for a drink by name")
-                    }//: End of ScrollView
-                    LetterView(chosenLetter: $letter)
-                        .padding()
-                        .onChange(of: letter, {
-                            Task {
-                                await svm.getDrinksByFirstLetter(letter: letter)
-                            }
-                        })
-                } //: End of HStack
+                    } //: End of HStack
+                    
+                } //: End of ZStack
+                .navigationTitle("Search for Drinks")
                 
-            } //: End of ZStack
-            .navigationTitle("Search Drinks")
-//            .onAppear {
-//                do {
-//                    let res = try StaticJsonMapper.decode(file: "DrinksStaticJson", type: CocktailDBAPIResponse.self)
-//                    
-//                    drinks = res.drinks
-//                } catch {
-//                    print(error)
-//                }
-//            } // End of onAppear
-            
+            }
         } // MARK: End of Navigation Stack
     }
 }
