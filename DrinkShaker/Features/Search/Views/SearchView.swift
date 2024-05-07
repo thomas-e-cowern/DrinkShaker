@@ -15,6 +15,7 @@ struct SearchView: View {
     
     @State private var drinks: [Drink] = []
     @State private var letter: String = ""
+    @State private var searchText = ""
     
     var body: some View {
         GeometryReader { geo in
@@ -27,7 +28,7 @@ struct SearchView: View {
                         HStack() {
                             if !svm.searchDrinks.isEmpty {
                                 ScrollView(.vertical, showsIndicators: false) {
-                                    ForEach(svm.searchDrinks,  id: \.id) { drink in
+                                    ForEach(searchResults,  id: \.id) { drink in
                                         NavigationLink {
                                             DrinkDetailView(drink: drink)
                                         } label: {
@@ -59,7 +60,18 @@ struct SearchView: View {
                 
             }
         } // MARK: End of Navigation Stack
+        .searchable(text: $searchText)
     }
+    
+    var searchResults: [Drink] {
+            if searchText.isEmpty {
+                return svm.searchDrinks
+            } else {
+                return svm.searchDrinks.filter {
+                    $0.name.localizedCaseInsensitiveContains(searchText)
+                }
+            }
+        }
 }
 
 #Preview {
