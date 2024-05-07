@@ -18,7 +18,6 @@ struct LetterView: View {
             ForEach(letters, id: \.self) { letter in
                 Button(letter) {
                     chosenLetter = letter
-                    print("Letter: \(chosenLetter)")
                 }
             }
         }

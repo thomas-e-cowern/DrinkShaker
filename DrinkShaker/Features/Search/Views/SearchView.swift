@@ -11,6 +11,8 @@ struct SearchView: View {
     
     private let columns = Array(repeating: GridItem(.flexible()), count: 2)
     
+    @StateObject private var svm = SearchViewModel()
+    
     @State private var drinks: [Drink] = []
     @State private var letter: String = ""
     
@@ -33,7 +35,9 @@ struct SearchView: View {
                         .padding()
                     }//: End of ScrollView
                     LetterView(chosenLetter: $letter)
-                    Text(letter)
+                        .onChange(of: letter, {
+                            svm.getDrinksByFirstLetter(letter: letter)
+                        })
                 } //: End of HStack
                 
             } //: End of ZStack
@@ -46,7 +50,8 @@ struct SearchView: View {
                 } catch {
                     print(error)
                 }
-            }
+            } // End of onAppear
+            
         } // MARK: End of Navigation Stack
     }
 }
