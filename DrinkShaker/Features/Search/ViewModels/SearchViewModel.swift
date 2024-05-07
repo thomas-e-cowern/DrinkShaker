@@ -14,8 +14,23 @@ final class SearchViewModel: ObservableObject {
     @Published private(set) var error: NetworkingManager.NetworkingError?
     @Published var hasError = false
     
-    func getDrinksByFirstLetter (letter: String) {
+    func getDrinksByFirstLetter (letter: String) async {
         print("Letter in SearchViewModel is \(letter)")
+        // 1. Get the api key from config file
+        if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
+            
+            // 2. Make the network request
+            do {
+                let PDRequest = try await NetworkingManager.shared.request(.popularDrinks(apiKey: apiKey), type: CocktailDBAPIResponse.self)
+                DispatchQueue.main.async {
+                    self.popularDrinks = PDRequest.drinks
+                }
+            } catch {
+                print("Problem in request for popular drinks: \(error.localizedDescription)")
+            }
+        } else {
+            print("Something went wrong")
+        }
     }
     
 }
