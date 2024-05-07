@@ -158,7 +158,7 @@ struct Drink: Codable, Identifiable {
         }
         
         return ingredientsAndMeasures.filter {
-            !$0.isEmpty
+            !$0.isEmpty && $0 != "" &&  $0 != " "
         }
     }
     
@@ -173,11 +173,10 @@ struct Drink: Codable, Identifiable {
         if let ingredient = ingredient {
             combinedString += " \(ingredient)"
         }
-        
-        print(combinedString)
+
         return combinedString
     }
-
+    
 }
 
 

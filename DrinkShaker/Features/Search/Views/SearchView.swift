@@ -21,57 +21,49 @@ struct SearchView: View {
         GeometryReader { geo in
             NavigationStack {
                 ZStack {
-                    
                     background
-                    
-                    VStack(alignment: .trailing) {
-                        HStack() {
-                            if !svm.searchDrinks.isEmpty {
-                                ScrollView(.vertical, showsIndicators: false) {
-                                    ForEach(searchResults,  id: \.id) { drink in
-                                        NavigationLink {
-                                            DrinkDetailView(drink: drink)
-                                        } label: {
-                                            DrinkCardView(drink: drink)
-                                        }
-                                        
-                                    }  //: End of ForEach
-                                    .padding()
-                                }
-                            } else {
-                                Spacer()
-                                    .frame(width: geo.size.width * 0.1)
-                                Text("Use the letters at left to search for a drink by name")
-                            }//: End of ScrollView
+                    HStack() {
+                        if !svm.searchDrinks.isEmpty {
                             Spacer()
-                                .frame(width: geo.size.width * 0.1)
-                            LetterView(chosenLetter: $letter)
-                                .padding(.trailing, 62)
-                                .onChange(of: letter, {
-                                    Task {
-                                        await svm.getDrinksByFirstLetter(letter: letter)
+                            ScrollView(.vertical, showsIndicators: false) {
+                                ForEach(searchResults,  id: \.id) { drink in
+                                    NavigationLink {
+                                        DrinkDetailView(drink: drink)
+                                    } label: {
+                                        DrinkCardView(drink: drink)
                                     }
-                                })
-                        }
+                                    
+                                }  //: End of ForEach
+                            }
+                        } else {
+                            Spacer()
+                            Text("Use the letters at the right to get drinks starting with that letter.  You can then use the search bar to search the results")
+                        }//: End of ScrollView
+                        Spacer()
+                        LetterView(chosenLetter: $letter)
+                            .padding(.trailing, 10)
+                            .onChange(of: letter, {
+                                Task {
+                                    await svm.getDrinksByFirstLetter(letter: letter)
+                                }
+                            })
                     } //: End of HStack
-                    
                 } //: End of ZStack
                 .navigationTitle("Search for Drinks")
-                
             }
         } // MARK: End of Navigation Stack
         .searchable(text: $searchText)
     }
     
     var searchResults: [Drink] {
-            if searchText.isEmpty {
-                return svm.searchDrinks
-            } else {
-                return svm.searchDrinks.filter {
-                    $0.name.localizedCaseInsensitiveContains(searchText)
-                }
+        if searchText.isEmpty {
+            return svm.searchDrinks
+        } else {
+            return svm.searchDrinks.filter {
+                $0.name.localizedCaseInsensitiveContains(searchText)
             }
         }
+    }
 }
 
 #Preview {
