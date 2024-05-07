@@ -36,7 +36,9 @@ struct SearchView: View {
                     }//: End of ScrollView
                     LetterView(chosenLetter: $letter)
                         .onChange(of: letter, {
-                            svm.getDrinksByFirstLetter(letter: letter)
+                            Task {
+                                await svm.getDrinksByFirstLetter(letter: letter)
+                            }
                         })
                 } //: End of HStack
                 
