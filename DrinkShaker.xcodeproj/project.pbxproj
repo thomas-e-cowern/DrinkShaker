@@ -15,6 +15,7 @@
 		4D55B88B2B7FBBA7002F888D /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55B88A2B7FBBA7002F888D /* Ingredient.swift */; };
 		4D55B88D2B7FD9BD002F888D /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55B88C2B7FD9BD002F888D /* Ingredients.swift */; };
 		4D55B88F2B7FE473002F888D /* IngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55B88E2B7FE473002F888D /* IngredientView.swift */; };
+		4D5AC23E2BEBD98F0041B73D /* RandomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5AC23D2BEBD98F0041B73D /* RandomViewModel.swift */; };
 		4D74EAF02BB1EE2400201F79 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D74EAEF2BB1EE2400201F79 /* Endpoints.swift */; };
 		4DA3EFF72BA9E4E2002A4F3B /* IngredientDetailStaticJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DA3EFF62BA9E4E2002A4F3B /* IngredientDetailStaticJSON.json */; };
 		4DA3EFF92BA9EA33002A4F3B /* IngredientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA3EFF82BA9EA33002A4F3B /* IngredientDetailView.swift */; };
@@ -54,6 +55,7 @@
 		4D55B88A2B7FBBA7002F888D /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		4D55B88C2B7FD9BD002F888D /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		4D55B88E2B7FE473002F888D /* IngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientView.swift; sourceTree = "<group>"; };
+		4D5AC23D2BEBD98F0041B73D /* RandomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomViewModel.swift; sourceTree = "<group>"; };
 		4D74EAEF2BB1EE2400201F79 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		4DA3EFF62BA9E4E2002A4F3B /* IngredientDetailStaticJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = IngredientDetailStaticJSON.json; sourceTree = "<group>"; };
 		4DA3EFF82BA9EA33002A4F3B /* IngredientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientDetailView.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		4DE5522E2B7BC8D200C24C48 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				4D5AC23D2BEBD98F0041B73D /* RandomViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				4DE552242B7BA7E000C24C48 /* Symbols.swift in Sources */,
 				4D55B88B2B7FBBA7002F888D /* Ingredient.swift in Sources */,
 				4DE52AB92BEA804D003CCCD8 /* SearchViewModel.swift in Sources */,
+				4D5AC23E2BEBD98F0041B73D /* RandomViewModel.swift in Sources */,
 				4DE5523A2B7BF1F800C24C48 /* StaticJsonMapper.swift in Sources */,
 				4D55B88F2B7FE473002F888D /* IngredientView.swift in Sources */,
 				4DE552272B7BA7FB00C24C48 /* Theme.swift in Sources */,
