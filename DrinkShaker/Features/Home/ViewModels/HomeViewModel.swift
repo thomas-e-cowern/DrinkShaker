@@ -25,7 +25,7 @@ final class HomeViewModel: ObservableObject {
             print("there is a stored spirit date")
             let decodedDate = customDecoder(data: data, type: Date.self)
             
-            // if the date is today, return true
+            // if the date is today, return true, else if the date is in the past return false
             
             if Calendar.current.isDate(date, equalTo: decodedDate!, toGranularity: .day) {
                 print("This is today")
@@ -38,7 +38,7 @@ final class HomeViewModel: ObservableObject {
             
         }
         
-        // if not return false
+        // Default return is false
         return false
     }
     
