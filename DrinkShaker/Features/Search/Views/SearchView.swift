@@ -37,7 +37,8 @@ struct SearchView: View {
                             }
                         } else {
                             Spacer()
-                            Text("Use the letters at the right to get drinks starting with that letter.  You can then use the search bar to search the results")
+                            Text("Use the letters at the right to get drinks starting with that letter.  You can then use the search bar to search within the results")
+                                .padding(.trailing)
                         }//: End of ScrollView
                         Spacer()
                         LetterView(chosenLetter: $letter)
