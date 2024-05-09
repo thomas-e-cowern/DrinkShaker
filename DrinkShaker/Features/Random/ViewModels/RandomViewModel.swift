@@ -13,7 +13,7 @@ final class RandomViewModel: ObservableObject {
     @Published var hasError = false
     
     func getRandomDrink() async {
-        
+        print("inside Random Drink")
         // 1. Get the api key from config file
         if let apiKey = Bundle.main.infoDictionary?["API_KEY"] as? String {
             
