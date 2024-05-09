@@ -15,6 +15,7 @@
 		4D55B88B2B7FBBA7002F888D /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55B88A2B7FBBA7002F888D /* Ingredient.swift */; };
 		4D55B88D2B7FD9BD002F888D /* Ingredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55B88C2B7FD9BD002F888D /* Ingredients.swift */; };
 		4D55B88F2B7FE473002F888D /* IngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D55B88E2B7FE473002F888D /* IngredientView.swift */; };
+		4D59B97B2BED31DD00A38844 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D59B97A2BED31DD00A38844 /* UIDevice+Extensions.swift */; };
 		4D5AC23E2BEBD98F0041B73D /* RandomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5AC23D2BEBD98F0041B73D /* RandomViewModel.swift */; };
 		4D74EAF02BB1EE2400201F79 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D74EAEF2BB1EE2400201F79 /* Endpoints.swift */; };
 		4DA3EFF72BA9E4E2002A4F3B /* IngredientDetailStaticJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DA3EFF62BA9E4E2002A4F3B /* IngredientDetailStaticJSON.json */; };
@@ -55,6 +56,7 @@
 		4D55B88A2B7FBBA7002F888D /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		4D55B88C2B7FD9BD002F888D /* Ingredients.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredients.swift; sourceTree = "<group>"; };
 		4D55B88E2B7FE473002F888D /* IngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientView.swift; sourceTree = "<group>"; };
+		4D59B97A2BED31DD00A38844 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
 		4D5AC23D2BEBD98F0041B73D /* RandomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomViewModel.swift; sourceTree = "<group>"; };
 		4D74EAEF2BB1EE2400201F79 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		4DA3EFF62BA9E4E2002A4F3B /* IngredientDetailStaticJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = IngredientDetailStaticJSON.json; sourceTree = "<group>"; };
@@ -104,6 +106,14 @@
 				4D55B8862B7FB1D2002F888D /* Utilities.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4D59B9792BED31B300A38844 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4D59B97A2BED31DD00A38844 /* UIDevice+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4DB6396A2BAB5AF000D2913C /* API */ = {
@@ -184,6 +194,7 @@
 			children = (
 				4D0A3B982BA4969C0052979C /* Config.xcconfig */,
 				4DE5522F2B7BCB7E00C24C48 /* Info.plist */,
+				4D59B9792BED31B300A38844 /* Extensions */,
 				4DE552292B7BC88C00C24C48 /* Features */,
 				4DE552282B7BC88000C24C48 /* Base */,
 				4DE552222B7BA7B800C24C48 /* Resources */,
@@ -437,6 +448,7 @@
 				4D1385362BAC7F3000F57FF3 /* HomeViewModel.swift in Sources */,
 				4DE552352B7BEF9100C24C48 /* Drink.swift in Sources */,
 				4DE552152B7BA10400C24C48 /* DrinkShakerApp.swift in Sources */,
+				4D59B97B2BED31DD00A38844 /* UIDevice+Extensions.swift in Sources */,
 				4D55B8842B7E9C21002F888D /* HeaderView.swift in Sources */,
 				4DB639692BAB3CB800D2913C /* SpiritDetailView.swift in Sources */,
 			);
