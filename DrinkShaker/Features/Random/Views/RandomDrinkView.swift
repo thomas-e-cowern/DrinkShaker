@@ -11,7 +11,6 @@ struct RandomDrinkView: View {
     
     @State var placeholderIsShowing = true
     @State var isHidden: Bool = true
-    @State var isSearching: Bool = false
     
     @StateObject private var rvm = RandomViewModel()
     
@@ -25,44 +24,46 @@ struct RandomDrinkView: View {
                         Image(systemName: "wineglass")
                             .foregroundColor(Color.red)
                             .font(.largeTitle)
+                            .padding()
+                        
+                        Text("Shake Your Phone for a random Drink!")
+                            .font(.title3)
+                            .padding(3)
+                        Text("(...or press the Random button on top!)")
+                            .font(.title3)
                     }
                 }
-                VStack (alignment: .center) {
-                    Text(rvm.drink?.name ?? "")
-                        .font(.largeTitle)
-                        .toolbar {
-                            ToolbarItem {
-                                Button("Random") {
-                                    Task {
-                                        placeholderIsShowing = false
-                                        await getRandomDrink()
-                                    }
-                                }
-                                
-                            }
-                            ToolbarItem(placement: .bottomBar) {
-                                Text("Shake Your Phone for a random Drink!")
-                                    .font(.title3)
+                
+                VStack {
+                    HStack(spacing: 10) {
+                        if let drink = rvm.drink {
+                            NavigationLink {
+                                DrinkDetailView(drink: drink)
+                            } label: {
+                                DrinkCardView(drink: drink)
                             }
                         }
-                    VStack {
-                        HStack(spacing: 10) {
-                            if let drink = rvm.drink {
-                                NavigationLink {
-                                    DrinkDetailView(drink: drink)
-                                } label: {
-                                    DrinkCardView(drink: drink)
-                                }
-                            }
-                        }
-                        .frame(width: UIScreen.main.bounds.width)
                     }
-//                    .onShake {
-//                        isHidden = false
-//                        placeholderIsShowing = false
-//                        rvm.getRandomDrink()
-//                    }
+                    .frame(width: UIScreen.main.bounds.width)
+                    .toolbar {
+                        ToolbarItem {
+                            Button("Random") {
+                                Task {
+                                    placeholderIsShowing = false
+                                    await getRandomDrink()
+                                }
+                            }
+                        }
+                    }
                 }
+                .onShake {
+                    isHidden = false
+                    placeholderIsShowing = false
+                    Task {
+                        await getRandomDrink()
+                    }
+                }
+                
             }
         } // MARK: End of Navigation
         
