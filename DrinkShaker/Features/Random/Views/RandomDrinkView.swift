@@ -34,6 +34,7 @@ struct RandomDrinkView: View {
                             ToolbarItem {
                                 Button("Random") {
                                     Task {
+                                        placeholderIsShowing = false
                                         await getRandomDrink()
                                     }
                                 }
@@ -44,51 +45,23 @@ struct RandomDrinkView: View {
                                     .font(.title3)
                             }
                         }
-                    HStack {
-                        if rvm.drink?.image != nil {
-                            AsyncImage(url: URL(string:
-                                                    (rvm.drink?.image)!)) { phase in
-                                switch phase {
-                                case .empty:
-                                    ProgressView()
-                                case .success(let image):
-                                    image
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(maxWidth: 100, maxHeight: 100)
-                                        .padding(.leading, 5)
-                                        .padding(.trailing, 5)
-                                        .padding(.top, 10)
-                                        .padding(.bottom, 10)
-                                        .background(Color.white)
-                                case .failure(_):
-                                    Image(systemName: "wind.snow")
-                                        .resizable()
-                                        .padding()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(maxWidth: 100, maxHeight: 100)
-                                @unknown default:
-                                    EmptyView()
+                    VStack {
+                        HStack(spacing: 10) {
+                            if let drink = rvm.drink {
+                                NavigationLink {
+                                    DrinkDetailView(drink: drink)
+                                } label: {
+                                    DrinkCardView(drink: drink)
                                 }
                             }
                         }
+                        .frame(width: UIScreen.main.bounds.width)
                     }
-                    //                    .onShake {
-                    //                        isHidden = false
-                    //                        placeholderIsShowing = false
-                    //                        rvm.getRandomDrink()
-                    //                    }
-                    Text("Served in: " + (rvm.drink?.glass ?? "No glass listed"))
-                        .font(.headline)
-                        .opacity(isHidden ? 0 : 1)
-                    
-                    HStack {
-                        //                        List {
-                        //                            ForEach(nc.randomRecipe?.ingredientsAndMeasures ?? [""], id: \.self) { ingredient in
-                        //                                Text(ingredient)
-                        //                            }
-                        //                        }
-                    }
+//                    .onShake {
+//                        isHidden = false
+//                        placeholderIsShowing = false
+//                        rvm.getRandomDrink()
+//                    }
                 }
             }
         } // MARK: End of Navigation
