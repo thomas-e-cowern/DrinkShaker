@@ -62,18 +62,18 @@ final class HomeViewModel: ObservableObject {
 //            }
         } else {
 //            DispatchQueue.main.async {
-                print("SOTD has not been called today")
+//                print("SOTD has not been called today")
                 // 1. check to see if there is a store SOTD
                 if UserDefaults.standard.data(forKey: "spiritOfTheDay") != nil {
-                    print("there is a stored spirit of the day")
+//                    print("there is a stored spirit of the day")
                     if let spiritOfTheDayName = spirits.randomElement() {
-                        print("new spirit of the day: \(String(describing: spiritOfTheDayName))")
+//                        print("new spirit of the day: \(String(describing: spiritOfTheDayName))")
                         let result = await getIngredientDetails(name: spiritOfTheDayName)
                         //                    print("new spirit details: \(String(describing: result))")
                         //                    spiritOfTheDay = result
                         customEncoder(data: result, key: "spiritOfTheDay")
                         let date = Date.now
-                        print("The new date is \(date)")
+//                        print("The new date is \(date)")
                         customEncoder(data: Date(), key: "spiritDate")
 //                        DispatchQueue.main.async {
                             self.spiritOfTheDay = result
@@ -86,13 +86,13 @@ final class HomeViewModel: ObservableObject {
                     // 3. if no stored spirit of the day, get a new spirit of the day and store it and the new date
                     print("There is no stored spirit of the day")
                     if let spiritOfTheDayName = spirits.randomElement() {
-                        print("new spirit of the day: \(String(describing: spiritOfTheDayName))")
+//                        print("new spirit of the day: \(String(describing: spiritOfTheDayName))")
                         let result = await getIngredientDetails(name: spiritOfTheDayName)
                         //                    print("new spirit details: \(String(describing: result))")
                         //                    spiritOfTheDay = result
                         customEncoder(data: result, key: "spiritOfTheDay")
                         let date = Date.now
-                        print("The new date is \(date)")
+//                        print("The new date is \(date)")
                         customEncoder(data: date, key: "spiritDate")
 //                        DispatchQueue.main.async {
                             self.spiritOfTheDay = result
@@ -113,31 +113,31 @@ final class HomeViewModel: ObservableObject {
         var storedDrinkOfTheDay: Drink?
         // 1. check to see if there is a store drink of the day
         if let drinkData = drinkData {
-//            print("we have a stored DOTD")
+            print("we have a stored DOTD")
             
             storedDrinkOfTheDay = customDecoder(data: drinkData, type: Drink.self)
             
             // 2. check to see if there is a stored date
             if let drinkDate = drinkDate {
-//                print("We have a stored date")
+                print("We have a stored date")
                 
                 // 3. decode the stored date
                 updatedDate = customDecoder(data: drinkDate, type: Date.self) ?? Date.now
                 
                 // 4.  check to see if the day is the same, if it is used the stored date
                 if Calendar.current.isDate(date, equalTo: updatedDate , toGranularity: .day) {
-//                    print("Hurray, Today!")
+                    print("Hurray, Today!")
 
                     drinkOfTheDay = storedDrinkOfTheDay
 
                     
                 } else {
-//                    print("Yeah it's a new day!")
+                    print("Yeah it's a new day!")
                     // 1. get a random drink
                     let newDrinkOfTheDay = await getRandomDrink()
                     
                     if let newDrinkOfTheDay = newDrinkOfTheDay {
-//                        print("newDrinkOfTheDay: \(newDrinkOfTheDay)")
+                        print("newDrinkOfTheDay: \(newDrinkOfTheDay)")
                     }
                     
                     drinkOfTheDay = newDrinkOfTheDay
@@ -150,9 +150,9 @@ final class HomeViewModel: ObservableObject {
                         let dateData = try encoder.encode(date)
                         
                         UserDefaults.standard.set(drinkData, forKey: "DrinkOfTheDay")
-//                        print("New drink of the day should be saved")
+                        print("New drink of the day should be saved")
                         UserDefaults.standard.set(dateData, forKey: "DrinkOfTheDayDate")
-//                        print("New drink of the day date should be saved")
+                        print("New drink of the day date should be saved")
                     } catch {
                         print("Unable to Encode DOTD (\(error))")
                     }
@@ -162,12 +162,12 @@ final class HomeViewModel: ObservableObject {
             }
             
         } else {
-//            print("we do not have a stored DOTD")
+            print("we do not have a stored DOTD")
             // 1. get a random drink
             let newDrinkOfTheDay = await getRandomDrink()
             
             if let newDrinkOfTheDay = newDrinkOfTheDay {
-//                print("newDrinkOfTheDay: \(newDrinkOfTheDay)")
+                print("newDrinkOfTheDay: \(newDrinkOfTheDay)")
             }
             // 2. save to user defaults for 24 hours
             
@@ -178,9 +178,9 @@ final class HomeViewModel: ObservableObject {
                 let dateData = try encoder.encode(date)
                 
                 UserDefaults.standard.set(drinkData, forKey: "DrinkOfTheDay")
-//                print("New drink of the day should be saved")
+                print("New drink of the day should be saved")
                 UserDefaults.standard.set(dateData, forKey: "DrinkOfTheDayDate")
-//                print("New drink of the day date should be saved")
+                print("New drink of the day date should be saved")
             } catch {
                 print("Unable to Encode DOTD (\(error))")
             }
