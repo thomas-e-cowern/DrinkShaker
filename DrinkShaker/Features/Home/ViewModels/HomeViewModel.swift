@@ -43,11 +43,11 @@ final class HomeViewModel: ObservableObject {
     var currentSpiritName: Bool {
         
         if UserDefaults.standard.data(forKey: "spiritOfTheDay") != nil {
-            print("SOTD is null")
-            return false
-        }  else {
             print("SOTD is not null")
             return true
+        }  else {
+            print("SOTD is null")
+            return false
         }
     }
     
@@ -57,9 +57,9 @@ final class HomeViewModel: ObservableObject {
     func getSpiritOfTheDay() async {
         
         // Use currentSpiritOfTheDay to check if called already today
-        if currentSpiritOfTheDay {
+        if currentSpiritName {
                 print("getSpiritOfTheDay: has been called already today")
-            if currentSpiritName {
+            if currentSpiritOfTheDay {
                 if let data = UserDefaults.standard.data(forKey: "spiritOfTheDay") {
                         self.spiritOfTheDay = self.customDecoder(data: data, type: Ingredient.self)
 
