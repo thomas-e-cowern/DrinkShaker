@@ -45,6 +45,7 @@ struct SearchView: View {
                             .padding(.trailing, 10)
                             .onChange(of: letter, {
                                 Task {
+                                    searchText = ""
                                     await svm.getDrinksByFirstLetter(letter: letter)
                                 }
                             })
