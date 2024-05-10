@@ -170,6 +170,7 @@ final class HomeViewModel: ObservableObject {
             let newDrinkOfTheDay = await getRandomDrink()
             
             if let newDrinkOfTheDay = newDrinkOfTheDay {
+                drinkOfTheDay = newDrinkOfTheDay
                 print("newDrinkOfTheDay: \(newDrinkOfTheDay)")
             }
             // 2. save to user defaults for 24 hours
